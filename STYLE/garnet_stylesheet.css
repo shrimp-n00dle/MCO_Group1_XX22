@@ -30,3 +30,161 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+body {
+    margin: 0px;
+    background-color: #6d363a;
+}
+
+.bodyContainer {
+    margin: 20px;
+    display: grid;
+    column-count: 3;
+    justify-content: center;
+    grid-template-columns: 100px auto 100px;
+    column-gap: 200px;
+}
+
+.navLogo {
+    width: 50px;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.navBar {
+    background-color: #4b2427;
+    padding: 10px;
+    height: 50px;
+    display: flex;
+
+    font-family: 'Expose';
+    color: #efebe6;
+}
+
+.navHeader {
+    font-size: 25px;
+    text-align: left;
+    margin: 5px;
+}
+
+ul.navList {
+    float: right;
+
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+li.navListItem {
+    height: 100%;
+    float: left;
+}
+
+li.navListItem a {
+    color: #efebe6;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 14px 10px;
+}
+
+li.navListItem:hover {
+    background-color: #6d363a;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* POSTS */
+.postContainer {
+    background-color: #e6dad6;
+    margin: 7px auto;
+    padding: 5px;
+    display: grid;
+    width: 500px;
+    font-family: TexGyreHeros;
+    justify-content: left;
+    border-radius: 10px;
+
+    grid-column: 2 / span 1;
+}
+
+.postHeader {
+    background-color: #dfd1ca;
+    display: grid;
+    width: 500px;
+    font-family: TexGyreHeros;
+    justify-content: left;
+}
+
+.postHeader img {
+    width: 40px;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.postHeader h3 {
+    font-size: medium;
+    color: #4b2427;
+
+    margin: 0;
+    padding: 7px 5px;
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.postBody {
+    background-color: #efebe6;
+    padding: 0px 30px;
+    grid-row: 2 / span 1;
+}
+
+.postFooter {
+    display: flex;
+    float: left;
+    font-size: smaller;
+    grid-row: 3 / span 1;
+}
+
+.postFooter a {
+    text-decoration: none;
+    color: #6d363a;
+    margin: 5px;
+}
+
+.postLikeCount, .postCommentCount {
+    margin: 5px;
+    color: #6d363a;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* OTHER */
+
+.sidebar {
+    background-color: #4b2427;
+    grid-column: 1 / span 1;
+    
+    margin: auto;
+    width: 200px;
+    padding: 10px;
+
+    color: #e6dad6;
+    font-family: 'TexGyreHeros';
+    font-size: smaller;
+}
+
+.sidebar h3 {
+    font-family: 'Expose';
+    padding: 3px;
+    margin: 0;
+}
+
+.sidebar ul {
+    background-color: #8f493f;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 2px;
+}
