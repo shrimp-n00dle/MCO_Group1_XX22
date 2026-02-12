@@ -1,0 +1,32 @@
+/* FONTS */
+
+    /* Source: https://www.fontshare.com/fonts/expose */
+@font-face {
+    font-family: 'Expose';
+    src: url(Fonts/Expose-Variable.ttf);
+}
+
+    /* Source: https://open-foundry.com/fonts/tex-gyre-heros */
+@font-face {
+    font-family: 'TexGyreHeros';
+    src: url(Fonts/TexGyreHeros/texgyreheros-regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TexGyreHeros';
+    src: url(Fonts/TexGyreHeros/texgyreheros-bold.otf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TexGyreHeros';
+    src: url(Fonts/TexGyreHeros/texgyreheros-italic.otf);
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
