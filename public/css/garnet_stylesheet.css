@@ -157,8 +157,9 @@ li.navListItem:hover {
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    /* OTHER */
+    /* UTILITY */
 
+    /* Sidebars */
 .sidebar {
     background-color: #4b2427;
     grid-column: 1 / span 1;
@@ -187,4 +188,172 @@ li.navListItem:hover {
 
 .sidebar ul li {
     padding: 2px;
+}
+
+    /* Basic content card container */
+.contentCard-light {
+    background-color: #e6dad6;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #dfd1ca;
+
+    color:#4b2427;
+    font-family: "TexGyreHeros";
+    font-size: small;
+}
+
+.contentCard-dark {
+    background-color: #8f493f;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #6d363a;
+
+    color:#efebe6;
+    font-family: "TexGyreHeros";
+    font-size: small;
+}
+
+    /* Generic buttons */
+.genButton-white {
+    background-color: #efebe6;
+    width: 100px;
+    margin: 10px;
+    padding: 10px 20px;
+
+    border-radius: 20px;
+    border: none;
+
+    color: #4b2427;
+}
+
+.genButton-white:hover {
+    background-color: #dfd1ca;
+}
+
+.genButton-red {
+    background-color: #8f493f;
+    width: 100px;
+    margin: 10px;
+    padding: 10px 20px;
+
+    border-radius: 20px;
+    border: none;
+
+    color: #efebe6;
+}
+
+.genButton-red:hover {
+    background-color: #6d363a;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Profiles */
+
+.profileContainer {
+    background-color: #8f493f;
+    margin: 7px auto;
+    padding: 5px;
+    display: grid;
+    width: max-content;
+
+    font-family: TexGyreHeros;
+    justify-content: left;
+    border-radius: 10px;
+
+    grid-column: 2 / span 1;
+}
+
+.profileHead {
+    background-color: #4b2427;
+    width: 600px;
+    color: #efebe6;
+
+    display: grid;
+    align-content: center;
+}
+
+.profileHead h1 {
+    margin: 0px 10px;
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.profileHead p {
+    margin: 10px 20px;
+    grid-row: 4 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.profileHeadButtons {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+    margin: 5px;
+    justify-self: flex-end;
+}
+
+.profileHeadButtons button {
+    background-color: #8f493f;
+    border-radius: 20px;
+    color: #efebe6;
+    border: none;
+    height: 30px;
+    width: 100px;
+}
+
+.profileHeadButtons button:hover {
+    background-color: #6d363a;
+}
+
+.profileHeadBanner {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    width: 100%;
+    height: 150px;
+    object-fit:cover;
+}
+
+.profileHeadAvatar {
+    width: 100px;
+    border-radius: 100px;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+
+    position: relative;
+    left: 30px;
+    top: 90px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Profiles */
+
+form {
+    padding: 20px; 
+    color: #4b2427;
+}
+
+.formInput {
+    width: 90%; 
+    padding: 5px; 
+    margin: 5px;
+    outline:none; 
+    background-color: rgb(240, 240, 240);
+    font-family: TexGyreHeros;
+
+    border: 2px solid #8f493f;
+    border-radius: 5px;
+}
+
+.formLabel {
+    font-weight: bold;
+}
+
+.submitFormButton {
+    background-color: #8f493f;
+    width: 100px;
+    margin: 10px;
+    padding: 5px;
+
+    border-radius: 5px;
+    border: none;
+
+    color: #efebe6;
 }
