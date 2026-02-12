@@ -162,7 +162,7 @@ li.navListItem:hover {
 .sidebar {
     background-color: #4b2427;
     grid-column: 1 / span 1;
-    
+    border-radius: 10px;
     margin: auto;
     width: 200px;
     padding: 10px;
