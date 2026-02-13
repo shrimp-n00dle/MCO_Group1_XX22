@@ -15,19 +15,21 @@
         <a href="">Comment</a>
     </div>
 
+    {{#if post.comments}}
     <div class="postCommentContainer">
-    <div class="commentHeader">
-        <img src="{{comment.profilePicture}}">
-        <a href="/viewProfile/{{comment.username}}"><h3>{{comment.username}}</h3></a>
-    </div>
+        <div class="commentHeader">
+            <img src="{{post.commentPfp}}">
+            <a href="/viewProfile/{{post.commentUser}}"><h3>{{post.commentUser}}</h3></a>
+        </div>
 
-    <div class="commentBody">
-        <p> {{comment.body}} </p>
+        <div class="commentBody">
+            <p> {{post.commentBody}} </p>
 
-        <div class="commentFooter">
-            <p class="commentLikeCount">{{comment.likeCount}}</p>
-            <a href="">Like</a>
+            <div class="commentFooter">
+                <p class="commentLikeCount">{{post.commentLikes}}</p>
+                <a href="">Like</a>
+            </div>
         </div>
     </div>
-</div>
+    {{/if}}
 </div>

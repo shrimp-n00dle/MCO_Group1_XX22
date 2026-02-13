@@ -1,39 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Your Inbox</title>
-    <link rel="stylesheet" href="../public/css/garnet_stylesheet.css">
-</head>
-<body class="home-body">
-    <!-- Navigation Bar -->
-    <div class="navBar">
-        <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
-        <h1 class="navHeader"> Your Inbox </h1>
-        <ul class="navList">
-            <li class="navListItem"><a href="Home.html">Home</a></li>
-            <li class="navListItem"><a href="Posting.html">View Profile</a></li>
+{{> nav title="Garnet: A Hidden Gem" notClean=true}}
+<div style="display:flex">
+    <!-- Message Body -->
+    <div class="sidebar-full">
+        <ul>
+            <li>
+                <h4 class="messageUser">Si-Szas</h4>
+                <p  class="lastMessage"> You sent: Hey!</p>
+            </li>
+            <li>
+                <h4 class="messageUser">Ayze</h4>
+                <p  class="lastMessage"> Ayze sent: :3</p>
+            </li>
+            <li>
+                <h4 class="messageUser">JAN-VINGNO</h4>
+                <p  class="lastMessage"> You sent: Dude did you see the new game theory vid</p>
+            </li>
         </ul>
     </div>
-    <!-- Message Body -->
-    <div>
-        <div class="sidebar-full">
-            <ul>
-                <li>
-                    <h4 class="messageUser">Si-Szas</h4>
-                    <p  class="lastMessage"> You sent: Hey!</p>
-                </li>
-                <li>
-                    <h4 class="messageUser">Ayze</h4>
-                    <p  class="lastMessage"> Ayze sent: :3</p>
-                </li>
-                <li>
-                    <h4 class="messageUser">JAN-VINGNO</h4>
-                    <p  class="lastMessage"> You sent: Dude did you see the new game theory vid</p>
-                </li>
-            </ul>
+
+    <div class="currentMessageThreadContainer">
+        <div class="messageThread">
+            <p class="messageThreadLeft">Hey there :)</p>
+            <p class="messageThreadRight">Hey!</p>
+            <input type="text" class="messageNewInput"></input>
         </div>
+
     </div>
 
-</body>
-
-</html>
+</div>

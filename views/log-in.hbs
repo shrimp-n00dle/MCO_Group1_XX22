@@ -1,41 +1,15 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <link rel="stylesheet" href="../public/css/garnet_stylesheet.css">
-<title>Log-In</title>
-</head>
-
-<body class="home-body">
-
- <!-- Navigation Bar -->
-    <div class="navBar">
-        <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
-        <h1 class="navHeader"> Log In </h1>
-        <ul class="navList">
-            <li class="navListItem"><a href="Home.html">Home</a></li>
-            <li class="navListItem"><a href="Register.html">Register</a></li>
-            <!-- <li class="navListItem"><a href="ViewProfile.html">View Profile</a></li> -->
-        </ul>
+{{> nav title="Garnet: A Hidden Gem" notClean=false}}
+<div class="bodyContainer">
+        <div class="contentCard-light" style="grid-column: 1 / span 3">
+            <form>
+            <!-- Email and pass -->
+            <label for="email" class="formLabel">Enter Email: </label> <br>
+            <input type="text" id="email" name="userInfo" class="formInput"> <br>
+            <label for="password" class="formLabel">Enter Password: </label> <br>
+            <input type="password" id="password" name="userInfo" class="formInput"> <br>
+                
+                <!-- Submit button -->
+            </form>
+                <a href="/home"><button class="genButton-red">Log In</button></a>
+        </div>
     </div>
-
-<!--Table of Contents-->
-
- <div class="form">
-		<input class = "formInput" type="text"     placeholder="Username" required>
-		<input class = "formInput" type="password" placeholder="Password" required>
-    
-    </div>
-
-
-
-<a href="Home.html">
-<button class="submitFormButton" type="submit">Log In</button>
-</a>
-
-
-
-</body>
-
-</html>

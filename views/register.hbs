@@ -1,45 +1,19 @@
-<!DOCTYPE html>
+{{> nav title="Garnet: A Hidden Gem" notClean=false}}
 
-<html>
+<div class="bodyContainer">
 
-<head>
-    <link rel="stylesheet" href="../public/css/garnet_stylesheet.css">
-<title>Register</title>
-</head>
+    <div class="contentCard-light" style="grid-column: 1 / span 3">
+        <form>
+            <input class = "formInput" type="text"     placeholder="First Name" required>
+            <input class = "formInput" type="text"     placeholder="Last Name" required>
+            <input class = "formInput" type="Email"    placeholder="Email" required>
+            <input class = "formInput" type="date"     placeholder ="Birthdate" required> 
+            <input class = "formInput" type="text"     placeholder="Username" required>
+            <input class = "formInput" type="password" placeholder="Password" required>
+        </form>
 
-<body class="home-body">
-
- <!-- Navigation Bar -->
-    <div class="navBar">
-        <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
-        <h1 class="navHeader"> Register </h1>
-        <ul class="navList">
-            <li class="navListItem"><a href="Home.html">Home</a></li>
-            <li class="navListItem"><a href="Log-In.html">Log-In</a></li>
-            <!-- <li class="navListItem"><a href="ViewProfile.html">View Profile</a></li> -->
-        </ul>
+        <a href="/log-in">
+            <button class="genButton-red">Sign Up</button>
+        </a>
     </div>
-
-<!--Table of Contents-->
-
- <div class="form">
-		<input class = "formInput" type="text"     placeholder="First Name" required>
-		<input class = "formInput" type="text"     placeholder="Last Name" required>
-		<input class = "formInput" type="Email"    placeholder="Email" required>
-		<input class = "formInput" type="date"     placeholder ="Birthdate" required> 
-		<input class = "formInput" type="text"     placeholder="Username" required>
-		<input class = "formInput" type="password" placeholder="Password" required>
-    
-    </div>
-
-
-
-<a href="Log-In.html">
-<button class="submitFormButton" type="submit">Sign Up</button>
-</a>
-
-
-
-</body>
-
-</html>
+</div>

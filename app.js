@@ -24,7 +24,7 @@ Handlebars.registerHelper("matchString", function(val1, val2) {
 
 // Routing
 app.get('/', (req, res) => {
-    res.redirect('/home');
+    res.redirect('/welcome');
 });
 
 app.get('/home', (req, res) => {
