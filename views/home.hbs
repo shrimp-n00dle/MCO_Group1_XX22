@@ -1,4 +1,5 @@
 <div class="bodyContainer">
+    {{> searchSidebar}}
     {{#each posts}}
         {{> postPartial @root.comments post=this}}
     {{/each}}
