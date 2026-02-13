@@ -1,7 +1,7 @@
 <div class="postContainer">
     <div class="postHeader">
         <img src="{{post.profilePicture}}" class="postProfilePicture">
-        <h3>{{post.username}}</h3>
+        <a href="/viewProfile/{{post.username}}"><h3>{{post.username}}</h3></a>
     </div>
 
     <div class="postBody">
@@ -14,4 +14,10 @@
         <p class="postCommentCount">{{post.commentCount}}</p>
         <a href="">Comment</a>
     </div>
+
+    {{#each comments}}
+        {{#if (matchString this.postId @root.post.id)}}
+        {{> commentPartial comment=this}}
+        {{/if}}
+    {{/each}}
 </div>
