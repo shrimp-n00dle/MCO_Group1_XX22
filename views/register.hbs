@@ -1,34 +1,45 @@
-<div class="bodyContainer">
-    <div class="profileContainer">
-        <div class="profileHead">
-            <img src="{{profile.bannerPicture}}" class="profileHeadBanner">
-            <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
-            <h1 class="profileUsername"> {{profile.username}} </h1>
-            <p class="profileStatus"> <i>Employment Status: </i>     {{profile.employmentStatus}} </p>
-            <p class="profileBio"> {{profile.bio}} </p> 
+<!DOCTYPE html>
 
-            <div class="profileHeadButtons">
-                <button>Message</button>
-                <button>Follow</button>
-            </div>
+<html>
 
-            <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
-            <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
+<head>
+    <link rel="stylesheet" href="../public/css/garnet_stylesheet.css">
+<title>Register</title>
+</head>
 
-        </div>
-        {{!-- <div class="contentCard-light">
-            <h1>My Latest Game!</h1>
-            <img src="../public/img/imgPost_2.png">
-                <div class="postBody">
-                <!--    <p>My game submission for Global Game Jam 2026, themed "Mask".</p>
-                    <p>Description:</p>
-                    <p>Mad-libs type game where you play as a woman seeking for a job but you're getting interviewed by someone you're (clearly) attracted to. The problem? You can't hear anything she's saying, so you have to fake your answers until you make it.</p>
-                --></div>
-        </div> --}}
+<body class="home-body">
+
+ <!-- Navigation Bar -->
+    <div class="navBar">
+        <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
+        <h1 class="navHeader"> Register </h1>
+        <ul class="navList">
+            <li class="navListItem"><a href="Home.html">Home</a></li>
+            <li class="navListItem"><a href="Posting.html">Log-In</a></li>
+            <!-- <li class="navListItem"><a href="ViewProfile.html">View Profile</a></li> -->
+        </ul>
     </div>
-    {{#each posts}}
-        {{#if (matchString this.username @root.profile.username)}}
-        {{> postPartial post=this}}
-        {{/if}}
-    {{/each}}
-</div>
+
+<!--Table of Contents-->
+
+ <div class="form">
+		<input class = "formInput" type="text"     placeholder="First Name" required>
+		<input class = "formInput" type="text"     placeholder="Last Name" required>
+		<input class = "formInput" type="Email"    placeholder="Email" required>
+		<input class = "formInput" type="date"     placeholder ="Birthdate" required> 
+		<input class = "formInput" type="text"     placeholder="Username" required>
+		<input class = "formInput" type="password" placeholder="Password" required>
+    
+    </div>
+
+
+
+<a href="Home.html">
+<button class="submitFormButton" type="submit">Sign Up</button>
+</a>
+
+
+
+</body>
+
+</html>

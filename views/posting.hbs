@@ -1,34 +1,39 @@
-<div class="bodyContainer">
-    <div class="profileContainer">
-        <div class="profileHead">
-            <img src="{{profile.bannerPicture}}" class="profileHeadBanner">
-            <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
-            <h1 class="profileUsername"> {{profile.username}} </h1>
-            <p class="profileStatus"> <i>Employment Status: </i>     {{profile.employmentStatus}} </p>
-            <p class="profileBio"> {{profile.bio}} </p> 
+<!DOCTYPE html>
 
-            <div class="profileHeadButtons">
-                <button>Message</button>
-                <button>Follow</button>
-            </div>
+<html>
 
-            <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
-            <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
+<head>
+<link rel="stylesheet"  href="stylesheet.css">
+<title>Let's Post!</title>
+</head>
 
-        </div>
-        {{!-- <div class="contentCard-light">
-            <h1>My Latest Game!</h1>
-            <img src="../public/img/imgPost_2.png">
-                <div class="postBody">
-                <!--    <p>My game submission for Global Game Jam 2026, themed "Mask".</p>
-                    <p>Description:</p>
-                    <p>Mad-libs type game where you play as a woman seeking for a job but you're getting interviewed by someone you're (clearly) attracted to. The problem? You can't hear anything she's saying, so you have to fake your answers until you make it.</p>
-                --></div>
-        </div> --}}
-    </div>
-    {{#each posts}}
-        {{#if (matchString this.username @root.profile.username)}}
-        {{> postPartial post=this}}
-        {{/if}}
-    {{/each}}
-</div>
+<body class="home-body">
+
+<h1 class="title-format">CREATE A POST </h1>
+
+<form>
+<p> How are we feeling? </p>
+<select>
+<option value="0" >  </option>
+<option value="happy" > I love this post, man! </option>
+<option value="sad" > This makes me feel sad </option>
+<option value="confused" > I'm confused </option>
+<option value="angry" > Why would you post this?! </option>
+</select>
+</form>
+
+<p> Title </p>
+<input type="text" />
+
+<p> Comment </p>
+<input type="text" />
+
+<br>
+<input type="submit" />
+</form>
+
+
+
+</body>
+
+</html>

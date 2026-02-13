@@ -1,34 +1,39 @@
-<div class="bodyContainer">
-    <div class="profileContainer">
-        <div class="profileHead">
-            <img src="{{profile.bannerPicture}}" class="profileHeadBanner">
-            <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
-            <h1 class="profileUsername"> {{profile.username}} </h1>
-            <p class="profileStatus"> <i>Employment Status: </i>     {{profile.employmentStatus}} </p>
-            <p class="profileBio"> {{profile.bio}} </p> 
-
-            <div class="profileHeadButtons">
-                <button>Message</button>
-                <button>Follow</button>
-            </div>
-
-            <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
-            <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
-
-        </div>
-        {{!-- <div class="contentCard-light">
-            <h1>My Latest Game!</h1>
-            <img src="../public/img/imgPost_2.png">
-                <div class="postBody">
-                <!--    <p>My game submission for Global Game Jam 2026, themed "Mask".</p>
-                    <p>Description:</p>
-                    <p>Mad-libs type game where you play as a woman seeking for a job but you're getting interviewed by someone you're (clearly) attracted to. The problem? You can't hear anything she's saying, so you have to fake your answers until you make it.</p>
-                --></div>
-        </div> --}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Inbox</title>
+    <link rel="stylesheet" href="../public/css/garnet_stylesheet.css">
+</head>
+<body class="home-body">
+    <!-- Navigation Bar -->
+    <div class="navBar">
+        <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
+        <h1 class="navHeader"> Your Inbox </h1>
+        <ul class="navList">
+            <li class="navListItem"><a href="Home.html">Home</a></li>
+            <li class="navListItem"><a href="Posting.html">View Profile</a></li>
+        </ul>
     </div>
-    {{#each posts}}
-        {{#if (matchString this.username @root.profile.username)}}
-        {{> postPartial post=this}}
-        {{/if}}
-    {{/each}}
-</div>
+    <!-- Message Body -->
+    <div>
+        <div class="sidebar-full">
+            <ul>
+                <li>
+                    <h4 class="messageUser">Si-Szas</h4>
+                    <p  class="lastMessage"> You sent: Hey!</p>
+                </li>
+                <li>
+                    <h4 class="messageUser">Ayze</h4>
+                    <p  class="lastMessage"> Ayze sent: :3</p>
+                </li>
+                <li>
+                    <h4 class="messageUser">JAN-VINGNO</h4>
+                    <p  class="lastMessage"> You sent: Dude did you see the new game theory vid</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
