@@ -190,29 +190,6 @@ li.navListItem:hover {
     padding: 2px;
 }
 
-    /* Basic content card container */
-.contentCard-light {
-    background-color: #e6dad6;
-    padding: 5px 20px;
-    margin: 0;
-    border: 7px solid #dfd1ca;
-
-    color:#4b2427;
-    font-family: "TexGyreHeros";
-    font-size: small;
-}
-
-.contentCard-dark {
-    background-color: #8f493f;
-    padding: 5px 20px;
-    margin: 0;
-    border: 7px solid #6d363a;
-
-    color:#efebe6;
-    font-family: "TexGyreHeros";
-    font-size: small;
-}
-
     /* Generic buttons */
 .genButton-white {
     background-color: #efebe6;
@@ -245,6 +222,50 @@ li.navListItem:hover {
 .genButton-red:hover {
     background-color: #6d363a;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Content Card */
+        /* Basic content card container */
+.contentCard-light {
+    background-color: #e6dad6;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #dfd1ca;
+
+    color:#4b2427;
+    font-family: "TexGyreHeros";
+    font-size: small;
+}
+
+.contentCard-dark {
+    background-color: #8f493f;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #6d363a;
+
+    color:#efebe6;
+    font-family: "TexGyreHeros";
+    font-size: small;
+}
+
+.contentCard-light img{
+    width: 100%;
+    height: 300px;
+    object-fit:cover;
+}
+
+.contentCard-dark img{
+    width: 100%;
+    height: 300px;
+    object-fit:cover;
+}
+
+.contentCard-light p{
+    
+    object-fit:cover;
+}
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Profiles */
 
