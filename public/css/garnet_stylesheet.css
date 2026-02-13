@@ -274,6 +274,11 @@ li.navListItem:hover {
     border: none;
     font-size: small;
 }
+
+.searchIcon {
+    float: right;
+    width: 40px;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Content Card */
         /* Basic content card container */
@@ -495,7 +500,7 @@ form {
     grid-column: 1 / span 1;
     border-radius: 10px;
     margin: auto;
-    width: 200px;
+    width: 250px;
     padding: 10px;
 
     color: #e6dad6;
