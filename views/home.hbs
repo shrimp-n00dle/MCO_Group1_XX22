@@ -1,21 +1,5 @@
 <div class="bodyContainer">
     {{#each posts}}
-        <div class="postContainer">
-            <div class="postHeader">
-                <img src="/css/Logo_Temp.png">
-                <h3>{{this.username}}</h3>
-            </div>
-
-            <div class="postBody">
-                <p>{{this.body}}</p>
-            </div>
-
-            <div class="postFooter">
-                <p class="postLikeCount">{{this.likeCount}}</p>
-                <a href="">Like</a>
-                <p class="postCommentCount">{{this.commentCount}}</p>
-                <a href="">Comment</a>
-            </div>
-        </div>
+        {{> postPartial post=this}}
     {{/each}}
 </div>

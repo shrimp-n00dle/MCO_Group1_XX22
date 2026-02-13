@@ -1,5 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const Handlebars = require("handlebars");
 const path = require('path');
 
 const {posts, nextID} = require('./data/posts');
@@ -16,6 +17,12 @@ app.engine("hbs", exphbs.engine({extname: 'hbs', defaultLayout: "main", layoutsD
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
+// Helper Funcs
+Handlebars.registerHelper("matchString", function(val1, val2) {
+    console.log("Comparing " + val1 + " and " + val2);
+    return val1 === val2;
+});
+
 // Routing
 app.get('/', (req, res) => {
     res.redirect('/home');
@@ -24,13 +31,13 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     res.render("home", {
         title: "Home",
-        posts
+        posts,
     });
 });
 
 app.get('/viewProfile/:username', (req, res) => {
     const username = req.params.username;
-    const profile = profiles.find((p) => p.username = username);
+    const profile = profiles.find((p) => p.username === username);
 
     if (!profile) {
         return res.status(404).send("User not found.");
@@ -38,7 +45,8 @@ app.get('/viewProfile/:username', (req, res) => {
 
     res.render("viewProfile", {
         title: username,
-        profile
+        profile,
+        posts
     });
 });
 

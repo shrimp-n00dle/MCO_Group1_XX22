@@ -1,12 +1,31 @@
 <div class="bodyContainer">
-    <h1 class="title-format"> {{profile.username}} </h1>
+    <div class="profileContainer">
+        <div class="profileHead">
+            <img src="{{profile.bannerPicture}}" class="profileHeadBanner">
+            <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
+            <h1> {{profile.username}} </h1>
+            <p> {{profile.bio}} </p>
 
-    <h1> ABOUT ME </h1>
+            <div class="profileHeadButtons">
+                <button>Message</button>
+                <button>Follow</button>
+            </div>
 
-    <p> {{profile.bio}} </p>
+        </div>
+            {{#each posts}}
+                {{#if (matchString this.username @root.profile.username)}}
+                {{> postPartial post=this}}
+                {{/if}}
+            {{/each}}
 
-    <p> POSTS</p>
-
-
-    <p> REPLIES </p>
+        {{!-- <div class="contentCard-light">
+            <h1>My Latest Game!</h1>
+            <img src="../public/img/imgPost_2.png">
+                <div class="postBody">
+                <!--    <p>My game submission for Global Game Jam 2026, themed "Mask".</p>
+                    <p>Description:</p>
+                    <p>Mad-libs type game where you play as a woman seeking for a job but you're getting interviewed by someone you're (clearly) attracted to. The problem? You can't hear anything she's saying, so you have to fake your answers until you make it.</p>
+                --></div>
+        </div> --}}
+    </div>
 </div>
