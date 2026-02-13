@@ -1,82 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View Profile</title>
+    <title>Your Inbox</title>
     <link rel="stylesheet" href="../public/css/garnet_stylesheet.css">
 </head>
 <body class="home-body">
     <!-- Navigation Bar -->
     <div class="navBar">
         <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
-        <h1 class="navHeader"> View Profile </h1>
+        <h1 class="navHeader"> Your Inbox </h1>
         <ul class="navList">
             <li class="navListItem"><a href="Home.html">Home</a></li>
-            <li class="navListItem"><a href="Posting.html">Post</a></li>
-            <!-- <li class="navListItem"><a href="ViewProfile.html">View Profile</a></li> -->
+            <li class="navListItem"><a href="Posting.html">View Profile</a></li>
         </ul>
     </div>
-    <!-- User Profile -->
-    <div class="bodyContainer">
-        <div class="profileContainer">
-            <div class="profileHead">
-                <img src="../public/img/banner_2.png" class="profileHeadBanner">
-                <img src="../public/img/PFP_2.png" class="profileHeadAvatar">
-                <h1> Si-Szas </h1>
-                <p> Project Manager | Quality Assurance | Game Developer | Gengar Enjoyer </p>
-
-                <div class="profileHeadButtons">
-                    <button>Message</button>
-                    <button>Follow</button>
-                </div>
-            </div>
-
-            <div class="contentCard-light">
-                <h1>My Latest Game!</h1>
-                <img src="../public/img/imgPost_2.png">
-                    <div class="postBody">
-                    <!--    <p>My game submission for Global Game Jam 2026, themed "Mask".</p>
-                        <p>Description:</p>
-                        <p>Mad-libs type game where you play as a woman seeking for a job but you're getting interviewed by someone you're (clearly) attracted to. The problem? You can't hear anything she's saying, so you have to fake your answers until you make it.</p>
-                    --></div>
-                </div>
+    <!-- Message Body -->
+    <div>
+        <div class="sidebar-full">
+            <ul>
+                <li>
+                    <h4 class="messageUser">Si-Szas</h4>
+                    <p  class="lastMessage"> You sent: Hey!</p>
+                </li>
+                <li>
+                    <h4 class="messageUser">Ayze</h4>
+                    <p  class="lastMessage"> Ayze sent: :3</p>
+                </li>
+                <li>
+                    <h4 class="messageUser">JAN-VINGNO</h4>
+                    <p  class="lastMessage"> You sent: Dude did you see the new game theory vid</p>
+                </li>
+            </ul>
         </div>
-        <!-- Post Sample -->
-        <div class="postContainer">
-            <div class="postHeader">
-                <img src="../public/img/PFP_2.png">
-                <h3>Si-Szas</h3>
-            </div>
-
-            <div class="postBody">
-                <p>Went to GameDev Summit last Feb 3-5. It was really fun!</p>
-            </div>
-
-            <div class="postFooter">
-                <p class="postLikeCount">0</p>
-                <a href="">Like</a>
-                <p class="postCommentCount">0</p>
-                <a href="">Comment</a>
-            </div>
-        </div>
-        <!-- Post Sample -->
-        <div class="postContainer">
-            <div class="postHeader">
-                <img src="../public/img/PFP_2.png">
-                <h3>Si-Szas</h3>
-            </div>
-
-            <div class="postBody">
-                <p>Thank you all for your support for my latest game, "Hire My Heart". It means the world to me that you guys loved it!</p>
-            </div>
-
-            <div class="postFooter">
-                <p class="postLikeCount">0</p>
-                <a href="">Like</a>
-                <p class="postCommentCount">0</p>
-                <a href="">Comment</a>
-            </div>
-        </div>
-
     </div>
 
 </body>
