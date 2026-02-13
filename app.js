@@ -34,6 +34,22 @@ app.get('/home', (req, res) => {
     });
 });
 
+app.get('/log-in', (req, res) => {
+    res.render("log-in");
+});
+
+app.get('/messageUser', (req, res) => {
+    res.render("messageUser");
+});
+
+app.get('/posting', (req, res) => {
+    res.render("posting");
+});
+
+app.get('/register', (req, res) => {
+    res.render("register");
+});
+
 app.get('/welcome', (req, res) => {
     res.render("welcome");
 });
