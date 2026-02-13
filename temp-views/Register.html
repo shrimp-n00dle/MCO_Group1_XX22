@@ -9,21 +9,33 @@
 
 <body class="home-body">
 
-<h1 class="title-format">WELCOME TO GARNET </h1>
+ <!-- Navigation Bar -->
+    <div class="navBar">
+        <img src="../public/img/Garnet_Logo.png" class="navLogo"> 
+        <h1 class="navHeader"> Register </h1>
+        <ul class="navList">
+            <li class="navListItem"><a href="Home.html">Home</a></li>
+            <li class="navListItem"><a href="Posting.html">Log-In</a></li>
+            <!-- <li class="navListItem"><a href="ViewProfile.html">View Profile</a></li> -->
+        </ul>
+    </div>
 
 <!--Table of Contents-->
 
-<h3> Register </h3>
-<input type="text" placeholder="First Name" required>
-<input type="text" placeholder="Last Name" required>
-<input type="Email" placeholder="Email" required>
-<input type="date" placeholder ="Birthdate" required> 
-<input type="text" placeholder="Username" required>
-<input type="password" placeholder="Password" required>
+ <div class="form">
+		<input class = "formInput" type="text"     placeholder="First Name" required>
+		<input class = "formInput" type="text"     placeholder="Last Name" required>
+		<input class = "formInput" type="Email"    placeholder="Email" required>
+		<input class = "formInput" type="date"     placeholder ="Birthdate" required> 
+		<input class = "formInput" type="text"     placeholder="Username" required>
+		<input class = "formInput" type="password" placeholder="Password" required>
+    
+    </div>
+
 
 
 <a href="Home.html">
-<button type="submit">Sign Up</button>
+<button class="submitFormButton" type="submit">Sign Up</button>
 </a>
 
 
