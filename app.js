@@ -19,7 +19,6 @@ app.set("views", "./views");
 
 // Helper Funcs
 Handlebars.registerHelper("matchString", function(val1, val2) {
-    console.log("Comparing " + val1 + " and " + val2);
     return val1 === val2;
 });
 
@@ -33,6 +32,10 @@ app.get('/home', (req, res) => {
         title: "Home",
         posts,
     });
+});
+
+app.get('/welcome', (req, res) => {
+    res.render("welcome");
 });
 
 app.get('/viewProfile/:username', (req, res) => {

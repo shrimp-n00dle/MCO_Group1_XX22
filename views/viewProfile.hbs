@@ -3,21 +3,19 @@
         <div class="profileHead">
             <img src="{{profile.bannerPicture}}" class="profileHeadBanner">
             <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
-            <h1> {{profile.username}} </h1>
-            <p> {{profile.bio}} </p>
+            <h1 class="profileUsername"> {{profile.username}} </h1>
+            <p class="profileStatus"> <i>Employment Status: </i>     {{profile.employmentStatus}} </p>
+            <p class="profileBio"> {{profile.bio}} </p> 
 
             <div class="profileHeadButtons">
                 <button>Message</button>
                 <button>Follow</button>
             </div>
 
-        </div>
-            {{#each posts}}
-                {{#if (matchString this.username @root.profile.username)}}
-                {{> postPartial post=this}}
-                {{/if}}
-            {{/each}}
+            <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
+            <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
 
+        </div>
         {{!-- <div class="contentCard-light">
             <h1>My Latest Game!</h1>
             <img src="../public/img/imgPost_2.png">
@@ -28,4 +26,9 @@
                 --></div>
         </div> --}}
     </div>
+    {{#each posts}}
+        {{#if (matchString this.username @root.profile.username)}}
+        {{> postPartial post=this}}
+        {{/if}}
+    {{/each}}
 </div>

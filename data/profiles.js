@@ -6,6 +6,7 @@ let profiles = [
         employmentStatus: "FREELANCE",
         profilePicture: "/img/PFP_1.png", 
         bannerPicture: "/img/banner_1.png", 
+        followerCount: "267",
     },
     {
         username: "Si-Szas",
@@ -14,6 +15,7 @@ let profiles = [
         employmentStatus: "FREELANCE",
         profilePicture: "/img/PFP_2.png", 
         bannerPicture: "/img/banner_2.png", 
+        followerCount: "408",
     },
     {
         username: "Ayze",
@@ -22,6 +24,7 @@ let profiles = [
         employmentStatus: "FREELANCE",
         profilePicture: "/img/PFP_3.png", 
         bannerPicture: "/img/banner_3.png", 
+        followerCount: "6",
     },
     {
         username: "EV-Lot",
@@ -30,6 +33,7 @@ let profiles = [
         employmentStatus: "FULL-TIME",
         profilePicture: "/img/PFP_4.png", 
         bannerPicture: "/img/banner_4.png", 
+        followerCount: "500",
     },
     {
         username: "TheRealValfyn",
@@ -38,6 +42,7 @@ let profiles = [
         employmentStatus: "NOT AVAILABLE",
         profilePicture: "/img/PFP_5.png", 
         bannerPicture: "/img/banner_5.png", 
+        followerCount: "1000",
     },
 ];
 
