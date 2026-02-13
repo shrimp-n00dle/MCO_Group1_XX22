@@ -15,9 +15,19 @@
         <a href="">Comment</a>
     </div>
 
-    {{#each comments}}
-        {{#if (matchString this.postId @root.post.id)}}
-        {{> commentPartial comment=this}}
-        {{/if}}
-    {{/each}}
+    <div class="postCommentContainer">
+    <div class="commentHeader">
+        <img src="{{comment.profilePicture}}">
+        <a href="/viewProfile/{{comment.username}}"><h3>{{comment.username}}</h3></a>
+    </div>
+
+    <div class="commentBody">
+        <p> {{comment.body}} </p>
+
+        <div class="commentFooter">
+            <p class="commentLikeCount">{{comment.likeCount}}</p>
+            <a href="">Like</a>
+        </div>
+    </div>
+</div>
 </div>

@@ -6,6 +6,11 @@ let posts = [
         body: "Hey there im so cool",
         likeCount: "20",
         commentCount: "0",
+        comments: true,
+        commentUser: "Ayze",
+        commentPfp: "/img/PFP_3.png",
+        commentBody: "Hi cool",
+        commentLikes: "1",
     },
     {
         id: 2,
@@ -14,6 +19,11 @@ let posts = [
         body: "mannnnn does anyone here ever think abt the complexities of life and stuff like lowk life beautiful fr. #learner",
         likeCount: "10000",
         commentCount: "0",
+        comments: false,
+        commentUser: "",
+        commentPfp: "",
+        commentBody: "",
+        commentLikes: "",
     },
 ];
 

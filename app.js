@@ -49,7 +49,7 @@ app.get('/viewProfile/:username', (req, res) => {
     res.render("viewProfile", {
         title: username,
         profile,
-        posts
+        posts,
     });
 });
 
