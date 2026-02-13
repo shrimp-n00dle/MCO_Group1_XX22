@@ -27,7 +27,7 @@ let profiles = [
         username: "EV-Lot",
         bio: "Just a silly 3D & VFX Artist girl",
         gameGenres: "Horror, Fantasy, Action",
-        employmentStatus: "Currently Employed at Game Busters",
+        employmentStatus: "FULL-TIME",
         profilePicture: "/img/PFP_4", 
         bannerPicture: "/img/banner_4", 
     },
@@ -35,7 +35,7 @@ let profiles = [
         username: "TheRealValfyn",
         bio: "Quality Assurance // Back-end Developer // Loves swimming",
         gameGenres: "Fitness, Anything about the ocean",
-        employmentStatus: "UNEMPLOYED",
+        employmentStatus: "NOT AVAILABLE",
         profilePicture: "/img/PFP_5", 
         bannerPicture: "/img/banner_5", 
     }
