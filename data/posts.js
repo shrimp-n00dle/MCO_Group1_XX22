@@ -25,6 +25,26 @@ let posts = [
         commentBody: "",
         commentLikes: "",
     },
+
+    {
+        id: 3,
+        username: "EV-Lot",
+        profilePicture: "/img/PFP_4.png",
+        body: "Any recommendations for Halloween Stream?",
+        likeCount: "67",
+        commentCount: "3",
+    },
+
+     {
+        id: 4,
+        username: "TheRealValfyn",
+        profilePicture: "/img/PFP_5.png",
+        body: "100 likes and I'll do  a face reveal!",
+        likeCount: "429",
+        commentCount: "2",
+    },
+
+
 ];
 
 function nextID() {
