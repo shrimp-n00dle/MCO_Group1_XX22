@@ -265,6 +265,15 @@ li.navListItem:hover {
     background-color: #6d363a;
 }
 
+    /* Search Bar */
+.searchBar {
+    background-color: #dfd1ca;
+    font-family: "Expose";
+    float: right;
+    padding: 6px;
+    border: none;
+    font-size: small;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Content Card */
         /* Basic content card container */
@@ -302,8 +311,7 @@ li.navListItem:hover {
     object-fit:cover;
 }
 
-.contentCard-light p{
-    
+.contentCard-light p {
     object-fit:cover;
 }
 
