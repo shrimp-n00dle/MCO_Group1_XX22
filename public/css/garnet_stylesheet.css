@@ -453,6 +453,23 @@ form {
     font-weight: bold;
 }
 
+form select {
+    width: 90%; 
+    padding: 5px; 
+    margin: 5px;
+    outline:none; 
+    background-color: rgb(240, 240, 240);
+    font-family: TexGyreHeros;
+
+    border: 2px solid #8f493f;
+    border-radius: 5px;
+}
+
+option {
+    font-family: TexGyreHeros;
+    color: #4b2427;
+}
+
 .submitFormButton {
     background-color: #8f493f;
     width: 100px;

@@ -1,28 +1,29 @@
 {{> nav title="Garnet: A Hidden Gem" notClean=true}}
 
-<div class="body-container">
+<div class="bodyContainer">
 
-<h1 class="title-format">CREATE A POST </h1>
+    <div class="contentCard-light" style="grid-column: 1 / span 3;">
+        <h1 style="text-align: center;">CREATE A POST </h1>
 
-<form>
-<p> How are we feeling? </p>
-<select>
-<option value="0" >  </option>
-<option value="happy" > I love this post, man! </option>
-<option value="sad" > This makes me feel sad </option>
-<option value="confused" > I'm confused </option>
-<option value="angry" > Why would you post this?! </option>
-</select>
-</form>
+        <form>
+            <label for="post" class="formLabel">How are you feeling?</label>
+            <select>
+                <option value="0" >  </option>
+                <option value="happy" > I'm happy! :) </option>
+                <option value="sad" > I'm sad :( </option>
+                <option value="confused" > I'm confused ,':/ </option>
+                <option value="angry" > I'm angry >:[ </option>
+            </select>
+            </form>
 
-<p> Title </p>
-<input type="text" />
+            <label for="post" class="formLabel">Title: <br></label>
+            <input type="text" class="formInput"/>
 
-<p> Comment </p>
-<input type="text" />
+            <label for="post" class="formLabel">Content: </label>
+            <input type="text" class="formInput"/>
 
-<br>
-<input type="submit" />
-</form>
+            <a href="/home"><button class="genButton-red">Post</button></a>
+        </form>
+    </div>
 
 </div>
