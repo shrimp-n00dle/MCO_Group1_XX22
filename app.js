@@ -1,12 +1,18 @@
+const dotenv = require('dotenv');
+dotenv.config();
+const {connectToMongo, getDB} = require('./db/conn.js');
+
 const express = require("express");
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const path = require('path');
 
+// Temp data files
 const {posts, nextID} = require('./data/posts');
 const {profiles} = require('./data/profiles');
+// End temp
 
-const port = 3000;
+const port = process.env.SERVER_PORT;
 const app = express();
 
 app.use(express.urlencoded({extended:true}));
@@ -17,12 +23,12 @@ app.engine("hbs", exphbs.engine({extname: 'hbs', defaultLayout: "main", layoutsD
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
-// Helper Funcs
+// Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
     return val1 === val2;
 });
 
-// Routing
+// Routing --------------------------------------------------------------
 app.get('/', (req, res) => {
     res.redirect('/welcome');
 });
@@ -69,7 +75,18 @@ app.get('/viewProfile/:username', (req, res) => {
     });
 });
 
-// Server listening
-app.listen(port, () => {
-    console.log("Server is now listening on port " + port);
+// Connecting to the database -------------------------------------------
+connectToMongo((err) => {
+    if (err) {
+        console.log("Error encountered: ");
+        console.error(err);
+        process.exit();
+    }
+    console.log("Successfully connected to MongoDB Server");
+    const database = getDB();
+
+    // Server listening
+    app.listen(port, () => {
+        console.log("Server is now listening on port " + port);
+    });
 });
