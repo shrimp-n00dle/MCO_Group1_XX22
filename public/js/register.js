@@ -1,1 +1,3 @@
-//for register :)
+function testRegister(){
+    document.getElementById('testReg').innerHTML = Date();
+}
