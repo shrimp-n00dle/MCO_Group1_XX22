@@ -23,6 +23,8 @@ app.engine("hbs", exphbs.engine({extname: 'hbs', defaultLayout: "main", layoutsD
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
+app.use('/js', express.static(__dirname + '/public/js')); 
+
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
     return val1 === val2;
