@@ -69,6 +69,7 @@ app.get('/viewProfile/:username', (req, res) => {
     });
 });
 
+// Server listening
 app.listen(port, () => {
     console.log("Server is now listening on port " + port);
 });
