@@ -1,13 +1,13 @@
 {{> nav title="Garnet: A Hidden Gem" notClean=true}}
 
-<div class="bodyContainer">
+<div class="bodyContainer" id ="postBodyID">
 
     <div class="contentCard-light" style="grid-column: 1 / span 3;">
         <h1 style="text-align: center;">CREATE A POST </h1>
 
         <form>
             <label for="post" class="formLabel">How are you feeling?</label>
-            <select>
+            <select class="emotion">
                 <option value="0" >  </option>
                 <option value="happy" > I'm happy! :) </option>
                 <option value="sad" > I'm sad :( </option>
@@ -16,14 +16,14 @@
             </select>
             </form>
 
-            <label for="post" class="formLabel">Title: <br></label>
-            <input type="text" class="formInput"/>
+            <label for="post" class="formLabel" >Title: <br></label>
+            <input type="text" class="formInput" id="inputTitleID"/>
 
             <label for="post" class="formLabel">Content: </label>
-            <input type="text" class="formInput"/>
+            <input type="text" class="formInput" id="inputBodyID"/>
 
-            <a href="/home"><button class="genButton-red">Post</button></a>
+            <button class="genButton-red" id = "postBtnID">Post</button></a>
         </form>
     </div>
-
+    <script src="/js/createPost.js"></script>
 </div>
