@@ -440,6 +440,10 @@ form {
     color: #4b2427;
 }
 
+form.messageForm {
+    padding: 0px;
+}
+
 .formInput {
     width: 90%; 
     padding: 5px; 
@@ -499,7 +503,6 @@ option {
 }
 
 .sidebar-full ul {
-    background-color: #8f493f;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -511,6 +514,7 @@ option {
     background-color: #6d363a;
     border: solid;
     border-color: #4b2427;
+    border-radius: 8px;
     
     font-family: 'TexGyreHeros';
     font-size: large;
@@ -563,6 +567,12 @@ option {
     font-size: smaller;
 }
 
+.messagePreview:hover {
+    background-color: #8f493f;
+    cursor: pointer;
+}
+
+    /* Current/active messages (right side) */
 .currentMessageThreadContainer {
     background-color: #e6dad6;
     padding: 5px 20px;
@@ -628,6 +638,7 @@ option {
 
     resize: none;
     scrollbar-width: thin;
+    font-family: "TexGyreHeros";
 }
 
 .messageNewInput:hover, .messageNewInput:active, .messageNewInput:focus {
@@ -644,6 +655,7 @@ option {
     background-repeat: round;
     outline: none;
     border: none;
+    border-radius: 5px;
     margin: 20px 15px 0px 10px;
 }
 
