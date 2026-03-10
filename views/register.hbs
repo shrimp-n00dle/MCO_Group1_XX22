@@ -4,21 +4,19 @@
 
     <div class="contentCard-light" style="grid-column: 1 / span 3">
         <form>
-            <input class = "formInput" type="text"     placeholder="First Name" required>
-            <input class = "formInput" type="text"     placeholder="Last Name" required>
-            <input class = "formInput" type="Email"    placeholder="Email" required>
-            <input class = "formInput" type="date"     placeholder ="Birthdate" required> 
-            <input class = "formInput" type="text"     placeholder="Username" required>
-            <input class = "formInput" type="password" placeholder="Password" required>
+            <input id="firstName" class = "formInput" type="text"     placeholder="First Name" required>
+            <input id="lastName"  class = "formInput" type="text"     placeholder="Last Name" required>
+            <input id="email"     class = "formInput" type="Email"    placeholder="Email" required>
+            <input id="username"  class = "formInput" type="text"     placeholder="Username" required>
+            <input id="password"  class = "formInput" type="password" placeholder="Password" required>
+        
+            <a href="/log-in">
+                <button class="genButton-red" onclick="registerUser()">Sign Up</button>
+            </a>
         </form>
 
-        <a href="/log-in">
-            <button class="genButton-red">Sign Up</button>
-        </a>
-
-        <!-- TESTING JS CONNECTION-->
-        <!--<button class="genButton-red">Sign Up</button>
-        <p id="testReg"></p> -->
+        <!-- TESTING IF DATA ACQUIRED -->
+        <p id="registerTest"></p>
 
     </div>
 </div>
