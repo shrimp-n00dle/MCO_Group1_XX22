@@ -613,3 +613,10 @@ option {
 .messageNewInput:hover {
     border: 3px solid #8f493f;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Pop Ups */
+
+.hiddenPopUp{
+    display: none;
+}

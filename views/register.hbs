@@ -1,9 +1,10 @@
-{{> nav title="Garnet: A Hidden Gem" notClean=false}}
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="register"}}
 
 <div class="bodyContainer">
 
+    <!-- FORM -->
     <div class="contentCard-light" style="grid-column: 1 / span 3">
-        <form>
+        <form id="registerForm">
             <input id="firstName" class = "formInput" type="text"     placeholder="First Name" required>
             <input id="lastName"  class = "formInput" type="text"     placeholder="Last Name" required>
             <input id="email"     class = "formInput" type="Email"    placeholder="Email" required>
@@ -14,11 +15,13 @@
                 <button class="genButton-red" onclick="registerUser()">Sign Up</button>
             </a>
         </form>
-
-        <!-- TESTING IF DATA ACQUIRED -->
-        <p id="registerTest"></p>
-
     </div>
+
+    <!-- POP-UP FOR REGISTRATION -->
+    <div id="registerPopUp" class="contentCard-light hiddenPopUp" style="grid-column: 1 / span 3;">
+        <p>You have successfully registered! You may now <b>log-in</b></log-in>.</p>
+    </div>
+
 </div>
 
 <script src="/js/register.js"></script>
