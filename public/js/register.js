@@ -1,9 +1,4 @@
-const registerPopUp = document.getElementById("registerPopUp");
-const registerForm = document.getElementById("registerForm").addEventListenter('submit', ToggleSuccessfulRegister(event)){
-    event.preventDefault();
-    registerPopUp.classList.toggle("hiddenPopUp");
-    this.submit();
-}
+const registerForm = document.getElementById("registerForm");
 
 function RegisterUser(){
     var firstName = document.getElementById("firstName").required;
@@ -15,7 +10,14 @@ function RegisterUser(){
     ToggleSuccessfulRegister();
 }
 
-function ToggleSuccessfulRegister(){
+function ToggleSuccessfulRegister(event){
+    event.preventDefault();
+
     var popup = document.getElementById("registerPopUp");
     popup.classList.toggle("hiddenPopUp");
+
+    registerForm.submit();
 }
+
+registerForm.addEventListener("submit", ToggleSuccessfulRegister);
+
