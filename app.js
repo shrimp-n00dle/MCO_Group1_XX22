@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
-const {connectToMongo, getDB} = require('./db/conn.js');
+const {connectToMongo} = require('./db/conn.js');
 
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -85,7 +85,7 @@ connectToMongo((err) => {
         process.exit();
     }
     console.log("Successfully connected to MongoDB Server");
-    const database = getDB();
+    // const database = getDB();
 
     // Server listening
     app.listen(port, () => {
