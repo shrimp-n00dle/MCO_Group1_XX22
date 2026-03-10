@@ -3,16 +3,18 @@
     <!-- Message Body -->
     <div class="sidebar-full">
         <ul>
-            {{#each messageThreads}}
+            {{#each user.messageThreads}}
                 {{> textPreview @root.texts}}
             {{/each}}
         </ul>
     </div>
 
     <div class="currentMessageThreadContainer">
+        <h2 class="messageThreadHeader">{{messageThread.sender}}</h2>
         <div class="messageThread">
-            <p class="messageThreadLeft">Hey there :)</p>
-            <p class="messageThreadRight">Hey!</p>
+            {{#each messageThread.texts}}
+                {{> messageThread text=this @root.user}}
+            {{/each}}
         </div>
         <div class="messageInputContainer">
             <form class="messageForm">
@@ -20,7 +22,5 @@
                 <button class="sendMessage"></button>
             </form>
         </div>
-
     </div>
-
 </div>

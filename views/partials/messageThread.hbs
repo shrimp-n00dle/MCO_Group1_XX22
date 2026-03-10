@@ -1,3 +1,5 @@
 {{#if (matchString text.sender profile.username)}}
     <p class="messageThreadRight">{{text.content}}</p>
+{{else}}
+    <p class="messageThreadLeft">{{text.content}}</p>
 {{/if}}
