@@ -1,0 +1,35 @@
+<div class="postContainer">
+    <div class="postHeader">
+        <img src="{{post.profilePicture}}" class="postProfilePicture">
+        <a href="/viewProfile/{{post.username}}"><h3>{{post.username}}</h3></a>
+    </div>
+
+    <div class="postBody">
+        <p>{{post.body}}</p>
+    </div>
+
+    <div class="postFooter">
+        <p class="postLikeCount">{{post.likeCount}}</p>
+        <a href="">Like</a>
+        <p class="postCommentCount">{{post.commentCount}}</p>
+        <a href="">Comment</a>
+    </div>
+
+    {{#if post.comments}}
+    <div class="postCommentContainer">
+        <div class="commentHeader">
+            <img src="{{post.commentPfp}}">
+            <a href="/viewProfile/{{post.commentUser}}"><h3>{{post.commentUser}}</h3></a>
+        </div>
+
+        <div class="commentBody">
+            <p> {{post.commentBody}} </p>
+
+            <div class="commentFooter">
+                <p class="commentLikeCount">{{post.commentLikes}}</p>
+                <a href="">Like</a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>

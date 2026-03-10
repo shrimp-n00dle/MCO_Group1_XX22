@@ -1,0 +1,615 @@
+/* FONTS */
+
+    /* Source: https://www.fontshare.com/fonts/expose */
+@font-face {
+    font-family: 'Expose';
+    src: url(Fonts/Expose-Variable.ttf);
+}
+
+    /* Source: https://open-foundry.com/fonts/tex-gyre-heros */
+@font-face {
+    font-family: 'TexGyreHeros';
+    src: url(Fonts/TexGyreHeros/texgyreheros-regular.otf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TexGyreHeros';
+    src: url(Fonts/TexGyreHeros/texgyreheros-bold.otf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TexGyreHeros';
+    src: url(Fonts/TexGyreHeros/texgyreheros-italic.otf);
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+body {
+    margin: 0px;
+    background-color: #6d363a;
+}
+
+.bodyContainer {
+    margin: 20px;
+    display: grid;
+    column-count: 3;
+    justify-content: center;
+    grid-template-columns: 100px auto 100px;
+    column-gap: 200px;
+}
+
+.navLogo {
+    width: 50px;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.navBar {
+    background-color: #4b2427;
+    padding: 10px;
+    height: 50px;
+    display: flex;
+
+    font-family: 'Expose';
+    color: #efebe6;
+}
+
+.navHeader {
+    font-size: 25px;
+    text-align: left;
+    margin: 5px;
+}
+
+ul.navList {
+    float: right;
+
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+li.navListItem {
+    height: 100%;
+    float: left;
+}
+
+li.navListItem a {
+    color: #efebe6;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 14px 10px;
+}
+
+li.navListItem:hover {
+    background-color: #6d363a;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* POSTS */
+.postContainer {
+    background-color: #e6dad6;
+    margin: 7px auto;
+    padding: 5px;
+    display: grid;
+    width: 500px;
+    font-family: TexGyreHeros;
+    justify-content: left;
+    border-radius: 10px;
+
+    grid-column: 2 / span 1;
+}
+
+.postHeader {
+    background-color: #dfd1ca;
+    display: grid;
+    width: 500px;
+    font-family: TexGyreHeros;
+    justify-content: left;
+}
+
+.postHeader img {
+    border-radius: 100px;
+    width: 40px;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.postHeader h3, a {
+    font-size: medium;
+    color: #4b2427;
+    text-decoration: none;
+
+    margin: 0;
+    padding: 7px 5px;
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.postBody {
+    background-color: #efebe6;
+    color: #4b2427;
+    padding: 0px 30px;
+    grid-row: 2 / span 1;
+}
+
+.postFooter {
+    display: flex;
+    float: left;
+    font-size: smaller;
+    grid-row: 3 / span 1;
+}
+
+.postFooter a {
+    font-size: small;
+    text-decoration: none;
+    color: #6d363a;
+    margin: 5px;
+}
+
+.postLikeCount, .postCommentCount {
+    font-size: small;
+    margin-left: 5px;
+    color: #6d363a;
+}
+
+.postProfilePicture {
+    border-radius: 100px;
+}
+
+    /* Comments */
+.postCommentContainer {
+    background-color: #e6dad6;
+    display: grid;
+    width: 500px;
+    font-family: TexGyreHeros;
+    justify-content: left;
+    border-radius: 10px;
+
+    margin-top: 10px;
+}
+
+.commentHeader {
+    background-color: #6d363a;
+    display: grid;
+    width: 500px;
+    justify-content: right;
+}
+
+.commentHeader img {
+    width: 30px;
+    border-radius: 100px;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.commentHeader h3, a {
+    font-size: smaller;
+    color: #e6dad6;
+
+    margin: 0;
+    padding: 7px 5px;
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.commentBody {
+    font-size: smaller;
+    background-color: #8f493f;
+    color: #dfd1ca;
+    padding: 0px 20px;
+    grid-row: 2 / span 1;
+}
+
+.commentFooter {
+    display: flex;
+    float: left;
+    font-size: smaller;
+    grid-row: 3 / span 1;
+    
+}
+
+.commentFooter a {
+    font-size: small;
+    text-decoration: none;
+    color: #dfd1ca;
+    margin: 5px;
+}
+
+.commentLikeCount {
+    font-size: small;
+    margin-left: 5px;
+    color: #dfd1ca;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* UTILITY */
+    /* Generic buttons */
+.genButton-white {
+    background-color: #efebe6;
+    width: 100px;
+    margin: 10px;
+    padding: 10px 20px;
+
+    border-radius: 20px;
+    border: none;
+
+    color: #4b2427;
+}
+
+.genButton-white:hover {
+    background-color: #dfd1ca;
+}
+
+.genButton-red {
+    background-color: #8f493f;
+    width: 100px;
+    margin: 10px;
+    padding: 10px 20px;
+
+    border-radius: 20px;
+    border: none;
+
+    color: #efebe6;
+}
+
+.genButton-red:hover {
+    background-color: #6d363a;
+}
+
+    /* Search Bar */
+.searchBar {
+    background-color: #dfd1ca;
+    font-family: "Expose";
+    float: right;
+    padding: 6px;
+    border: none;
+    font-size: small;
+}
+
+.searchIcon {
+    float: right;
+    width: 40px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Content Card */
+        /* Basic content card container */
+.contentCard-light {
+    background-color: #e6dad6;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #dfd1ca;
+
+    color:#4b2427;
+    font-family: "TexGyreHeros";
+    font-size: small;
+}
+
+.contentCard-dark {
+    background-color: #8f493f;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #6d363a;
+
+    color:#efebe6;
+    font-family: "TexGyreHeros";
+    font-size: small;
+}
+
+.contentCard-light img{
+    width: 100%;
+    height: 300px;
+    object-fit:cover;
+}
+
+.contentCard-dark img{
+    width: 100%;
+    height: 300px;
+    object-fit:cover;
+}
+
+.contentCard-light p {
+    object-fit:cover;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Profiles */
+
+.profileContainer {
+    background-color: #8f493f;
+    margin: 7px auto;
+    padding: 5px;
+    display: grid;
+    width: max-content;
+
+    font-family: TexGyreHeros;
+    justify-content: left;
+    border-radius: 10px;
+
+    grid-column: 2 / span 1;
+}
+
+.profileHead {
+    background-color: #4b2427;
+    width: 600px;
+    color: #efebe6;
+
+    display: grid;
+    align-content: center;
+}
+
+.profileUsername {
+    margin: 0px 10px;
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 1;
+}
+
+.profileBio {
+    margin: 10px 20px;
+    grid-row: 4 / span 1;
+    grid-column: 1 / span 3;
+}
+
+.profileHeadButtons {
+    grid-row: 2 / span 1;
+    grid-column: 3 / span 1;
+    margin: 5px;
+    justify-self: flex-end;
+}
+
+.profileHeadButtons button {
+    background-color: #8f493f;
+    border-radius: 20px;
+    color: #efebe6;
+    border: none;
+    height: 30px;
+    width: 100px;
+}
+
+.profileHeadButtons button:hover {
+    background-color: #6d363a;
+}
+
+.profileHeadBanner {
+    grid-row: 1;
+    grid-column: 1 / span 3;
+    width: 100%;
+    height: 150px;
+    object-fit:cover;
+}
+
+.profileHeadAvatar {
+    width: 100px;
+    border-radius: 100px;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+
+    position: relative;
+    left: 30px;
+    top: 90px;
+}
+
+.profileStatus {
+    color:#dfd1ca;
+    font-family: "Expose";
+    font-style: italic;
+    text-align: right;
+    white-space: preserve;
+
+    margin-right: 10px;
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 2;
+}
+
+.profileFollowerCount {
+    color:#dfd1ca;
+    font-size: small;
+    text-align: right;
+
+    margin: 10px 10px 5px 0px;
+    grid-row: 5 / span 1;
+    grid-column: 3 / span 1;
+}
+
+.profileGenres {
+    color:#dfd1ca;
+    font-size: small;
+
+    margin: 10px 0px 5px 10px;
+    grid-row: 5 / span 1;
+    grid-column: 1 / span 1;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Forms */
+
+form {
+    padding: 20px; 
+    color: #4b2427;
+}
+
+.formInput {
+    width: 90%; 
+    padding: 5px; 
+    margin: 5px;
+    outline:none; 
+    background-color: rgb(240, 240, 240);
+    font-family: TexGyreHeros;
+
+    border: 2px solid #8f493f;
+    border-radius: 5px;
+}
+
+.formLabel {
+    font-weight: bold;
+}
+
+form select {
+    width: 90%; 
+    padding: 5px; 
+    margin: 5px;
+    outline:none; 
+    background-color: rgb(240, 240, 240);
+    font-family: TexGyreHeros;
+
+    border: 2px solid #8f493f;
+    border-radius: 5px;
+}
+
+option {
+    font-family: TexGyreHeros;
+    color: #4b2427;
+}
+
+.submitFormButton {
+    background-color: #8f493f;
+    width: 100px;
+    margin: 10px;
+    padding: 5px;
+
+    border-radius: 5px;
+    border: none;
+
+    color: #efebe6;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Side Bars */
+.sidebar-full {
+  background-color: #4b2427;
+  grid-column: 1 / span 1;
+  width: 400px;
+  height: 100vh;
+  padding: 10px;
+  
+  font-family: 'TexGyreHeros';
+  font-size: smaller;
+}
+
+.sidebar-full ul {
+    background-color: #8f493f;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-full ul li {
+    color: #e6dad6;
+    padding: 10px;
+    background-color: #6d363a;
+    border: solid;
+    border-color: #4b2427;
+    
+    font-family: 'TexGyreHeros';
+    font-size: large;
+}
+
+.sidebar {
+    background-color: #4b2427;
+    grid-column: 1 / span 1;
+    border-radius: 10px;
+    margin: auto;
+    width: 250px;
+    padding: 10px;
+
+    color: #e6dad6;
+    font-family: 'TexGyreHeros';
+    font-size: smaller;
+}
+
+.sidebar h3 {
+    font-family: 'Expose';
+    padding: 3px;
+    margin: 0;
+}
+
+.sidebar ul {
+    background-color: #8f493f;
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 2px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Message Screen */
+.messageUser{
+   padding: 0; 
+   margin: 0;
+}
+
+.lastMessage {
+    text-indent: 20px;
+    color: #dfd1ca;
+    padding: 0;
+    margin: 0;
+    
+    font-family: 'TexGyreHeros';
+    font-size: smaller;
+}
+
+.currentMessageThreadContainer {
+    background-color: #e6dad6;
+    padding: 5px 20px;
+    margin: 0;
+    border: 7px solid #dfd1ca;
+
+    color:#4b2427;
+    font-family: "TexGyreHeros";
+    font-size: small;
+
+    display: flex; 
+    float: right; 
+    height: 100vh; 
+    width: 100%;
+}
+
+.messageThread {
+    color: #efebe6;
+    width: 100%;
+    display: grid;
+    align-content: center;
+}
+
+.messageThreadLeft {
+    border-radius: 20px;
+    background-color: #6d363a;
+    height: 30px;
+    padding: 10px;
+    width: 100%;
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+}
+.messageThreadRight {
+    border-radius: 20px;
+    background-color: #8f493f;
+    height: 30px;
+    padding: 10px;
+    width: 100%;
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.messageNewInput {
+    color: #4b2427;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #4b2427;
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 2;
+}
+.messageNewInput:hover {
+    border: 3px solid #8f493f;
+}
