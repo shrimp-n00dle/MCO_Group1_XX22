@@ -89,8 +89,9 @@ function addPost()
 
 
     /*BINDING*/
-    post_footer.appendChild(reply_body);
+    //post_footer.appendChild(reply_body);
     post_body.appendChild(post_footer);
+    post_template.appendChild(post_body);
     main_page.appendChild(post_template);
 
 
