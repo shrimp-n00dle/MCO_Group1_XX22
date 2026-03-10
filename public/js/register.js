@@ -12,11 +12,9 @@ function RegisterUser(){
 
 function ToggleSuccessfulRegister(event){
     event.preventDefault();
-
     var popup = document.getElementById("registerPopUp");
     popup.classList.toggle("hiddenPopUp");
-
-    registerForm.submit();
+    registerForm.requestSubmit();
 }
 
 registerForm.addEventListener("submit", ToggleSuccessfulRegister);
