@@ -12,12 +12,15 @@ function addPost()
     post_template.classList.toggle("contentCard-light");
     post_template.innerHTML = curr_body.value;
     main_page.appendChild(post_template);
+
+
+    //clear the text entrys
+    curr_title.value = "";
+    curr_body.value = "";
 }
 
 post_button.addEventListener("click",function(p)
 {
-    let test = document.querySelector("h1");
-    test.innerHTML = "Test Works";
     addPost();
 }, false);
 
