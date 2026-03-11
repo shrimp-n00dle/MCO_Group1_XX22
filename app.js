@@ -85,10 +85,8 @@ connectToMongo((err) => {
         process.exit();
     }
     console.log("Successfully connected to MongoDB Server");
-    // const database = getDB();
+});
 
-    // Server listening
-    app.listen(port, () => {
-        console.log("Server is now listening on port " + port);
-    });
+app.listen(port, () => {
+    console.log("Server is now listening on port " + port);
 });

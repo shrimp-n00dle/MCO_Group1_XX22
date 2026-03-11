@@ -4,7 +4,7 @@ const mongoURL = process.env.MONGO_URL;
 
 // Connecting to the database + catching any errors during the connection
 function connectToMongo (callback) {
-    mongoose.connect(mongoURL, {dbName: process.env.DB_NAME}).then (() => {
+    const connection = mongoose.connect('mongodb://127.0.0.1:27017/GarnetDB').then (() => {
         return callback();
     }).catch ( err => {
         callback(err);

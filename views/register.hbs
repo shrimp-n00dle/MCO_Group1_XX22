@@ -5,14 +5,14 @@
     <!-- FORM -->
     <div class="contentCard-light" style="grid-column: 1 / span 3">
         <form id="registerForm">
-            <input id="firstName" class = "formInput" type="text"     placeholder="First Name" required>
-            <input id="lastName"  class = "formInput" type="text"     placeholder="Last Name" required>
-            <input id="email"     class = "formInput" type="Email"    placeholder="Email" required>
-            <input id="username"  class = "formInput" type="text"     placeholder="Username" required>
-            <input id="password"  class = "formInput" type="password" placeholder="Password" required>
+            <input id="firstName" class = "formInput" type="text"     name="firstName"   placeholder="First Name" required>
+            <input id="lastName"  class = "formInput" type="text"     name="lastName"    placeholder="Last Name" required>
+            <input id="email"     class = "formInput" type="Email"    name="email"       placeholder="Email" required>
+            <input id="username"  class = "formInput" type="text"     name="username"    placeholder="Username" required>
+            <input id="password"  class = "formInput" type="password" name="password"    placeholder="Password" required>
         
             <a href="/log-in">
-                <button class="genButton-red" onclick="RegisterUser()">Sign Up</button>
+                <button type="submit" class="genButton-red" onclick="RegisterUser()">Sign Up</button>
             </a>
         </form>
     </div>
