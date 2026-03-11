@@ -3,11 +3,11 @@ import User from "../../db/models/user";
 const registerForm = document.getElementById("registerForm");
 
 function RegisterUser(){
-    var regFirstName = document.getElementById("firstName").required;
-    var regLastName = document.getElementById("lastName").required;
-    var regEmail = document.getElementById("email").required;
-    var regUsername = document.getElementById("username").required;
-    var regPassword = document.getElementById("password").required;
+    var regFirstName = document.getElementById("firstName").value;
+    var regLastName = document.getElementById("lastName").value;
+    var regEmail = document.getElementById("email").value;
+    var regUsername = document.getElementById("username").value;
+    var regPassword = document.getElementById("password").value;
 
     ToggleSuccessfulRegister();
     CreateNewUser(regFirstName, regLastName, regEmail, regUsername, regPassword);

@@ -1,8 +1,8 @@
 const logInForm = document.getElementById("logInForm");
 
 function ValidateLogIn(){
-    var email = document.getElementById("email").required;
-    var password = document.getElementById("password").required;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
 
     //Code for log-in validation here
 
