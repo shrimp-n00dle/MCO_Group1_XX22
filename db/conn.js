@@ -1,11 +1,10 @@
-const { MongoClient } = require('mongodb');
+const { mongoose } = require('mongoose');
 
 const mongoURL = process.env.MONGO_URL;
-const client = new MongoClient(mongoURL);
 
 // Connecting to the database + catching any errors during the connection
 function connectToMongo (callback) {
-    client.connect().then( (client) => {
+    const connection = mongoose.connect('mongodb://127.0.0.1:27017/GarnetDB').then (() => {
         return callback();
     }).catch ( err => {
         callback(err);
@@ -13,14 +12,14 @@ function connectToMongo (callback) {
 }
 
 // Gets the database
-function getDB (dbName = process.env.DB_NAME) {
-    return client.db(dbName);
-}
+// function getDB (dbName = process.env.DB_NAME) {
+//     return client.db(dbName);
+// }
 
 // Handles closing the connection to the database
 function signalHandler() {
     console.log("Closing MongoDB Connection!");
-    client.close();
+    mongoose.disconnect();
     process.exit();
 }
 process.on('SIGINT', signalHandler);
@@ -28,6 +27,5 @@ process.on('SIGTERM', signalHandler);
 process.on('SIGQUIT', signalHandler);
 
 module.exports = {
-    connectToMongo,
-    getDB
+    connectToMongo
 };
