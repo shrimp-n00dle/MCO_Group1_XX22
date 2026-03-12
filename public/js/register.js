@@ -20,24 +20,5 @@ function ToggleSuccessfulRegister(event){
     RegisterUser();
 }
 
-// function CreateNewUser(regFirstName, regLastName, regEmail, regUsername, regPassword){
-//     User.create({
-//         firstName: regFirstName,
-//         lastName: regLastName,
-//         email: regEmail,
-//         username: regUsername,
-//         password: regPassword,
-//         followerCount: 0,
-//         profilePicture: '',
-//         banner: '',
-//         bio: '',
-//         interestedGameGenres: [''],
-//         employmentStatus: ''
-//     }), err => {
-//        if(err) return err;
-//        console.log("User registered successfully!"); 
-//     }
-// }
-
 registerForm.addEventListener("submit", ToggleSuccessfulRegister);
 
