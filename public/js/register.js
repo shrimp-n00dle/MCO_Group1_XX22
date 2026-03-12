@@ -1,43 +1,43 @@
-import User from "../../db/models/user";
+var registerForm = document.getElementById("registerForm");
+var popup = document.getElementById("registerPopUp");
 
-const registerForm = document.getElementById("registerForm");
+async function RegisterUser() {
+    const formData = new FormData(registerForm);
 
-function RegisterUser(){
-    var regFirstName = document.getElementById("firstName").value;
-    var regLastName = document.getElementById("lastName").value;
-    var regEmail = document.getElementById("email").value;
-    var regUsername = document.getElementById("username").value;
-    var regPassword = document.getElementById("password").value;
-
-    ToggleSuccessfulRegister();
-    CreateNewUser(regFirstName, regLastName, regEmail, regUsername, regPassword);
+    try {
+        const response = await fetch('/register', {
+            method: "POST",
+            body: formData,
+        });
+    } catch (e) {
+        popup.innerHTML = "<p>Something went wrong.</p>";
+    }
 }
 
 function ToggleSuccessfulRegister(event){
     event.preventDefault();
-    var popup = document.getElementById("registerPopUp");
     popup.classList.toggle("hiddenPopUp");
-    registerForm.requestSubmit();
+    RegisterUser();
 }
 
-function CreateNewUser(regFirstName, regLastName, regEmail, regUsername, regPassword){
-    User.create({
-        firstName: regFirstName,
-        lastName: regLastName,
-        email: regEmail,
-        username: regUsername,
-        password: regPassword,
-        followerCount: 0,
-        profilePicture: '',
-        banner: '',
-        bio: '',
-        interestedGameGenres: [''],
-        employmentStatus: ''
-    }), err => {
-       if(err) return err;
-       console.log("User registered successfully!"); 
-    }
-}
+// function CreateNewUser(regFirstName, regLastName, regEmail, regUsername, regPassword){
+//     User.create({
+//         firstName: regFirstName,
+//         lastName: regLastName,
+//         email: regEmail,
+//         username: regUsername,
+//         password: regPassword,
+//         followerCount: 0,
+//         profilePicture: '',
+//         banner: '',
+//         bio: '',
+//         interestedGameGenres: [''],
+//         employmentStatus: ''
+//     }), err => {
+//        if(err) return err;
+//        console.log("User registered successfully!"); 
+//     }
+// }
 
 registerForm.addEventListener("submit", ToggleSuccessfulRegister);
 

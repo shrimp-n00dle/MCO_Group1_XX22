@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
+const {RegisterUser} = require('./db/req.js');
 
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -24,6 +25,7 @@ app.set("view engine", "hbs");
 app.set("views", "./views");
 
 app.use('/js', express.static(__dirname + '/public/js')); 
+app.use('/js', express.static(__dirname + '/db/models')); 
 
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
@@ -75,6 +77,12 @@ app.get('/viewProfile/:username', (req, res) => {
         profile,
         posts,
     });
+});
+
+// Server Operations --------------------------------------------------------------
+
+app.post('/register', (req, res) => {
+    RegisterUser(req.body, res);
 });
 
 // Connecting to the database -------------------------------------------
