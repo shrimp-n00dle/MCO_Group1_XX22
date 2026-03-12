@@ -56,6 +56,9 @@ body {
     padding: 10px;
     height: 50px;
     display: flex;
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 3px 8px #dfd1ca;
 
     font-family: 'Expose';
     color: #efebe6;
@@ -91,6 +94,131 @@ li.navListItem a {
 
 li.navListItem:hover {
     background-color: #6d363a;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* WELCOME SCREEN */
+.welcomeLogoHolder {
+    overflow-y: hidden;
+    width: 70%;
+    display: grid;
+    position: absolute;
+}
+
+.welcomeLogoBackground {
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: calc(100vh - 70px);
+    width: 75%;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
+    -webkit-mask-image: -webkit-linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.welcomeLogo {
+    position: absolute;
+    left: 10%;
+    top: 23%;
+}
+
+.welcomeDescContainer {
+    position: absolute;
+    right: 0;
+}
+
+.welcomeDesc {
+    position: relative;
+    right: 9vw;
+}
+
+.welcomeDesc h1 {
+    position: relative;
+    top: 10vh;
+    color: #efebe6;
+    font-family: Expose;
+    font-size: 100px;
+    text-align: center;
+    margin: 0;
+    text-shadow: 3px 3px 5px #4b2427;
+}
+
+.welcomeDesc h3 {
+    position: relative;
+    text-align: center;
+    top: 8vh;
+    color: #efebe6;
+    font-family: TexGyreHeros;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.welcomeDesc p {
+    position: relative;
+    top: 8vh;
+    text-align: justify;
+    text-justify: distribute;
+    color: #efebe6;
+    font-family: TexGyreHeros;
+    width: 30vw;
+}
+
+.welcomeButtons {
+    position: relative;
+    top: 10vh;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 8px 8px 15px #4b2427;
+}
+.welcomeButtons p {
+    position: relative;
+    color: #4b2427;
+    margin: 0px auto 10px;
+    top: 0px;
+    font-family: TexGyreHeros;
+    font-style: italic;
+    border-bottom: 2px solid #dfd1ca;
+}
+.welcomeButton {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    padding: 10px;
+    margin: 5px auto;
+
+    border-radius: 5px;
+    border: none;
+
+    color: #efebe6;
+    font-family: Expose;
+    font-weight: bold;
+    font-size: 20px;
+
+    box-shadow: 3px 3px 2px #6d363a;
+}
+
+.welcomeButton:hover {
+    cursor: pointer;
+}
+
+.welcomeRegister {
+    background-color: #8f493f;
+    margin-bottom: 20px;
+}
+
+.welcomeRegister:hover {
+    background-color: #773b31;
+}
+
+.welcomeLogIn {
+    background-color: #921709;
+}
+
+.welcomeLogIn:hover {
+    background-color: #75170d;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -437,6 +565,10 @@ form {
     color: #4b2427;
 }
 
+form.messageForm {
+    padding: 0px;
+}
+
 .formInput {
     width: 90%; 
     padding: 5px; 
@@ -496,7 +628,6 @@ option {
 }
 
 .sidebar-full ul {
-    background-color: #8f493f;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -508,6 +639,7 @@ option {
     background-color: #6d363a;
     border: solid;
     border-color: #4b2427;
+    border-radius: 8px;
     
     font-family: 'TexGyreHeros';
     font-size: large;
@@ -545,7 +677,7 @@ option {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Message Screen */
-.messageUser{
+.messageUser {
    padding: 0; 
    margin: 0;
 }
@@ -560,6 +692,16 @@ option {
     font-size: smaller;
 }
 
+.preview {
+    padding: 0;
+}
+
+.messagePreview:hover {
+    background-color: #8f493f;
+    cursor: pointer;
+}
+
+    /* Current/active messages (right side) */
 .currentMessageThreadContainer {
     background-color: #e6dad6;
     padding: 5px 20px;
@@ -570,7 +712,7 @@ option {
     font-family: "TexGyreHeros";
     font-size: small;
 
-    display: flex; 
+    display: flexbox;
     float: right; 
     height: 100vh; 
     width: 100%;
@@ -579,44 +721,81 @@ option {
 .messageThread {
     color: #efebe6;
     width: 100%;
-    display: grid;
-    align-content: center;
+    display: flexbox;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.messageThreadHeader {
+    color: #4b2427;
+    border-bottom: 2px solid #8f493f;
+    font-family: 'Expose';
+    width: 100%;
+    margin: 0;
+    padding: 10px;
 }
 
 .messageThreadLeft {
     border-radius: 20px;
     background-color: #6d363a;
-    height: 30px;
-    padding: 10px;
-    width: 100%;
-    grid-row: 1 / span 1;
-    grid-column: 1 / span 1;
+    padding: 15px 10px;
+    width: 50%;
+    float: left;
 }
 .messageThreadRight {
     border-radius: 20px;
     background-color: #8f493f;
-    height: 30px;
-    padding: 10px;
+    padding: 15px 10px;
+    width: 50%;
+    float: right;
+}
+
+    /* Message Input */
+.messageInputContainer {
+    background-color: #4b2427;
     width: 100%;
-    grid-row: 2 / span 1;
-    grid-column: 2 / span 1;
+    height: 100px;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 
 .messageNewInput {
     color: #4b2427;
-    height: 50px;
+    height: 40px;
     padding: 10px;
-    border: 1px solid #4b2427;
-    grid-row: 3 / span 1;
-    grid-column: 1 / span 2;
-}
-.messageNewInput:hover {
-    border: 3px solid #8f493f;
+    border: 1px solid #b96a71;
+    border-radius: 5px;
+    position: fixed;
+    left: 20%;
+    right: 10%;
+    bottom: 20px;
+
+    resize: none;
+    scrollbar-width: thin;
+    font-family: "TexGyreHeros";
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    /* Pop Ups */
+.messageNewInput:hover, .messageNewInput:active, .messageNewInput:focus {
+    background-color: #fff9f7;
+    border: 1px solid #8f493f;
+    outline: none;
+}
 
-.hiddenPopUp{
-    display: none;
+.sendMessage {
+    float: right;
+    height: 60px;
+    width: 60px;
+    background-image: url(../img/sendButton.png);
+    background-repeat: round;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 15px 0px 10px;
+}
+
+.sendMessage:hover {
+    border: 2px solid #b96a71;
+    cursor: pointer;
 }

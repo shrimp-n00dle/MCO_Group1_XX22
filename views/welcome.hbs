@@ -1,21 +1,30 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="register"}}
 
-<body>
-	
-	<center><img src="/img/Garnet_Logo.png" width="400" height="400"> </center>
-	
-	<center>
-	<a href="/register">
-	<button class="genButton-red">REGISTER</button>
-	</a>
-	</center>
-	
-	<center>
-	<a href="/log-in">
-	<button class="genButton-red">LOG IN</button>
-	</a>
-	</center>
+<div class="welcomeLogoHolder">
+	<img src="/img/welcomeBG2.png" class="welcomeLogoBackground"></div>
+	<img src="/img/Garnet_Logo.png" class="welcomeLogo">
+</div>
 
-</body>
+<div class="welcomeDescContainer">
+	<div class="welcomeDesc">
+		<h1> GARNET </h1>
+		<h3><i> Looking for a hidden gem? </i></h3>
+		<p>
+			<i>Garnet</i> is a social networking platform designed by Game Developers for Game Developers. Find like-minded peers and make connections that will last forever. Garnet: Your one stop shop for finding hidden gems.
+		</p>
+	</div>
 
-</html>
+	<div class="welcomeDesc contentCard-light welcomeButtons">
+		<p>Register an account.</p>
+		<button class="welcomeButton welcomeRegister" onclick="window.location.href='/register'">
+			REGISTER
+		</button>
+		
+		<p>Already have an account?</p>
+		<button class="welcomeButton welcomeLogIn">
+			<a href="/log-in">
+				LOG IN
+			</a>
+		</button>
+	</div>
+</div>

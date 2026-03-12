@@ -1,30 +1,26 @@
-{{> nav title="Garnet: A Hidden Gem" navBarStyle="home"}}
+{{> nav title="Message" notClean=true}}
 <div style="display:flex">
     <!-- Message Body -->
     <div class="sidebar-full">
         <ul>
-            <li>
-                <h4 class="messageUser">Si-Szas</h4>
-                <p  class="lastMessage"> You sent: Hey!</p>
-            </li>
-            <li>
-                <h4 class="messageUser">Ayze</h4>
-                <p  class="lastMessage"> Ayze sent: :3</p>
-            </li>
-            <li>
-                <h4 class="messageUser">JAN-VINGNO</h4>
-                <p  class="lastMessage"> You sent: Dude did you see the new game theory vid</p>
-            </li>
+            {{#each user.messageThreads}}
+                {{> textPreview @root.texts}}
+            {{/each}}
         </ul>
     </div>
 
     <div class="currentMessageThreadContainer">
+        <h2 class="messageThreadHeader">{{messageThread.sender}}</h2>
         <div class="messageThread">
-            <p class="messageThreadLeft">Hey there :)</p>
-            <p class="messageThreadRight">Hey!</p>
-            <input type="text" class="messageNewInput"></input>
+            {{#each messageThread.texts}}
+                {{> messageThread text=this @root.user}}
+            {{/each}}
         </div>
-
+        <div class="messageInputContainer">
+            <form class="messageForm">
+                <textarea class="messageNewInput"></textarea>
+                <button class="sendMessage"></button>
+            </form>
+        </div>
     </div>
-
 </div>
