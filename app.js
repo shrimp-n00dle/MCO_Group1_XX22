@@ -4,6 +4,8 @@ const {connectToMongo} = require('./db/conn.js');
 const {RegisterUser} = require('./db/req.js');
 
 const express = require("express");
+const multer = require('multer');
+const upload = multer();
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const path = require('path');
@@ -30,6 +32,12 @@ app.use('/js', express.static(__dirname + '/db/models'));
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
     return val1 === val2;
+});
+
+// Server Operations --------------------------------------------------------------
+
+app.post('/register', upload.none(), async (req, res) => {
+    RegisterUser(req, res);
 });
 
 // Routing --------------------------------------------------------------
@@ -77,12 +85,6 @@ app.get('/viewProfile/:username', (req, res) => {
         profile,
         posts,
     });
-});
-
-// Server Operations --------------------------------------------------------------
-
-app.post('/register', (req, res) => {
-    RegisterUser(req.body, res);
 });
 
 // Connecting to the database -------------------------------------------

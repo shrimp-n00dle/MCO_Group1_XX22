@@ -1,7 +1,7 @@
-var registerForm = document.getElementById("registerForm");
 var popup = document.getElementById("registerPopUp");
 
 async function RegisterUser() {
+    var registerForm = document.getElementById("registerForm");
     const formData = new FormData(registerForm);
 
     try {
@@ -10,7 +10,7 @@ async function RegisterUser() {
             body: formData,
         });
     } catch (e) {
-        popup.innerHTML = "<p>Something went wrong.</p>";
+        popup.innerHTML = "<p>Registration unsuccessful! Email might be taken.</p>";
     }
 }
 
