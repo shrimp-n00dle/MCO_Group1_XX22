@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, AddPost} = require('./db/req.js');
+const {RegisterUser, AddPost, AddComment} = require('./db/req.js');
 
 const express = require("express");
 const multer = require('multer');
@@ -42,6 +42,10 @@ app.post('/register', upload.none(), async (req, res) => {
 
 app.post('/posting', upload.array('media',5), async (req, res) => {
     AddPost(req, res);
+});
+
+app.post('/commenting', upload.none(), async (req, res) => {
+    AddComment(req, res);
 });
 
 // Routing --------------------------------------------------------------

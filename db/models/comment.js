@@ -1,6 +1,6 @@
 const {mongoose, Schema} = require('mongoose');
 
-const PostSchema = new Schema(
+const CommentSchema = new Schema(
     {
         username: {
             type: String,
@@ -13,22 +13,10 @@ const PostSchema = new Schema(
             min: 3,
             max: 100
         },
-        postTitle: {
-            type: String,
-            required: true,
-            max: 100
-        },
-        postBody: {
+        commentBody: {
             type: String,
             required: true,
             max: 300
-        },
-        mediaFile: {
-            type: String,
-            unique: true,
-            required: true,
-            min: 3,
-            max: 200
         },
         likeCount: Number,
         followerCount: Number,
