@@ -49,6 +49,8 @@ body {
     float: left;
     margin: 0;
     padding: 0;
+    position: relative;
+    bottom: 7px;
 }
 
 .navBar {
@@ -173,6 +175,7 @@ li.navListItem:hover {
     border-radius: 3px;
     box-shadow: 8px 8px 15px #4b2427;
 }
+
 .welcomeButtons p {
     position: relative;
     color: #4b2427;
@@ -182,6 +185,7 @@ li.navListItem:hover {
     font-style: italic;
     border-bottom: 2px solid #dfd1ca;
 }
+
 .welcomeButton {
     position: relative;
     top: 0px;
@@ -200,8 +204,24 @@ li.navListItem:hover {
     box-shadow: 3px 3px 2px #6d363a;
 }
 
-.welcomeButton:hover {
-    cursor: pointer;
+.regLogButton {
+    position: relative;
+    top: 0px;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    padding: 4px;
+    margin: 10px auto 0px;
+
+    border-radius: 5px;
+    border: none;
+
+    color: #efebe6;
+    font-family: Expose;
+    font-weight: bold;
+    font-size: 15px;
+
+    box-shadow: 3px 3px 2px #6d363a;
 }
 
 .welcomeRegister {
@@ -210,6 +230,7 @@ li.navListItem:hover {
 }
 
 .welcomeRegister:hover {
+    cursor: pointer;
     background-color: #773b31;
 }
 
@@ -218,7 +239,19 @@ li.navListItem:hover {
 }
 
 .welcomeLogIn:hover {
+    cursor: pointer;
     background-color: #75170d;
+}
+
+.registerCard {
+    position: relative;
+    top: 20vh;
+    right: 10vw;
+    width: 30vw;
+    color: #4b2427;
+    font-family: TexGyreHeros;
+    font-style: italic;
+    box-shadow: 8px 8px 15px #4b2427;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -570,7 +603,7 @@ form.messageForm {
 }
 
 .formInput {
-    width: 90%; 
+    width: 95%; 
     padding: 5px; 
     margin: 5px;
     outline:none; 
@@ -583,6 +616,12 @@ form.messageForm {
 
 .formLabel {
     font-weight: bold;
+}
+
+.formSection {
+    border-bottom: 1px solid #6d363a;
+    width: 100%;
+    margin: 2px auto 0px;
 }
 
 form select {

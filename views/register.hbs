@@ -1,27 +1,34 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="register"}}
 
-<div class="bodyContainer">
+<div class="welcomeLogoHolder">
+	<img src="/img/welcomeBG2.png" class="welcomeLogoBackground"></div>
+	<img src="/img/Garnet_Logo.png" class="welcomeLogo">
+</div>
 
+<div class="welcomeDescContainer">
     <!-- FORM -->
-    <div class="contentCard-light" style="grid-column: 1 / span 3">
+    <div class="contentCard-light registerCard">
+        <p class="formSection">Enter information:</p>
         <form id="registerForm" method="post">
+            <label>Name:</label>
             <input id="firstName" class = "formInput" type="text"     name="firstName"   placeholder="First Name" required>
             <input id="lastName"  class = "formInput" type="text"     name="lastName"    placeholder="Last Name" required>
+            <label>Account details:</label>
             <input id="email"     class = "formInput" type="Email"    name="email"       placeholder="Email" required>
             <input id="username"  class = "formInput" type="text"     name="username"    placeholder="Username" required>
             <input id="password"  class = "formInput" type="password" name="password"    placeholder="Password" required>
-        
-            <a href="/log-in">
-                <button type="submit" class="genButton-red">Sign Up</button>
-            </a>
+
+            <button type="submit" class="regLogButton welcomeRegister">Sign Up</button>
         </form>
     </div>
 
     <!-- POP-UP FOR REGISTRATION -->
-    <div id="registerPopUp" class="contentCard-light hiddenPopUp" style="grid-column: 1 / span 3;">
+    <div id="registerPopUp" class="contentCard-light registerCard hiddenPopUp" style="grid-column: 1 / span 3;">
         <p>You have successfully registered! You may now <b>log-in</b></log-in>.</p>
     </div>
-
 </div>
 
-<script src="/js/register.js"></script>
+
+
+
+<script src="/js/register.js"></script> 
