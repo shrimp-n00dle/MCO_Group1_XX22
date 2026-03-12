@@ -799,3 +799,10 @@ option {
     border: 2px solid #b96a71;
     cursor: pointer;
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    /* Pop Ups */
+
+.hiddenPopUp{
+    display: none;
+}
