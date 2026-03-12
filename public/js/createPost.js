@@ -1,109 +1,101 @@
-const curr_emotion = document.querySelector(".emotion");
-const curr_title = document.getElementById("inputTitleID");
-const curr_body = document.getElementById("inputBodyID");
-var post_button = document.getElementById("postBtnID");
-const main_page = document.getElementById("postBodyID");
+const currEmotion = document.querySelector(".emotion");
+const currTitle = document.getElementById("inputTitleID");
+const currBody = document.getElementById("inputBodyID");
+var postButton = document.getElementById("postBtnID");
+const mainPage = document.getElementById("postBodyID");
 
 
 function addPost()
 {
     /*BODY OF THE POST**************************************************/
-    let post_template = document.createElement("div");
-    post_template.classList.toggle("postContainer");
+    let postTemplate = document.createElement("div");
+    postTemplate.classList.toggle("postContainer");
 
-    let post_header = document.createElement("div");
-    post_header.classList.toggle("postHeader");
-    post_template.appendChild(post_header);
+    let postHeader = document.createElement("div");
+    postHeader.classList.toggle("postHeader");
+    postTemplate.appendChild(postHeader);
 
     /*USER NAME CREATION************************************************/
-    let post_user = document.createElement("h3");
-    post_user.innerHTML = "[Add username here]";
-    post_header.appendChild(post_user);
+    let postUser = document.createElement("h3");
+    postUser.innerHTML = "[Add username here]";
+    postHeader.appendChild(postUser);
 
     /*BODY AND TITLE CREATION*******************************************/
-    let post_body = document.createElement("div");
-    post_body.innerHTML = curr_body.value;
+    let postBody = document.createElement("div");
+    postBody.innerHTML = currBody.value;
     /*Title*/
-    let post_title = document.createElement("h2");
-    post_title.innerHTML = curr_title.value;
-    post_header.appendChild(post_title);
+    let postTitle = document.createElement("h2");
+    postTitle.innerHTML = currTitle.value;
+    postHeader.appendChild(postTitle);
 
     /*FOOTER CREATION***************************************************/
-    let post_footer = document.createElement("div");
-    post_footer.classList.toggle("postFooter");
+    let postFooter = document.createElement("div");
+    postFooter.classList.toggle("postFooter");
 
     /*LIKES RECEIVED****************************************************/
-    let like_count = document.createElement("p");
-    like_count.classList.toggle("postLikeCount");
-    like_count.innerHTML = 0 + " Like Counts";
+    let likeCount = document.createElement("p");
+    likeCount.classList.toggle("postLikeCount");
+    likeCount.innerHTML = 0 + " Like Counts";
     /*Like Button*/
-    let like_button = document.createElement("button");
-    like_button.classList.toggle("genButton-red");
-    like_button.innerHTML = "Like This Post";
-    like_count.appendChild(like_button);    
-    post_footer.appendChild(like_count);
+    let likeButton = document.createElement("button");
+    likeButton.classList.toggle("genButton-red");
+    likeButton.innerHTML = "Like This Post";
+    likeCount.appendChild(likeButton);    
+    postFooter.appendChild(likeCount);
 
     /*COMMENTS RECEIVED************************************************/
-    let comm_count = document.createElement("p");
-    comm_count.classList.toggle("postCommentCount");
-    comm_count.innerHTML = 0 + " Comment Counts";
+    let commCount = document.createElement("p");
+    commCount.classList.toggle("postCommentCount");
+    commCount.innerHTML = 0 + " Comment Counts";
     /*Comment Button*/
-    let comm_button = document.createElement("button");
-    comm_button.classList.toggle("genButton-red");
-    comm_button.innerHTML = "Leave a Comment";
-    comm_count.appendChild(comm_button);    
-    post_footer.appendChild(comm_count);
+    let commButton = document.createElement("button");
+    commButton.classList.toggle("genButton-red");
+    commButton.innerHTML = "Leave a Comment";
+    commCount.appendChild(commButton);    
+    postFooter.appendChild(commCount);
 
     /*DATE AND TIME CREATED*******************************************/
     const date = new Date();
-    let date_today = document.createElement("p");
-    date_today.classList.toggle("postCommentCount");
-    date_today.innerHTML = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + "   " + date.getHours() + ":" + date.getMinutes();
-    post_footer.appendChild(date_today);
+    let dateToday = document.createElement("p");
+    dateToday.classList.toggle("postCommentCount");
+    dateToday.innerHTML = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + "   " + date.getHours() + ":" + date.getMinutes();
+    postFooter.appendChild(dateToday);
 
     /*TEMP ADDING OF COMMENT BODY********************************/
-    let reply_body = document.createElement("div");
-    reply_body.classList.toggle("commentBody");
-    reply_body.innerHTML = "Test";
+    let replyBody = document.createElement("div");
+    replyBody.classList.toggle("commentBody");
+    replyBody.innerHTML = "Test";
      /*LIKES RECEIVED*/
-    let reply_like = document.createElement("p");
-    reply_like.classList.toggle("postLikeCount");
-    reply_like.innerHTML = 0 + " Like Counts";
+    let replyLike = document.createElement("p");
+    replyLike.classList.toggle("postLikeCount");
+    replyLike.innerHTML = 0 + " Like Counts";
     /*Like Button*/
-    let reply_like_button = document.createElement("button");
-    reply_like_button.classList.toggle("genButton-red");
-    reply_like_button.innerHTML = "Like This Post";
-    reply_like.appendChild(reply_like_button);    
-    reply_body.appendChild(reply_like);
+    let replyLikeButton = document.createElement("button");
+    replyLikeButton.classList.toggle("genButton-red");
+    replyLikeButton.innerHTML = "Like This Post";
+    replyLike.appendChild(replyLikeButton);    
+    replyBody.appendChild(replyLike);
      /*COMMENTS RECEIVED**/
-    let reply_comm_count = document.createElement("p");
-    reply_comm_count.classList.toggle("postCommentCount");
-    reply_comm_count.innerHTML = 0 + " Comment Counts";
+    let replyCommCount = document.createElement("p");
+    replyCommCount.classList.toggle("postCommentCount");
+    replyCommCount.innerHTML = 0 + " Comment Counts";
     /*Comment Button*/
-    let reply_comm_button = document.createElement("button");
-    reply_comm_button.classList.toggle("genButton-red");
-    reply_comm_button.innerHTML = "Leave a Comment";
-    reply_comm_count.appendChild(reply_comm_button);    
-    reply_body.appendChild(reply_comm_count);
+    let replyCommButton = document.createElement("button");
+    replyCommButton.classList.toggle("genButton-red");
+    replyCommButton.innerHTML = "Leave a Comment";
+    replyCommCount.appendChild(replyCommButton);    
+    replyBody.appendChild(replyCommCount);
     /******************************************************************** */
 
-
     /*BINDING*/
-    //post_footer.appendChild(reply_body);
-    post_body.appendChild(post_footer);
-    post_template.appendChild(post_body);
-    main_page.appendChild(post_template);
-
-
-
-    
-
-
-
+    //postFooter.appendChild(replyBody);
+    postBody.appendChild(postFooter);
+    postTemplate.appendChild(postBody);
+    main_page.appendChild(postTemplate);
 
     //clear the text entrys
-    curr_title.value = "";
-    curr_body.value = "";
+    currTitle.value = "";
+    currBody.value = "";
 }
 
 post_button.addEventListener("click",function(p)
