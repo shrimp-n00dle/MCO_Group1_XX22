@@ -1,11 +1,11 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="home"}}
 
-<div class="bodyContainer" id ="postBodyID">
+<div class="bodyContainer" >
 
     <div class="contentCard-light" style="grid-column: 1 / span 3;">
         <h1 style="text-align: center;">CREATE A POST </h1>
 
-        <form>
+        <form id ="commentForm" enctype="multipart/form-data">
             <label for="post" class="formLabel">How are you feeling?</label>
             <select class="emotion">
                 <option value="0" >  </option>
@@ -17,13 +17,14 @@
             </form>
 
             <label for="post" class="formLabel" >Title: <br></label>
-            <input type="text" class="formInput" id="inputTitleID"/>
+            <input type="text" class="formInput" name="commentTitle"/>
 
             <label for="post" class="formLabel">Content: </label>
-            <input type="text" class="formInput" id="inputBodyID"/>
+            <input type="text" class="formInput" name="commentBody"/>
 
-            <button class="genButton-red" id = "postBtnID">Post</button></a>
+            <button type="submit" class="genButton-red">Post</button></a>
         </form>
     </div>
-    <script src="/js/createPost.js"></script>
+    <script src="/js/posting.js"></script>
 </div>
+

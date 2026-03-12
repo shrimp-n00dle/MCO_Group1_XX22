@@ -21,6 +21,18 @@ async function RegisterUser(req, res) {
     }
 }
 
+async function AddPost(req,res)
+{
+    var newPost = require("./models/post.js");
+    await newPost.create({
+
+    }), err => {
+        if(err) 
+        res.render("posting", {layout: false, error: "Something went wrong."});
+        return err;
+    }
+}
+
 module.exports = {
     RegisterUser
 }
