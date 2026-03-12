@@ -1,16 +1,27 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="register"}}
-<div class="bodyContainer">
-    <div class="contentCard-light" style="grid-column: 1 / span 3">
+
+<div class="welcomeLogoHolder">
+	<img src="/img/welcomeBG2.png" class="welcomeLogoBackground"></div>
+	<img src="/img/Garnet_Logo.png" class="welcomeLogo">
+</div>
+
+{{!-- FORM --}}
+<div class="welcomeDescContainer">
+    <div class="welcomeDesc">
+		<h1> GARNET </h1>
+		<h3><i> Looking for a hidden gem? </i></h3>
+	</div>
+
+    <div class="contentCard-light registerCard" style="top: 12vh; right: 9vw">
+        <p class="formSection">Enter account details:</p>
         <form id="logInForm">
             <!-- Email and pass -->
-            <label for="email" class="formLabel">Enter Email: </label> <br>
-            <input type="Email" id="email" name="userInfo" class="formInput" required> <br>
-            <label for="password" class="formLabel">Enter Password: </label> <br>
-            <input type="password" id="password" name="userInfo" class="formInput" required> <br>
+            <label for="email" class="formLabel">Email: </label> 
+            <input type="Email"     id="email"    name="userInfo" class="formInput" required> 
+            <label for="password" class="formLabel">Password: </label> 
+            <input type="password"  id="password" name="userInfo" class="formInput" required>
             
-            <a href="/home">
-                <button class="genButton-red" onclick="ValidateLogIn()">Log In</button>
-            </a>
+            <button class="regLogButton welcomeLogIn" onclick="ValidateLogIn()">Log In</button>
         </form>
     </div>
 </div>
