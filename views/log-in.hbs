@@ -1,15 +1,18 @@
-{{> nav title="Garnet: A Hidden Gem" notClean=false}}
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="register"}}
 <div class="bodyContainer">
-        <div class="contentCard-light" style="grid-column: 1 / span 3">
-            <form>
+    <div class="contentCard-light" style="grid-column: 1 / span 3">
+        <form id="logInForm">
             <!-- Email and pass -->
             <label for="email" class="formLabel">Enter Email: </label> <br>
-            <input type="text" id="email" name="userInfo" class="formInput"> <br>
+            <input type="Email" id="email" name="userInfo" class="formInput" required> <br>
             <label for="password" class="formLabel">Enter Password: </label> <br>
-            <input type="password" id="password" name="userInfo" class="formInput"> <br>
-                
-                <!-- Submit button -->
-            </form>
-                <a href="/home"><button class="genButton-red">Log In</button></a>
-        </div>
+            <input type="password" id="password" name="userInfo" class="formInput" required> <br>
+            
+            <a href="/home">
+                <button class="genButton-red" onclick="ValidateLogIn()">Log In</button>
+            </a>
+        </form>
     </div>
+</div>
+
+<script src="/js/log-in.js"></script>

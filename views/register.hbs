@@ -1,26 +1,27 @@
-{{> nav title="Garnet: A Hidden Gem" notClean=false}}
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="register"}}
 
 <div class="bodyContainer">
 
+    <!-- FORM -->
     <div class="contentCard-light" style="grid-column: 1 / span 3">
-        <form>
-            <input class = "formInput" type="text"     placeholder="First Name" required>
-            <input class = "formInput" type="text"     placeholder="Last Name" required>
-            <input class = "formInput" type="Email"    placeholder="Email" required>
-            <input class = "formInput" type="date"     placeholder ="Birthdate" required> 
-            <input class = "formInput" type="text"     placeholder="Username" required>
-            <input class = "formInput" type="password" placeholder="Password" required>
+        <form id="registerForm" method="post">
+            <input id="firstName" class = "formInput" type="text"     name="firstName"   placeholder="First Name" required>
+            <input id="lastName"  class = "formInput" type="text"     name="lastName"    placeholder="Last Name" required>
+            <input id="email"     class = "formInput" type="Email"    name="email"       placeholder="Email" required>
+            <input id="username"  class = "formInput" type="text"     name="username"    placeholder="Username" required>
+            <input id="password"  class = "formInput" type="password" name="password"    placeholder="Password" required>
+        
+            <a href="/log-in">
+                <button type="submit" class="genButton-red">Sign Up</button>
+            </a>
         </form>
-
-        <a href="/log-in">
-            <button class="genButton-red">Sign Up</button>
-        </a>
-
-        <!-- TESTING JS CONNECTION-->
-        <!--<button class="genButton-red">Sign Up</button>
-        <p id="testReg"></p> -->
-
     </div>
+
+    <!-- POP-UP FOR REGISTRATION -->
+    <div id="registerPopUp" class="contentCard-light hiddenPopUp" style="grid-column: 1 / span 3;">
+        <p>You have successfully registered! You may now <b>log-in</b></log-in>.</p>
+    </div>
+
 </div>
 
 <script src="/js/register.js"></script>
