@@ -1,8 +1,11 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
+const {RegisterUser} = require('./db/req.js');
 
 const express = require("express");
+const multer = require('multer');
+const upload = multer();
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const path = require('path');
@@ -24,10 +27,17 @@ app.set("view engine", "hbs");
 app.set("views", "./views");
 
 app.use('/js', express.static(__dirname + '/public/js')); 
+app.use('/js', express.static(__dirname + '/db/models')); 
 
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
     return val1 === val2;
+});
+
+// Server Operations --------------------------------------------------------------
+
+app.post('/register', upload.none(), async (req, res) => {
+    RegisterUser(req, res);
 });
 
 // Routing --------------------------------------------------------------
