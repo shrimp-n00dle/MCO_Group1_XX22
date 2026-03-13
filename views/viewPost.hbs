@@ -1,11 +1,42 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="home"}}
 <div class="bodyContainer">
     {{> searchSidebar}}
-    {{#if post}}
-        {{> postPartial post}}
-    {{else}}
-        <div class="contentCard-light">
-            <p>Post does not exist</p>
+    <div class="postContainer">
+        <div class="postHeader">
+            <img src="{{post.profilePicture}}" class="postProfilePicture">
+            <a href="/viewProfile/{{post.username}}"><h3>{{post.username}}</h3></a>
         </div>
-    {{/if}}
+
+        <div class="postBody">
+            {{#if post.postTitle}}
+                <h3><a href="viewPost/{{post._id}}" style="color: #4b2427; font-family:Expose;">{{post.postTitle}}</a></h3>
+            {{/if}}
+            <p>{{post.postBody}}</p>
+        </div>
+
+        <div class="postFooter">
+            <p class="postLikeCount">{{post.likeCount}}</p>
+            <a href="">Like</a>
+            <p class="postCommentCount">{{post.commentCount}}</p>
+            <a href="">Comment</a>
+        </div>
+
+        {{!-- {{#if post.replyList}}
+        <div class="postCommentContainer">
+            <div class="commentHeader">
+                <img src="{{post.commentPfp}}">
+                <a href="/viewProfile/{{post.commentUser}}"><h3>{{post.commentUser}}</h3></a>
+            </div>
+
+            <div class="commentBody">
+                <p> {{post.commentBody}} </p>
+
+                <div class="commentFooter">
+                    <p class="commentLikeCount">{{post.commentLikes}}</p>
+                    <a href="">Like</a>
+                </div>
+            </div>
+        </div>
+        {{/if}} --}}
+    </div>
 </div>
