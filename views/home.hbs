@@ -4,6 +4,8 @@
     {{#each posts}}
         {{> postPartial post=this}}
         {{else}}
-            <p>NO POSTS DETECTED</p>
+            <div class="contentCard-light">
+                <p>Nothing to see!</p>
+            </div>
     {{/each}}
 </div>
