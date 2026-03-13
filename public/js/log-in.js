@@ -1,3 +1,5 @@
+var popup = document.getElementById("invalidPopUp");
+
 async function ValidateLogIn(){
     var logInForm = document.getElementById("logInForm");
     const formData = new FormData(logInForm);
@@ -15,6 +17,7 @@ async function ValidateLogIn(){
 
 function ToggleSuccessfulLogIn(event){
     event.preventDefault();
+    popup.classList.toggle("hiddenPopUp");
     ValidateLogIn();
 }
 

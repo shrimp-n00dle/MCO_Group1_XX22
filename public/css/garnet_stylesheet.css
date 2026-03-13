@@ -254,6 +254,17 @@ li.navListItem:hover {
     box-shadow: 8px 8px 15px #4b2427;
 }
 
+.invalidCard {
+    position: relative;
+    top: 20vh;
+    right: 10vw;
+    width: 30vw;
+    color: #4b2427;
+    font-family: TexGyreHeros;
+    font-style: italic;
+    box-shadow: 8px 8px 15px #4b2427;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* POSTS */
 .postContainer {
