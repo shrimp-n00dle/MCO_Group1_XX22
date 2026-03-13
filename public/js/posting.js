@@ -26,8 +26,8 @@ function ToggleAddPost(event)
 {
     event.preventDefault();
     AddPost();
-
 }
+
 postForm.addEventListener("submit", ToggleAddPost);
 
 

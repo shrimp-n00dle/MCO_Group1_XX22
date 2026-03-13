@@ -43,7 +43,7 @@ app.post('/log-in', upload.none(), async (req, res) => {
     FindUser(req, res);
 });
 
-app.post('/posting', upload.array('media',5), async (req, res) => {
+app.post('/posting', upload.none(), async (req, res) => {
     AddPost(req, res);
 });
 
