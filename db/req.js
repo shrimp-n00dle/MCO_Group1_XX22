@@ -21,6 +21,29 @@ async function RegisterUser(req, res) {
     }
 }
 
+async function FindUser(req, res){
+    try {
+        const User = require('./models/user.js');
+        const query = { email: req.body.email, password: req.body.password };
+        const options = {
+            //Only return email and password if it exists
+            projection: { _id: 0, email: 1, password: 1 },
+        };
+
+        const gotUser = await User.findOne(query, options);
+        // Print the document returned by findOne()
+        console.log(gotUser);
+
+        if(gotUser){
+            console.log("User exists!");
+        } else {
+            console.log("User DNE");
+        }
+    } catch{
+        //console.log("Username or password is incorrect.");
+    }
+}
+
 async function AddPost(req,res)
 {
     var newPost = require("./models/post.js");
@@ -78,6 +101,7 @@ async function AddComment(req,res)
 
 module.exports = {
     RegisterUser,
+    FindUser,
     AddPost,
     AddComment
 }
