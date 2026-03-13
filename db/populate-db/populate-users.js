@@ -1,7 +1,7 @@
 const { mongoose } = require('mongoose');
 
 async function PopulateUsers() {
-    var newUser = require('./models/user.js');
+    var newUser = require('../models/user.js');
     await newUser.create({
         firstName: "Megan Florence Sophia",
         lastName: "Sadio",
