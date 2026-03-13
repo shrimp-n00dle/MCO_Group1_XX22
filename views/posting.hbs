@@ -5,7 +5,7 @@
     <div class="contentCard-light" style="grid-column: 1 / span 3;">
         <h1 style="text-align: center;">CREATE A POST </h1>
 
-        <form id ="postForm" enctype="multipart/form-data">
+        <form id ="postForm" method="post">
             <label for="post" class="formLabel">How are you feeling?</label>
             <select class="emotion">
                 <option value="0" >  </option>
@@ -14,7 +14,6 @@
                 <option value="confused" > I'm confused ,':/ </option>
                 <option value="angry" > I'm angry >:[ </option>
             </select>
-            </form>
 
             <label for="post" class="formLabel" >Title: <br></label>
             <input type="text" class="formInput" name="postTitle"/>
