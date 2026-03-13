@@ -2,6 +2,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
 const {RegisterUser, AddPost, AddComment} = require('./db/req.js');
+const {PopulateUsers} = require("./db/populate-db/populate-users.js");
+const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
 const express = require("express");
 const multer = require('multer');
@@ -27,6 +29,10 @@ app.set("views", "./views");
 
 app.use('/js', express.static(__dirname + '/public/js')); 
 app.use('/js', express.static(__dirname + '/db/models')); 
+
+// Database Population ---------------------------------------------------------
+PopulateUsers();
+PopulatePosts();
 
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
