@@ -4,7 +4,7 @@ async function ValidateLogIn(){
     var logInForm = document.getElementById("logInForm");
     const formData = new FormData(logInForm);
 
-    try{
+    try {
         const response = await fetch('/log-in', {
             method: "POST",
             body: formData,
