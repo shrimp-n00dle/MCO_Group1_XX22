@@ -30,6 +30,12 @@ async function FindUser(req, res){
         const query = { email: userEmail, password: typedPassword };
 
         const gotUser = await User.findOne(query);
+
+        if(gotUser){
+
+        } else {
+
+        }
     } catch{
         console.log("Username and password do not exist.");
     }
