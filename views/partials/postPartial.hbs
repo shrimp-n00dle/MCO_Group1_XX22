@@ -6,7 +6,7 @@
 
     <div class="postBody">
         {{#if post.postTitle}}
-            <h3>{{post.postTitle}}</h3>
+            <a href="viewPost/{{post._id}}"><h3>{{post.postTitle}}</h3></a>
         {{/if}}
         <p>{{post.postBody}}</p>
     </div>
