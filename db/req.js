@@ -21,6 +21,63 @@ async function RegisterUser(req, res) {
     }
 }
 
+async function AddPost(req,res)
+{
+    var newPost = require("./models/post.js");
+    await newPost.create({
+        username : req.body.username,
+        profilePicture: '',
+        postTitle: '',
+        postBody: '',
+        mediaFile: '',
+        likeCount: 0,
+        commentCount: 0,
+        dateCreated: ''
+    }), err => {
+        if(err) 
+        res.render("posting", {layout: false, error: "Something went wrong."});
+        return err;
+    }
+}
+
+async function AddComment(req,res)
+{
+    var newPost = require("./models/post.js");
+    await newPost.create({
+        username : req.body.username,
+        profilePicture: '',
+        postTitle: '',
+        postBody: '',
+        mediaFile: '',
+        likeCount: 0,
+        commentCount: 0,
+        dateCreated: ''
+    }), err => {
+        if(err) 
+        res.render("posting", {layout: false, error: "Something went wrong."});
+        return err;
+    }
+}
+
+async function AddComment(req,res)
+{
+    var newComment = require("./models/post.js");
+    await newComment.create({
+        username : req.body.username,
+        profilePicture: '',
+        commentBody: '',
+        likeCount: 0,
+        commentCount: 0,
+        dateCreated: ''
+    }), err => {
+        if(err) 
+        res.render("posting", {layout: false, error: "Something went wrong."});
+        return err;
+    }
+}
+
 module.exports = {
-    RegisterUser
+    RegisterUser,
+    AddPost,
+    AddComment
 }

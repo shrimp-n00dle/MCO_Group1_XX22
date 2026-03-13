@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser} = require('./db/req.js');
+const {RegisterUser, AddPost, AddComment} = require('./db/req.js');
 
 const express = require("express");
 const multer = require('multer');
@@ -38,6 +38,14 @@ Handlebars.registerHelper("matchString", function(val1, val2) {
 
 app.post('/register', upload.none(), async (req, res) => {
     RegisterUser(req, res);
+});
+
+app.post('/posting', upload.array('media',5), async (req, res) => {
+    AddPost(req, res);
+});
+
+app.post('/commenting', upload.none(), async (req, res) => {
+    AddComment(req, res);
 });
 
 // Routing --------------------------------------------------------------
