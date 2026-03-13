@@ -1,9 +1,9 @@
-var commentPopUpObj = document.getElementById("commentPopUp");
 
-async function AddComment()
+
+async function GiveLike()
 {
-    var commentForm = document.getElementById("commentForm");
-    const formData = new FormData(commentForm);
+    var likeCount = document.getElementById("commentLikeCount");
+    const formData = new FormData(likeCount);
 
     try {
         const response = await fetch('/posting', {
@@ -16,10 +16,11 @@ async function AddComment()
     }
 }
 
-function ToggleAddComment(event)
+function ToggleLike(event)
 {
     event.preventDefault();
-    AddComment();
+    GiveLike();
 
 }
-commentForm.addEventListener("submit", ToggleAddComment);
+
+likeCount.addEventListener("submit", ToggleLike);

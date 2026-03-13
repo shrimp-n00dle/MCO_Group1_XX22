@@ -60,23 +60,6 @@ async function AddComment(req,res)
     }
 }
 
-async function AddComment(req,res)
-{
-    var newComment = require("./models/post.js");
-    await newComment.create({
-        username : req.body.username,
-        profilePicture: '',
-        commentBody: '',
-        likeCount: 0,
-        commentCount: 0,
-        dateCreated: ''
-    }), err => {
-        if(err) 
-        res.render("posting", {layout: false, error: "Something went wrong."});
-        return err;
-    }
-}
-
 module.exports = {
     RegisterUser,
     AddPost,
