@@ -31,8 +31,6 @@ async function FindUser(req, res){
 
         const gotUser = await User.findOne(query);
 
-        console.log(gotUser);
-
         if(gotUser){
             //Redirect user to home screen
         }
