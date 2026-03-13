@@ -24,23 +24,14 @@ async function RegisterUser(req, res) {
 async function FindUser(req, res){
     try {
         const User = require('./models/user.js');
-        const query = { email: req.body.email, password: req.body.password };
-        const options = {
-            //Only return email and password if it exists
-            projection: { _id: 0, email: 1, password: 1 },
-        };
 
-        const gotUser = await User.findOne(query, options);
-        // Print the document returned by findOne()
-        console.log(gotUser);
+        var userEmail = req.body.email;
+        var typedPassword = req.body.password;
+        const query = { email: userEmail, password: typedPassword };
 
-        if(gotUser){
-            console.log("User exists!");
-        } else {
-            console.log("User DNE");
-        }
+        const gotUser = await User.findOne(query);
     } catch{
-        //console.log("Username or password is incorrect.");
+        console.log("Username and password do not exist.");
     }
 }
 
