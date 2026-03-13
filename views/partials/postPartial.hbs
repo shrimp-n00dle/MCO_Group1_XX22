@@ -5,7 +5,10 @@
     </div>
 
     <div class="postBody">
-        <p>{{post.body}}</p>
+        {{#if post.postTitle}}
+            <h3>{{post.postTitle}}</h3>
+        {{/if}}
+        <p>{{post.postBody}}</p>
     </div>
 
     <div class="postFooter">
@@ -15,7 +18,7 @@
         <a href="">Comment</a>
     </div>
 
-    {{#if post.comments}}
+    {{!-- {{#if post.replyList}}
     <div class="postCommentContainer">
         <div class="commentHeader">
             <img src="{{post.commentPfp}}">
@@ -31,5 +34,5 @@
             </div>
         </div>
     </div>
-    {{/if}}
+    {{/if}} --}}
 </div>

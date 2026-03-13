@@ -52,7 +52,6 @@ async function AddComment(req,res)
         postBody: '',
         mediaFile: '',
         likeCount: 0,
-        commentCount: 0,
         dateCreated: date
     }), err => {
         if(err) 
@@ -81,5 +80,5 @@ async function AddComment(req,res)
 module.exports = {
     RegisterUser,
     AddPost,
-    AddComment
+    AddComment,
 }

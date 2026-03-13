@@ -2,6 +2,8 @@
 <div class="bodyContainer">
     {{> searchSidebar}}
     {{#each posts}}
-        {{> postPartial @root.comments post=this}}
+        {{> postPartial post=this}}
+        {{else}}
+            <p>NO POSTS DETECTED</p>
     {{/each}}
 </div>

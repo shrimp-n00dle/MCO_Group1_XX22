@@ -31,7 +31,7 @@ const PostSchema = new Schema(
             max: 200
         },
         likeCount: Number,
-        followerCount: Number,
+        commentCount: Number,
         dateCreated: String,
         replyList: [{
             type: Schema.Types.ObjectId,
