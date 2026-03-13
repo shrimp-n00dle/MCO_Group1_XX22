@@ -4,7 +4,7 @@ const PostSchema = new Schema(
     {
         username: {
             type: String,
-            required: true,
+            required: false,
             min: 3,
             max: 100
         },
@@ -15,7 +15,7 @@ const PostSchema = new Schema(
         },
         postTitle: {
             type: String,
-            required: true,
+            required: false,
             max: 100
         },
         postBody: {
@@ -25,15 +25,18 @@ const PostSchema = new Schema(
         },
         mediaFile: {
             type: String,
-            unique: true,
-            required: true,
+            unique: false,
+            required: false,
             min: 3,
             max: 200
         },
         likeCount: Number,
-        followerCount: Number,
+        commentCount: Number,
         dateCreated: String,
-        //replyList: ['Comment'],
+        replyList: [{
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }]
     }, 
     {
         timestamps: true

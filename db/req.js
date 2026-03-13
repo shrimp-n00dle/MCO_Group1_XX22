@@ -46,16 +46,17 @@ async function FindUser(req, res){
 
 async function AddPost(req,res)
 {
+    var date = new Date();
     var newPost = require("./models/post.js");
     await newPost.create({
-        username : req.body.username,
+        username : '',
         profilePicture: '',
-        postTitle: '',
-        postBody: '',
+        postTitle: req.body.postTitle,
+        postBody: req.body.postBody,
         mediaFile: '',
         likeCount: 0,
         commentCount: 0,
-        dateCreated: ''
+        dateCreated: date
     }), err => {
         if(err) 
         res.render("posting", {layout: false, error: "Something went wrong."});
@@ -65,6 +66,7 @@ async function AddPost(req,res)
 
 async function AddComment(req,res)
 {
+    var date = new Date();
     var newPost = require("./models/post.js");
     await newPost.create({
         username : req.body.username,
@@ -73,8 +75,7 @@ async function AddComment(req,res)
         postBody: '',
         mediaFile: '',
         likeCount: 0,
-        commentCount: 0,
-        dateCreated: ''
+        dateCreated: date
     }), err => {
         if(err) 
         res.render("posting", {layout: false, error: "Something went wrong."});
@@ -103,5 +104,5 @@ module.exports = {
     RegisterUser,
     FindUser,
     AddPost,
-    AddComment
+    AddComment,
 }

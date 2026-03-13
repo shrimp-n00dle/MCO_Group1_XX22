@@ -4,7 +4,7 @@ const CommentSchema = new Schema(
     {
         username: {
             type: String,
-            required: true,
+            required: false,
             min: 3,
             max: 100
         },
@@ -15,13 +15,16 @@ const CommentSchema = new Schema(
         },
         commentBody: {
             type: String,
-            required: true,
+            required: false,
             max: 300
+        },
+        postParent: {
+            type: Schema.Types.ObjectId,
+            ref: 'Post'
         },
         likeCount: Number,
         followerCount: Number,
         dateCreated: String,
-        //replyList: ['Comment'],
     }, 
     {
         timestamps: true

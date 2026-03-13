@@ -11,7 +11,6 @@ const Handlebars = require("handlebars");
 const path = require('path');
 
 // Temp data files
-const {posts, nextID} = require('./data/posts');
 const {profiles} = require('./data/profiles');
 // End temp
 
@@ -57,10 +56,12 @@ app.get('/', (req, res) => {
     res.redirect('/welcome');
 });
 
-app.get('/home', (req, res) => {
+app.get('/home', async (req, res) => {
+    const Post = require("./db/models/post.js");
+    const matchingPosts = await Post.find({}).lean();
     res.render("home", {
         title: "Home",
-        posts,
+        posts: matchingPosts,
     });
 });
 
@@ -84,9 +85,13 @@ app.get('/welcome', (req, res) => {
     res.render("welcome");
 });
 
-app.get('/viewProfile/:username', (req, res) => {
+app.get('/viewProfile/:username', async (req, res) => {
+    const Post = require("./db/models/post.js");
+    const User = require("./db/models/user.js");
+    
     const username = req.params.username;
-    const profile = profiles.find((p) => p.username === username);
+    const profile = await User.find({username: username}).lean();
+    const matchingPosts = await Post.find({username: username}).lean();
 
     if (!profile) {
         return res.status(404).send("User not found.");
@@ -95,7 +100,7 @@ app.get('/viewProfile/:username', (req, res) => {
     res.render("viewProfile", {
         title: username,
         profile,
-        posts,
+        matchingPosts,
     });
 });
 
