@@ -12,10 +12,6 @@ const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
 const path = require('path');
 
-// Temp data files
-const {profiles} = require('./data/profiles');
-// End temp
-
 const port = process.env.SERVER_PORT;
 const app = express();
 
