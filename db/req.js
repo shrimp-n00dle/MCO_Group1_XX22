@@ -32,7 +32,9 @@ async function FindUser(req, res){
         const gotUser = await User.findOne(query);
 
         if(gotUser){
-            //Redirect user to home screen
+
+        } else {
+
         }
     } catch{
         console.log("Username and password do not exist.");
