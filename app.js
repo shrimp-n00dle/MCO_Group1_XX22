@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, FindUser, AddPost, AddComment} = require('./db/req.js');
+const {RegisterUser, AddPost, AddComment} = require('./db/req.js');
 
 const express = require("express");
 const multer = require('multer');
@@ -39,9 +39,9 @@ app.post('/register', upload.none(), async (req, res) => {
     RegisterUser(req, res);
 });
 
-app.post('/log-in', upload.none(), async (req, res) => {
-    FindUser(req, res);
-});
+//app.post('/log-in', upload.none(), async (req, res) => {
+//    FindUser(req, res);
+//});
 
 app.post('/posting', upload.array('media',5), async (req, res) => {
     AddPost(req, res);

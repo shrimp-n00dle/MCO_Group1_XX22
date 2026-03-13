@@ -21,25 +21,25 @@ async function RegisterUser(req, res) {
     }
 }
 
-async function FindUser(req, res){
-    try {
-        const User = require('./models/user.js');
-
-        var userEmail = req.body.email;
-        var typedPassword = req.body.password;
-        const query = { email: userEmail, password: typedPassword };
-
-        const gotUser = await User.findOne(query);
-
-        if(gotUser){
-
-        } else {
-
-        }
-    } catch{
-        console.log("Username and password do not exist.");
-    }
-}
+//async function FindUser(req, res){
+//    try {
+//        const User = require('./models/user.js');
+//
+//        var userEmail = req.body.email;
+//        var typedPassword = req.body.password;
+//        const query = { email: userEmail, password: typedPassword };
+//
+//        const gotUser = await User.findOne(query);
+//
+//        if(gotUser){
+//
+//        } else {
+//
+//        }
+//    } catch{
+//        console.log("Username and password do not exist.");
+//    }
+//}
 
 async function AddPost(req,res)
 {
@@ -82,7 +82,7 @@ async function AddComment(req,res)
 
 module.exports = {
     RegisterUser,
-    FindUser,
+    //FindUser,
     AddPost,
     AddComment,
 }
