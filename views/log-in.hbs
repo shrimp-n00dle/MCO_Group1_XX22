@@ -14,12 +14,12 @@
 
     <div class="contentCard-light registerCard" style="top: 12vh; right: 9vw">
         <p class="formSection">Enter account details:</p>
-        <form id="logInForm">
+        <form id="logInForm" method="post">
             <!-- Email and pass -->
             <label for="email" class="formLabel">Email: </label> 
-            <input type="Email"     id="email"    name="userInfo" class="formInput" required> 
+            <input type="Email"     id="email"    name="email" class="formInput" required> 
             <label for="password" class="formLabel">Password: </label> 
-            <input type="password"  id="password" name="userInfo" class="formInput" required>
+            <input type="password"  id="password" name="password" class="formInput" required>
             
             <button type="submit" class="regLogButton welcomeLogIn">Log In</button>
         </form>

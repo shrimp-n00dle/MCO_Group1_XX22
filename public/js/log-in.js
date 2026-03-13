@@ -10,7 +10,7 @@ async function ValidateLogIn(){
             body: formData,
         });
     } catch(e){
-        //console.log("Username or password is incorrect.")
+        console.log("Username and password do not match.");
     }
 
 }
