@@ -106,7 +106,7 @@ app.get('/viewProfile/:username', async (req, res) => {
     res.render("viewProfile", {
         title: username,
         profile,
-        posts: matchingPosts,
+        post: matchingPosts,
     });
 });
 

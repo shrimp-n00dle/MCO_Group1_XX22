@@ -46,8 +46,8 @@ async function AddPost(req,res)
     var date = new Date();
     var newPost = require("./models/post.js");
     await newPost.create({
-        username : '',
-        profilePicture: '',
+        username: "si_szas",
+        profilePicture: "/img/PFP_2.png", 
         postTitle: req.body.postTitle,
         postBody: req.body.postBody,
         mediaFile: '',
