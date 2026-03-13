@@ -12,10 +12,10 @@
     </div>
 
     <div class="postFooter">
-        <p class="postLikeCount">{{post.likeCount}}</p>
-        <a href="">Like</a>
+        <p class="postLikeCount" id="likeCount">{{post.likeCount}}</p>
+        <button  class="genButton-red" onclick="ToggleLike()">Like</button></a>
         <p class="postCommentCount">{{post.commentCount}}</p>
-        <a href="">Comment</a>
+        <button  class="genButton-red" onclick="ToggleAddComment()">Comment</button></a>
     </div>
 
     {{!-- {{#if post.replyList}}
@@ -36,3 +36,5 @@
     </div>
     {{/if}} --}}
 </div>
+<script src="/js/liking.js"></script>
+<script src="/js/commenting.js"></script>

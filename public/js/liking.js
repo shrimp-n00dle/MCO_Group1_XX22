@@ -1,8 +1,7 @@
 
-
 async function GiveLike()
 {
-    var likeCount = document.getElementById("commentLikeCount");
+    var likeCount = document.getElementById("likeCount");
     const formData = new FormData(likeCount);
 
     try {

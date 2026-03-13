@@ -84,7 +84,7 @@ async function GiveLike(req,res)
 {
     var newLike = require("./models/like.js");
     await newLike.create({
-        likeCount: req.likeCount
+        likeCount: req.likeCount + 1
     }), err => {
         if(err) 
         res.render("posting", {layout: false, error: "Something went wrong."});
