@@ -1,18 +1,22 @@
-const logInForm = document.getElementById("logInForm");
+async function ValidateLogIn(){
+    var logInForm = document.getElementById("logInForm");
+    const formData = new FormData(logInForm);
 
-function ValidateLogIn(){
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+    try{
+        const response = await fetch('/log-in', {
+            method: "POST",
+            body: formData,
+        });
+    } catch(e){
+        //console.log("Username or password is incorrect.")
+    }
 
-    //Code for log-in validation here
-
-    //should be an if statement where if email && password are valid and match, then:
-    GoToHome();
 }
 
-function GoToHome(event){
-    logInForm.requestSubmit();
+function ToggleSuccessfulLogIn(event){
+    event.preventDefault();
+    ValidateLogIn();
 }
 
-logInForm.addEventListener("submit", GoToHome);
+logInForm.addEventListener("submit", ToggleSuccessfulLogIn);
 
