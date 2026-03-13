@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, FindUser, AddPost, AddComment} = require('./db/req.js');
+const {RegisterUser, FindUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
 
 const express = require("express");
 const multer = require('multer');
@@ -51,6 +51,9 @@ app.post('/commenting', upload.none(), async (req, res) => {
     AddComment(req, res);
 });
 
+app.post('/liking', upload.none(), async (req, res) => {
+    GiveLike(req, res);
+});
 // Routing --------------------------------------------------------------
 app.get('/', (req, res) => {
     res.redirect('/welcome');
