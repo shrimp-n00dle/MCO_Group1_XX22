@@ -408,6 +408,7 @@ li.navListItem:hover {
 
 .genButton-white:hover {
     background-color: #dfd1ca;
+    cursor: pointer;
 }
 
 .genButton-red {
@@ -424,21 +425,50 @@ li.navListItem:hover {
 
 .genButton-red:hover {
     background-color: #6d363a;
+    cursor: pointer;
 }
 
     /* Search Bar */
 .searchBar {
     background-color: #dfd1ca;
+    width: 100%;
     font-family: "Expose";
     float: right;
-    padding: 6px;
+    padding: 10px 0px;
     border: none;
     font-size: small;
 }
 
-.searchIcon {
+.searchInput {
+    background-color: #dfd1ca;
+    margin-left: 2%;
+    padding: 5px;
+    width: 82%;
+    border: none;
+    border-bottom: 2px solid #75170d;
+
+    font-family: TexGyreHeros;
+    color: #4b2427;
+}
+
+.searchInput:hover, .searchInput:active, .searchInput:focus {
+    background-color: #d3c5be;
+    outline: none;
+}
+
+.searchButton {
+    background-color: #dfd1ca;
+    border: none;
     float: right;
-    width: 40px;
+    margin-top: 3%;
+}
+
+.searchButton:hover {
+    cursor: pointer;
+}
+
+.searchIcon {
+    width: 20px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Content Card */
