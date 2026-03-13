@@ -1,0 +1,11 @@
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="home"}}
+<div class="bodyContainer">
+    {{> searchSidebar}}
+    {{#if post}}
+        {{> postPartial post}}
+    {{else}}
+        <div class="contentCard-light">
+            <p>Post does not exist</p>
+        </div>
+    {{/if}}
+</div>

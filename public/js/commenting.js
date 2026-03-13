@@ -1,6 +1,6 @@
 var commentPopUpObj = document.getElementById("commentPopUp");
 
-async function AddPComment()
+async function AddComment()
 {
     var commentForm = document.getElementById("commentForm");
     const formData = new FormData(commentForm);

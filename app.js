@@ -100,8 +100,20 @@ app.get('/viewProfile/:username', async (req, res) => {
     res.render("viewProfile", {
         title: username,
         profile,
-        matchingPosts,
+        posts: matchingPosts,
     });
+});
+
+app.get('/viewPost/:postID', async (req,res) => {
+    const postID = req.params.postID;
+    const Post = require("./db/models/post.js");
+
+    const matchingPost = await Post.findOne({_id: postID}).lean();
+
+    res.render("viewPost", {
+        title: "Home",
+        post: matchingPost
+    })
 });
 
 // Connecting to the database -------------------------------------------
