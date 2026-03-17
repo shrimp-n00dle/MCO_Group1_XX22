@@ -12,10 +12,12 @@ async function ValidateLogIn(){
 
         if (response.ok) {
             window.location.href = '/home';
+        } else {
+            popup.classList.toggle("hiddenPopUp");
+            popup.innerHTML = (await response.text()).toString();
         }
    } catch(e){
        console.log("Something went wrong.");
-       popup.classList.toggle("hiddenPopUp");
    }
 
 }

@@ -66,14 +66,20 @@ app.post('/log-in', upload.none(), async (req, res) => {
     const User = require("./db/models/user.js");
     const userEmail = req.body.email;
     const checkUser = await User.findOne({ email: userEmail }).lean();
+    
 
     if (checkUser) {
-        console.log("User found.");
-        req.session.userID = checkUser._id;
-        res.status(200).send("User logging in");
+        // validate log in
+        const isValidLogin = false;
+        if (req.body.password === checkUser.password) {
+            req.session.userID = checkUser._id;
+            res.status(200).send("User logging in");
+        } else {
+            res.status(400).send("<p><b>Invalid log-in.</b> Email and password do not match.<p>");
+        }
     } else {
         console.log("User does not exist.");
-        res.status(400).send("Could not find user");
+        res.status(400).send("<p><b>Invalid log-in.</b> Account could not be found.<p>");
         throw new Error("Email Not Found");
     }
     return;
