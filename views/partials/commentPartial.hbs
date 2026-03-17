@@ -8,8 +8,10 @@
         <p> {{comment.body}} </p>
 
         <div class="commentFooter">
-            <p class="commentLikeCount">{{comment.likeCount}}</p>
-            <a href="">Like</a>
+            <p class="commentLikeCount" name="likeCount">{{comment.likeCount}}</p>
+            <button class="genButton-red" onclick="ToggleLike()">Like</button></a>
+            <p class="commentCount">{{comment.commentCount}}</p>
         </div>
     </div>
 </div>
+<script src="/js/liking.js"></script>

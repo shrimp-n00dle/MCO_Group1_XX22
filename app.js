@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, AddPost, AddComment} = require('./db/req.js');
+const {RegisterUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
 const {PopulateUsers} = require("./db/populate-db/populate-users.js");
 const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
@@ -45,7 +45,7 @@ app.post('/register', upload.none(), async (req, res) => {
 //    FindUser(req, res);
 //});
 
-app.post('/posting', upload.array('media',5), async (req, res) => {
+app.post('/posting', upload.none(), async (req, res) => {
     AddPost(req, res);
 });
 
@@ -53,6 +53,9 @@ app.post('/commenting', upload.none(), async (req, res) => {
     AddComment(req, res);
 });
 
+app.post('/liking', upload.none(), async (req, res) => {
+    GiveLike(req, res);
+});
 // Routing --------------------------------------------------------------
 app.get('/', (req, res) => {
     res.redirect('/welcome');

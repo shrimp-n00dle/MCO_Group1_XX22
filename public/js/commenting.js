@@ -11,7 +11,6 @@ async function AddComment()
             body: formData,
         });
     } catch (e) {
-        //Ur choice Yza if yall wanna add popups on this one, commmented it out since its frontend
         //commentPopUpObj.innerHTML = "<p>Invalid input detected. Please double check and try again!</p>";
     }
 }

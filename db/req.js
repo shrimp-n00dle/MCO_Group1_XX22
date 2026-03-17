@@ -80,9 +80,22 @@ async function AddComment(req,res)
     }
 }
 
+async function GiveLike(req,res)
+{
+    var newLike = require("./models/like.js");
+    await newLike.create({
+        likeCount: req.likeCount + 1
+    }), err => {
+        if(err) 
+        res.render("posting", {layout: false, error: "Something went wrong."});
+        return err;
+    }
+}
+
 module.exports = {
     RegisterUser,
     //FindUser,
     AddPost,
     AddComment,
+    GiveLike
 }
