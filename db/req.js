@@ -26,7 +26,7 @@ async function AddPost(req,res)
     var date = new Date();
     var newPost = require("./models/post.js");
     var User = require("./models/user.js");
-    var checkUser = await User.findOne({ _id: req.session._id});
+    var checkUser = await User.findById(req.session.userID).lean();
 
     await newPost.create({
         username: checkUser.username,

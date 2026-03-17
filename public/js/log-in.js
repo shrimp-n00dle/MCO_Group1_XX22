@@ -9,8 +9,12 @@ async function ValidateLogIn(){
            method: "POST",
            body: formData,
        });
+
+        if (response.ok) {
+            window.location.href = '/home';
+        }
    } catch(e){
-       console.log("Username and password do not match.");
+       console.log("Something went wrong.");
        popup.classList.toggle("hiddenPopUp");
    }
 
@@ -18,7 +22,6 @@ async function ValidateLogIn(){
 
 function ToggleSuccessfulLogIn(event){
     event.preventDefault();
-    window.location.href = '/home';
     ValidateLogIn();
 }
 

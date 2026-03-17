@@ -8,8 +8,9 @@ const {RegisterUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
 const express = require("express");
 const multer = require('multer');
 const session = require('express-session');
+const { body } = require('express-validator');
 
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').default;
 const upload = multer();
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
@@ -17,6 +18,17 @@ const path = require('path');
 
 const port = process.env.SERVER_PORT;
 const app = express();
+
+app.use(session({
+    secret: 'garnet-key',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
+    cookie: {
+        secure: false,
+        maxAge: 600000
+    }
+}));
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -29,17 +41,6 @@ app.set("views", "./views");
 app.use('/js', express.static(__dirname + '/public/js')); 
 app.use('/js', express.static(__dirname + '/db/models')); 
 
-app.use(session({
-    secret: 'garnet-key',
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({ mongoURL: process.env.MONGO_URL}),
-    cookie: {
-        secure: true,
-        maxAge: 600000
-    }
-}));
-
 // Database Population ---------------------------------------------------------
 // PopulateUsers();
 // PopulatePosts();
@@ -51,21 +52,31 @@ Handlebars.registerHelper("matchString", function(val1, val2) {
 
 // Server Operations --------------------------------------------------------------
 
-app.post('/register', upload.none(), async (req, res) => {
-    RegisterUser(req, res);
-});
-
-app.post('/log-in', upload.none(), body('email').custom(async value => {
+app.post('/register', body('email').custom(async value => {
     const User = require("./db/models/user.js");
     const checkUser = await User.findOne({ email: value});
     if (checkUser) {
         throw new Error("Email already in use");
     }
-}), async (req, res) => {
-    const User = require("./db/models/user.js");
-    const checkUser = await User.findOne({ email: req.email});
+}), upload.none(), async (req, res) => {
+    RegisterUser(req, res);
+});
 
-    req.session.userID = checkUser._id;
+app.post('/log-in', upload.none(), async (req, res) => {
+    const User = require("./db/models/user.js");
+    const userEmail = req.body.email;
+    const checkUser = await User.findOne({ email: userEmail }).lean();
+
+    if (checkUser) {
+        console.log("User found.");
+        req.session.userID = checkUser._id;
+        res.status(200).send("User logging in");
+    } else {
+        console.log("User does not exist.");
+        res.status(400).send("Could not find user");
+        throw new Error("Email Not Found");
+    }
+    return;
 });
 
 app.post('/posting', upload.none(), async (req, res) => {
