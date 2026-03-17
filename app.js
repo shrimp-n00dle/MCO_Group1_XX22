@@ -73,6 +73,7 @@ app.post('/log-in', upload.none(), async (req, res) => {
         const isValidLogin = false;
         if (req.body.password === checkUser.password) {
             req.session.userID = checkUser._id;
+            req.session.userUsername = checkUser.username;
             res.status(200).send("User logging in");
         } else {
             res.status(400).send("<p><b>Invalid log-in.</b> Email and password do not match.<p>");
@@ -107,11 +108,14 @@ app.get('/home', async (req, res) => {
     res.render("home", {
         title: "Home",
         posts: matchingPosts,
+        sessionUser: req.session.userUsername
     });
 });
 
 app.get('/log-in', (req, res) => {
-    res.render("log-in");
+    res.render("log-in", {
+        title: "Log In"
+    });
 });
 
 app.get('/messageUser', (req, res) => {
@@ -119,15 +123,22 @@ app.get('/messageUser', (req, res) => {
 });
 
 app.get('/posting', (req, res) => {
-    res.render("posting");
+    res.render("posting", {
+        title: "Post",
+        sessionUser: req.session.userUsername
+    });
 });
 
 app.get('/register', (req, res) => {
-    res.render("register");
+    res.render("register", {
+        title: "Register"
+    });
 });
 
 app.get('/welcome', (req, res) => {
-    res.render("welcome");
+    res.render("welcome", {
+        title: "Welcome"
+    });
 });
 
 app.get('/viewProfile/:username', async (req, res) => {
@@ -135,7 +146,7 @@ app.get('/viewProfile/:username', async (req, res) => {
     const User = require("./db/models/user.js");
     
     const username = req.params.username;
-    const profile = await User.find({username: username}).lean();
+    const profile = await User.findOne({username: username}).lean();
     const matchingPosts = await Post.find({username: username}).lean();
 
     if (!profile) {
@@ -144,8 +155,9 @@ app.get('/viewProfile/:username', async (req, res) => {
 
     res.render("viewProfile", {
         title: username,
-        profile,
-        post: matchingPosts,
+        profile: profile,
+        posts: matchingPosts,
+        sessionUser: req.session.userUsername
     });
 });
 
@@ -157,7 +169,8 @@ app.get('/viewPost/:postID', async (req,res) => {
 
     res.render("viewPost", {
         title: "Home",
-        post: matchingPost
+        post: matchingPost,
+        sessionUser: req.session.userUsername
     })
 });
 
