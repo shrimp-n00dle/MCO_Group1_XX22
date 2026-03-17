@@ -27,8 +27,8 @@ app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/js', express.static(__dirname + '/db/models')); 
 
 // Database Population ---------------------------------------------------------
-PopulateUsers();
-PopulatePosts();
+// PopulateUsers();
+// PopulatePosts();
 
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
