@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
+const {RegisterUser, UpdateUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
 // const {PopulateUsers} = require("./db/populate-db/populate-users.js");
 // const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
@@ -26,7 +26,7 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
     cookie: {
         secure: false,
-        maxAge: 600000
+        maxAge: 1000 * 60 * 60 * 24
     }
 }));
 
@@ -60,6 +60,7 @@ app.post('/register', body('email').custom(async value => {
     }
 }), upload.none(), async (req, res) => {
     RegisterUser(req, res);
+    return;
 });
 
 app.post('/log-in', upload.none(), async (req, res) => {
@@ -88,6 +89,7 @@ app.post('/log-in', upload.none(), async (req, res) => {
 
 app.post('/posting', upload.none(), async (req, res) => {
     AddPost(req, res);
+    return;
 });
 
 app.post('/commenting', upload.none(), async (req, res) => {
@@ -97,6 +99,18 @@ app.post('/commenting', upload.none(), async (req, res) => {
 app.post('/liking', upload.none(), async (req, res) => {
     GiveLike(req, res);
 });
+
+app.post('/editProfile', upload.none(), async (req, res) => {
+    try {
+        UpdateUser(req, res);
+        res.status(200);
+    } catch {
+        res.status(400);
+        throw new Error("Could not edit profile");
+    }
+    return;
+});
+
 // Routing --------------------------------------------------------------
 app.get('/', (req, res) => {
     res.redirect('/welcome');
@@ -170,6 +184,18 @@ app.get('/viewPost/:postID', async (req,res) => {
     res.render("viewPost", {
         title: "Home",
         post: matchingPost,
+        sessionUser: req.session.userUsername
+    })
+});
+
+app.get('/editProfile', async (req,res) => {
+    const User = require("./db/models/user.js");
+
+    const userProfile = await User.findById({_id: req.session.userID}).lean();
+
+    res.render("editProfile", {
+        title: "Edit Profile",
+        profile: userProfile,
         sessionUser: req.session.userUsername
     })
 });

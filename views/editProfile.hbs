@@ -1,0 +1,67 @@
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="home" username=sessionUser}}
+<div class="bodyContainer editBodyContainer">
+    <div class="profileContainer" style="grid-column: 1 / span 1">
+        <div class="profileHead">
+            <img src="{{profile.banner}}" class="profileHeadBanner">
+            <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
+            <h1 class="profileUsername"> {{profile.username}} </h1>
+            <p class="profileStatus"> <i>Employment Status: </i>     {{profile.employmentStatus}} </p>
+            <p class="profileBio"> {{profile.bio}} </p> 
+
+            <div class="profileHeadButtons">
+                {{#unless (matchString sessionUser profile.username)}}
+                <a href="/messageUser"><button>Message</button></a>
+                {{/unless}}
+                <button>Follow</button>
+                {{#if (matchString sessionUser profile.username)}}
+                <a href="/editProfile" class="profileEditButton"><img src="/img/editButton.png"></a>
+                {{/if}}
+            </div>
+
+            <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
+            <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
+
+        </div>
+    </div>
+
+    <div class="contentCard-light profileEditCard">
+        <h2>Edit Profile Details</h2>
+        
+        <form class="editProfileForm" id="EditProfileForm" method="post">
+            {{!-- Username --}}
+            <label for="changePfp" class="formLabel">Username:</label>
+            <p><i>How should others call you?</i></p>
+            <input type="text" id="changeUsername" name="username" class="formInput">
+            {{!-- PFP --}}
+            <label for="changePfp" class="formLabel">Profile Picture:</label>
+            <p><i>Input a link to an image.</i></p>
+            <input type="text" id="changePfp" name="profilePicture" class="formInput">
+            {{!-- Banner --}}
+            <label for="changeBaner" class="formLabel">Banner Picture:</label>
+            <p><i>Input a link to an image.</i></p>
+            <input type="text" id="changeBaner" name="banner" class="formInput">
+            {{!-- Bio --}}
+            <label for="changeBio" class="formLabel">Bio:</label>
+            <p><i>Say something about yourself!</i></p>
+            <textarea id="changeBio" name="bio"></textarea>
+            {{!-- Employment status --}}
+            <label for="changeEmployment" class="formLabel">Employment Status:</label>
+            <p><i>Let others kow if you're available.</i></p>
+            <select id="changeEmployment" name="employmentStatus">
+                <option value="FREELANCE">Freelance</option>
+                <option value="PART-TIME">Part-Time</option>
+                <option value="FULL-TIME">Full-Time</option>
+                <option value="NOT AVAILABLE">Not Available</option>
+                <option value="HIATUS">Hiatus</option>
+            </select>
+            {{!-- Genres --}}
+            <label for="changeGenres" class="formLabel">Game Genres:</label>
+            <p><i>What game genres are you interested in? (Separate with commas.)</i></p>
+            <input type="text" id="changeGameGenres" name="interestedGameGenres" class="formInput">
+
+            <button type="submit" class="genButton-red">Update</button></a>
+        </form>
+    </div>
+</div>
+
+<script src="/js/editProfile.js"></script>

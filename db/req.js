@@ -9,8 +9,8 @@ async function RegisterUser(req, res) {
         username: req.body.username,
         password: req.body.password,
         followerCount: 0,
-        profilePicture: '',
-        banner: '',
+        profilePicture: '/img/default_pfp.png',
+        banner: '/img/default_banner.png',
         bio: '',
         interestedGameGenres: [''],
         employmentStatus: ''
@@ -19,6 +19,38 @@ async function RegisterUser(req, res) {
         res.render("register", {layout: false, error: "Something went wrong."});
         return err;
     }
+}
+
+async function UpdateUser(req, res) {
+    var User = require('./models/user.js');
+    var currentUser = await User.findById(req.session.userID);
+
+    if (currentUser) {
+        if (req.body.username) {
+            currentUser.username = req.body.username;
+            req.session.userUsername = currentUser.username;
+        } 
+        if (req.body.profilePicture) {
+            currentUser.profilePicture = req.body.profilePicture;
+        } 
+        if (req.body.banner) {
+            currentUser.banner = req.body.banner;
+        } 
+        if (req.body.bio) {
+            currentUser.bio = req.body.bio;
+        }
+        if (req.body.employmentStatus) {
+            currentUser.employmentStatus = req.body.employmentStatus;
+        } 
+
+        await currentUser.save();
+        return;
+    } else {
+        res.status(400);
+        return;
+    }
+
+    return;
 }
 
 async function AddPost(req,res)
@@ -77,7 +109,7 @@ async function GiveLike(req,res)
 
 module.exports = {
     RegisterUser,
-    //FindUser,
+    UpdateUser,
     AddPost,
     AddComment,
     GiveLike
