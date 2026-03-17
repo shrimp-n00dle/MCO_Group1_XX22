@@ -31,9 +31,9 @@ app.use('/js', express.static(__dirname + '/db/models'));
 
 app.use(session({
     secret: 'garnet-key',
-    store: MongoStore.create({ mongoURL: process.env.MONGO_URL}),
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoURL: process.env.MONGO_URL}),
     cookie: {
         secure: true,
         maxAge: 600000
@@ -55,8 +55,17 @@ app.post('/register', upload.none(), async (req, res) => {
     RegisterUser(req, res);
 });
 
-app.post('/log-in', upload.none(), async (req, res) => {
-   FindUser(req, res);
+app.post('/log-in', upload.none(), body('email').custom(async value => {
+    const User = require("./db/models/user.js");
+    const checkUser = await User.findOne({ email: value});
+    if (checkUser) {
+        throw new Error("Email already in use");
+    }
+}), async (req, res) => {
+    const User = require("./db/models/user.js");
+    const checkUser = await User.findOne({ email: req.email});
+
+    req.session.userID = checkUser._id;
 });
 
 app.post('/posting', upload.none(), async (req, res) => {
