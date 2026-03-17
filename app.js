@@ -7,6 +7,9 @@ const {RegisterUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
 
 const express = require("express");
 const multer = require('multer');
+const session = require('express-session');
+
+const MongoStore = require('connect-mongo');
 const upload = multer();
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
@@ -28,6 +31,7 @@ app.use('/js', express.static(__dirname + '/db/models'));
 
 app.use(session({
     secret: 'garnet-key',
+    store: MongoStore.create({ mongoURL: process.env.MONGO_URL}),
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -51,9 +55,9 @@ app.post('/register', upload.none(), async (req, res) => {
     RegisterUser(req, res);
 });
 
-//app.post('/log-in', upload.none(), async (req, res) => {
-//    FindUser(req, res);
-//});
+app.post('/log-in', upload.none(), async (req, res) => {
+   FindUser(req, res);
+});
 
 app.post('/posting', upload.none(), async (req, res) => {
     AddPost(req, res);
