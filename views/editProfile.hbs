@@ -1,6 +1,6 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="home" username=sessionUser}}
 <div class="bodyContainer editBodyContainer">
-    <div class="profileContainer" style="grid-column: 1 / span 1">
+    <div class="profileContainer" style="grid-column: 1 / span 1; grid-row: 1 / span 1;">
         <div class="profileHead">
             <img src="{{profile.banner}}" class="profileHeadBanner">
             <img src="{{profile.profilePicture}}" class="profileHeadAvatar">
@@ -20,11 +20,15 @@
 
             <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
             <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
-
         </div>
     </div>
 
-    <div class="contentCard-light profileEditCard">
+    <!-- POP-UP FOR UPDATES -->
+    <div id="successPopUp" class="contentCard-light successPopUp hiddenPopUp">
+        <p>Updated.</p>
+    </div>
+
+    <div class="contentCard-light profileEditCard" id="editProfileFormContainer">
         <h2>Edit Profile Details</h2>
         
         <form class="editProfileForm" id="EditProfileForm" method="post">
@@ -48,6 +52,7 @@
             <label for="changeEmployment" class="formLabel">Employment Status:</label>
             <p><i>Let others kow if you're available.</i></p>
             <select id="changeEmployment" name="employmentStatus">
+                <option value="Keep current">Keep current</option>
                 <option value="FREELANCE">Freelance</option>
                 <option value="PART-TIME">Part-Time</option>
                 <option value="FULL-TIME">Full-Time</option>
@@ -59,8 +64,34 @@
             <p><i>What game genres are you interested in? (Separate with commas.)</i></p>
             <input type="text" id="changeGameGenres" name="interestedGameGenres" class="formInput">
 
-            <button type="submit" class="genButton-red">Update</button></a>
+            <button type="submit" class="genButton-red">Update</button>
         </form>
+        <button class="genButton-white" style="float: right; width: 50%;" onclick="ToggleForm()">Change Account Details</button>
+    </div>
+
+    <div class="contentCard-light profileEditCard hiddenPopUp" id="editAccountFormContainer">
+        <h2>Change Account Details</h2>
+        <p><b>These details are associated with your log-in information.</b></p>
+        
+        <form class="editProfileForm" id="EditAccountForm" method="post">
+            {{!-- First Name --}}
+            <label for="changeFirstName" class="formLabel">First Name:</label>
+            <input type="text" id="changeFirstName" name="firstName" class="formInput">
+            {{!-- Last Name --}}
+            <label for="changeLastName" class="formLabel">Last Name:</label>
+            <input type="text" id="changeLastName" name="lastName" class="formInput">
+            {{!-- Email --}}
+            <label for="changeEmail" class="formLabel">Email:</label>
+            <input type="text" id="changeEmail" name="email" class="formInput">
+            {{!-- Password --}}
+            <label for="changePass" class="formLabel">Password:</label>
+            <input type="text" id="changePass" name="password" class="formInput">
+
+            <button type="submit" class="genButton-red">Update</button>
+        </form>
+        <button class="genButton-white" style="float: right; width: 50%;" onclick="ToggleForm()">Edit Profile Details</button>
+
+        <button class="genButton-white" style="float: left; width: 30%;" onclick="ValidateAccountDeletion()">Delete Account</button>
     </div>
 </div>
 

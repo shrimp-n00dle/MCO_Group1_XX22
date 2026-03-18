@@ -28,7 +28,7 @@ async function UpdateUser(req, res) {
     if (currentUser) {
         if (req.body.username) {
             currentUser.username = req.body.username;
-            req.session.userUsername = currentUser.username;
+            req.session.userUsername = req.body.username;
         } 
         if (req.body.profilePicture) {
             currentUser.profilePicture = req.body.profilePicture;
@@ -39,18 +39,45 @@ async function UpdateUser(req, res) {
         if (req.body.bio) {
             currentUser.bio = req.body.bio;
         }
-        if (req.body.employmentStatus) {
+        if (req.body.employmentStatus && req.body.employmentStatus !== 'Keep current') {
             currentUser.employmentStatus = req.body.employmentStatus;
         } 
+        if (req.body.firstName) {
+            currentUser.firstName = req.body.firstName;
+        }
+        if (req.body.lastName) {
+            currentUser.lastName = req.body.lastName;
+        }
+        if (req.body.email) {
+            var checkUser = await User.exists({ email: req.body.email}).lean();
+            if (!checkUser || checkUser._id === req.session.userID) {
+                currentUser.email = req.body.email;
+            } else {
+                return res.status(400).send("<p>Email is already in use by a different existing account.<p>");
+            }
+        } if (req.body.password) {
+            currentUser.password = req.body.password;
+        }
 
-        await currentUser.save();
-        return;
+        try {
+            await currentUser.save();
+            return res.status(200).send("<p>Successfully updated profile/account details!<p>");
+        } catch (e) {
+            return res.status(400).send("<p>Something went wrong. Try again.<p>");
+        }
     } else {
-        res.status(400);
-        return;
+        return res.status(400).send("<p>User not found<p>");
     }
+}
 
-    return;
+async function DeleteUser(req, res) {
+    try {
+        var User = require('./models/user.js');
+        const deleted = await User.findByIdAndDelete(req.session.userID);
+        return res.status(200).send("<p>Successfully deleted account.</p>");
+    } catch (e) {
+        return res.status(400).send("<p>Something went wrong. Try again.<p>");
+    }
 }
 
 async function AddPost(req,res)
@@ -110,6 +137,7 @@ async function GiveLike(req,res)
 module.exports = {
     RegisterUser,
     UpdateUser,
+    DeleteUser,
     AddPost,
     AddComment,
     GiveLike

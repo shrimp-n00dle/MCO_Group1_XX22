@@ -20,5 +20,6 @@ function ToggleSuccessfulRegister(event){
     RegisterUser();
 }
 
+var registerForm = document.getElementById("registerForm");
 registerForm.addEventListener("submit", ToggleSuccessfulRegister);
 

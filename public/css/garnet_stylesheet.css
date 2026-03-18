@@ -613,6 +613,7 @@ li.navListItem:hover {
 
 .profileHeadAvatar {
     width: 100px;
+    height: 100px;
     border-radius: 100px;
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
@@ -620,6 +621,7 @@ li.navListItem:hover {
     position: relative;
     left: 30px;
     top: 90px;
+    object-fit: cover;
 }
 
 .profileStatus {
@@ -659,12 +661,13 @@ li.navListItem:hover {
     margin-top: 2%;
     column-count: 2;
     grid-template-columns: 50vw 50vw;
-    column-gap: 10px;
+    column-gap: 0px;
 }
 
 .profileEditCard {
     width: 30vw;
     grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
     box-shadow: 8px 8px 15px #4b2427;
 }
 
@@ -676,6 +679,18 @@ li.navListItem:hover {
 
 .profileEditCard form p {
     margin: 0;
+}
+
+.successPopUp {
+    height: 100px;
+    width: 30vw;
+    margin-top: 5vh;
+    align-self: center;
+    justify-self: center;
+    height: auto;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    box-shadow: 8px 8px 15px #4b2427;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

@@ -27,5 +27,6 @@ function ToggleSuccessfulLogIn(event){
     ValidateLogIn();
 }
 
+var logInForm = document.getElementById("logInForm");
 logInForm.addEventListener("submit", ToggleSuccessfulLogIn);
 

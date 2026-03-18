@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, UpdateUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
+const {RegisterUser, UpdateUser, DeleteUser, AddPost, AddComment, GiveLike} = require('./db/req.js');
 // const {PopulateUsers} = require("./db/populate-db/populate-users.js");
 // const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
@@ -71,7 +71,6 @@ app.post('/log-in', upload.none(), async (req, res) => {
 
     if (checkUser) {
         // validate log in
-        const isValidLogin = false;
         if (req.body.password === checkUser.password) {
             req.session.userID = checkUser._id;
             req.session.userUsername = checkUser.username;
@@ -101,14 +100,11 @@ app.post('/liking', upload.none(), async (req, res) => {
 });
 
 app.post('/editProfile', upload.none(), async (req, res) => {
-    try {
-        UpdateUser(req, res);
-        res.status(200);
-    } catch {
-        res.status(400);
-        throw new Error("Could not edit profile");
-    }
-    return;
+    return await UpdateUser(req, res);
+});
+
+app.post('/deleteAccount', upload.none(), async (req, res) => {
+    return await DeleteUser(req, res);
 });
 
 // Routing --------------------------------------------------------------
@@ -152,6 +148,12 @@ app.get('/register', (req, res) => {
 app.get('/welcome', (req, res) => {
     res.render("welcome", {
         title: "Welcome"
+    });
+});
+
+app.get('/deleteAccount', (req, res) => {
+    res.render("deleteAccount", {
+        title: "Deleting Account"
     });
 });
 

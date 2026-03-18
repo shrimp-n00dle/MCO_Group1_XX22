@@ -1,0 +1,20 @@
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="clean"}}
+
+{{> sideLogo}}
+
+<div class="welcomeDescContainer">
+    <div class="welcomeDesc contentCard-light welcomeButtons">
+        <h2>Deleting Account.</h2>
+        <p>This will permanently delete your account, your account information will be deleted. Your existing posts will remain visible to other users.</p>
+		<button class="welcomeButton welcomeRegister" onclick="TriggerRealDeleteAccount()">
+			DELETE ACCOUNT
+		</button>
+    </div>
+
+    <!-- POP-UP FOR REGISTRATION -->
+    <div id="deletePopUp" class="contentCard-light registerCard hiddenPopUp" style="grid-column: 1 / span 3;">
+        <p></p>
+    </div>
+</div>
+
+<script src="/js/deleteAccount.js"></script>
