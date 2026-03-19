@@ -2,16 +2,9 @@ const {mongoose, Schema} = require('mongoose');
 
 const PostSchema = new Schema(
     {
-        username: {
-            type: String,
-            required: false,
-            min: 3,
-            max: 100
-        },
-        profilePicture: {
-            type: String,
-            min: 3,
-            max: 100
+        postOwner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         },
         postTitle: {
             type: String,
@@ -36,6 +29,10 @@ const PostSchema = new Schema(
         replyList: [{
             type: Schema.Types.ObjectId,
             ref: 'Comment'
+        }],
+        likeList: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         }]
     }, 
     {

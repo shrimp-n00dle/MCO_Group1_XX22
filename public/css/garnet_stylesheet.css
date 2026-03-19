@@ -281,7 +281,7 @@ li.navListItem:hover {
 }
 
 .postHeader {
-    background-color: #dfd1ca;
+    background-color: #e6dad6;
     display: grid;
     width: 500px;
     font-family: TexGyreHeros;
@@ -316,23 +316,47 @@ li.navListItem:hover {
     grid-row: 2 / span 1;
 }
 
+.postImage img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .postFooter {
+    background-color: #d3c5be;
+    width: 100%;
     display: flex;
     float: left;
     font-size: smaller;
     grid-row: 3 / span 1;
+    align-content: center;
 }
 
-.postFooter a {
-    font-size: small;
-    text-decoration: none;
-    color: #6d363a;
-    margin: 5px;
+.postFooter img {
+    height: 30px;
+    width: 30px;
+}
+
+.postFooterButton {
+    align-self: center;
+    align-content: center;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.postFooterButtonActive img {
+    filter: brightness(150%);
+}
+
+.postFooterButton img:hover {
+    cursor: pointer;
+    filter: brightness(70%);
 }
 
 .postLikeCount, .postCommentCount {
     font-size: small;
-    margin-left: 5px;
+    margin: auto 10px;
     color: #6d363a;
 }
 
@@ -740,6 +764,7 @@ form.editProfileForm textarea {
     overflow-x: none;
     scrollbar-width: thin;
     font-family: TexGyreHeros;
+    font-size: 13px;
 }
 
 form.editProfileForm textarea:hover, textarea:active {
@@ -817,10 +842,12 @@ option {
 }
 
 .sidebar {
+    position: sticky;
+    top: 100px;
     background-color: #4b2427;
     grid-column: 1 / span 1;
     border-radius: 10px;
-    margin: auto;
+    margin: 5px auto auto;
     width: 250px;
     padding: 10px;
 
@@ -974,6 +1001,11 @@ option {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Pop Ups */
 
-.hiddenPopUp{
+.hiddenPopUp {
     display: none;
+}
+
+.dynamicPopUp {
+    margin-top: 3vh;
+    width: 30vw;
 }

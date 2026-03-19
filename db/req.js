@@ -1,3 +1,4 @@
+const { check } = require('express-validator');
 const { mongoose } = require('mongoose');
 
 async function RegisterUser(req, res) {
@@ -87,19 +88,66 @@ async function AddPost(req,res)
     var User = require("./models/user.js");
     var checkUser = await User.findById(req.session.userID).lean();
 
-    await newPost.create({
-        username: checkUser.username,
-        profilePicture: checkUser.profilePicture, 
-        postTitle: req.body.postTitle,
-        postBody: req.body.postBody,
-        mediaFile: '',
-        likeCount: 0,
-        commentCount: 0,
-        dateCreated: date
-    }), err => {
-        if(err) 
-        res.render("posting", {layout: false, error: "Something went wrong."});
-        return err;
+    var postTitle = '';
+    var mediaFile = '';
+    if (req.body.postTitle) {
+        postTitle = req.body.postTitle;
+    }
+    if (req.body.mediaFile) {
+        mediaFile = req.body.mediaFile;
+    }
+
+    if (checkUser) {
+        await newPost.create({
+            postOwner: checkUser._id, 
+            postTitle: postTitle,
+            postBody: req.body.postBody,
+            mediaFile: mediaFile,
+            likeCount: 0,
+            commentCount: 0,
+            dateCreated: date
+        }), err => {
+            if(err) 
+            res.render("posting", {layout: false, error: "Something went wrong."});
+            return err;
+        }
+
+        return res.status(200).send("<p>Post made.</p>");
+    } else {
+        return res.status(400).send("<p>User not found.</p>");
+    }
+}
+
+async function UpdatePost(req,res)
+{
+    var date = new Date();
+    var Post = require("./models/post.js");
+    const checkPost = await Post.findById(req.body.postID);
+
+    if (checkPost) {
+        var postTitle = '';
+        var mediaFile = '';
+        if (req.body.postTitle) {
+            postTitle = req.body.postTitle;
+        }
+        if (req.body.mediaFile) {
+            mediaFile = req.body.mediaFile;
+        }
+
+        try {
+            await Post.findByIdAndUpdate(req.body.postID, {
+                postTitle: postTitle,
+                postBody: req.body.postBody,
+                mediaFile: mediaFile,
+                dateCreated: date
+            });
+
+            return res.sendStatus(200);
+        } catch (e) {
+            return res.status(400).send("Failed to update post.");
+        }
+    } else {
+        return res.status(400).send("Failed to find post.");
     }
 }
 
@@ -124,13 +172,38 @@ async function AddComment(req,res)
 
 async function GiveLike(req,res)
 {
-    var newLike = require("./models/like.js");
-    await newLike.create({
-        likeCount: req.likeCount + 1
-    }), err => {
-        if(err) 
-        res.render("posting", {layout: false, error: "Something went wrong."});
-        return err;
+    var Post = require("./models/post.js");
+    const checkPost = await Post.findById(req.body.postID);
+
+    if (checkPost) {
+        if (checkPost.likeList.includes(req.session.userID)) {
+            try {
+                await Post.findByIdAndUpdate(req.body.postID, {
+                    $inc: { likeCount: -1},
+                    $pull: {likeList: req.session.userID}
+                });
+
+                return res.sendStatus(200);
+            } catch (e) {
+                console.log("Failed to unlike.");
+                return res.status(400).send("Failed to unlike.");
+            }
+        } else {
+            try {
+                await Post.findByIdAndUpdate(req.body.postID, {
+                    $inc: { likeCount: 1},
+                    $push: {likeList: req.session.userID}
+                });
+
+                return res.sendStatus(200);
+            } catch (e) {
+                console.log("Failed to like.");
+                return res.status(400).send("Failed to like.");
+            }
+        }
+    } else {
+        console.log("Failed to find post.");
+        return res.status(400).send("Failed to find post.");
     }
 }
 
@@ -139,6 +212,7 @@ module.exports = {
     UpdateUser,
     DeleteUser,
     AddPost,
+    UpdatePost,
     AddComment,
     GiveLike
 }

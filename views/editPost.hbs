@@ -1,0 +1,49 @@
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="home" username=sessionUser}}
+<div class="bodyContainer editBodyContainer">
+    <div class="postContainer" style="grid-column: 1/ span 1;">
+        <div class="postHeader">
+            <img src="{{post.postOwner.profilePicture}}" class="postProfilePicture">
+            <a href="/viewProfile/{{post.postOwner.username}}"><h3>{{post.postOwner.username}}</h3></a>
+        </div>
+
+        <div class="postBody">
+            {{#if post.postTitle}}
+                <h3><a href="viewPost/{{post._id}}" style="color: #4b2427; font-family:Expose;">{{post.postTitle}}</a></h3>
+            {{/if}}
+            <p>{{post.postBody}}</p>
+
+            <div class="postImage">
+                {{#if post.mediaFile}}
+                    <img src="{{post.mediaFile}}">
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="contentCard-light profileEditCard">
+        <h2>Editing Post</h2>
+
+        <form id ="postEditForm" method="post" class="editProfileForm">
+            <input id="postHead" class="hiddenPopUp" name="postID" value="{{post._id}}"/>
+
+            <label for="postHead" class="formLabel" >Title: <br></label>
+            <input type="text" id="postHead" class="formInput" name="postTitle" value="{{post.postTitle}}"/>
+
+            <label for="postContent" class="formLabel">Content:</label>
+            <textarea id="postContent" name="postBody" required>{{post.postBody}}</textarea>
+
+            <label for="postMedia" class="formLabel">Media:</label>
+            <p><i>Input a link to an image.</i></p>
+            <input type="text" id="postMedia" class="formInput" name="mediaFile" value="{{post.mediaFile}}"/>
+
+            <button type="submit" class="genButton-red" style="float: right;">Post</button></a>
+        </form>
+        <button class="genButton-white" style="float: left; width: 30%;" onclick="ToggleForm()">Delete Post</button>
+    </div>
+
+    <!-- POP-UP -->
+    <div id="postPopUp" class="contentCard-light successPopUp hiddenPopUp">
+        <p>Updated.</p>
+    </div>
+</div>

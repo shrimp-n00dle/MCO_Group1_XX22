@@ -1,7 +1,7 @@
 <div class="postContainer">
     <div class="postHeader">
-        <img src="{{post.profilePicture}}" class="postProfilePicture">
-        <a href="/viewProfile/{{post.username}}"><h3>{{post.username}}</h3></a>
+        <img src="{{post.postOwner.profilePicture}}" class="postProfilePicture">
+        <a href="/viewProfile/{{post.postOwner.username}}"><h3>{{post.postOwner.username}}</h3></a>
     </div>
 
     <div class="postBody">
@@ -9,14 +9,22 @@
             <h3><a href="viewPost/{{post._id}}" style="color: #4b2427; font-family:Expose;">{{post.postTitle}}</a></h3>
         {{/if}}
         <p>{{post.postBody}}</p>
+
+        <div class="postImage">
+            {{#if post.mediaFile}}
+                <img src="{{post.mediaFile}}">
+            {{/if}}
+        </div>
     </div>
 
     <div class="postFooter">
         <p class="postLikeCount" id="likeCount">{{post.likeCount}}</p>
-        <button  class="genButton-red" onclick="ToggleLike()">Like</button></a>
+        <button class="postFooterButton" onclick="ToggleLike('{{post._id}}')"><img src="/img/likeIcon.png"></button>
         <p class="postCommentCount">{{post.commentCount}}</p>
-        <button  class="genButton-red" onclick="ToggleAddComment()">Comment</button></a>
-        <button  class="genButton-red" onclick="ToggleEditPost()">Edit Post</button></a>
+        <button class="postFooterButton" onclick="ToggleComment('{{post._id}}')"><img src="/img/commentIcon.png"></button>
+        {{#if (matchString sessionUser post.postOwner.username)}}
+            <a href="/viewPost/{{post._id}}/edit" class="postFooterButton" style="margin-left: auto;"><img src="/img/editButton.png" style="border-radius: 100px;"></a>
+        {{/if}}
     </div>
 
     {{!-- {{#if post.replyList}}
@@ -37,6 +45,3 @@
     </div>
     {{/if}} --}}
 </div>
-<script src="/js/liking.js"></script>
-<script src="/js/commenting.js"></script>
-<script src="/js/posting.js"></script>

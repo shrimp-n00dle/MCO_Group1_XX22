@@ -1,11 +1,19 @@
 {{> nav title="Garnet: A Hidden Gem" navBarStyle="home" username=sessionUser}}
 <div class="bodyContainer">
     {{> searchSidebar}}
+    <div id="allPosts">
     {{#each posts}}
-        {{> postPartial post=this}}
+        {{> postPartial post=this sessionUser=@root.sessionUser}}
         {{else}}
             <div class="contentCard-light">
                 <p>Nothing to see!</p>
             </div>
     {{/each}}
+    </div>
+
+    <div class="sidebar hiddenPopUp" style="grid-column: 3 / span 1;" id="homePopUp">
+        <p>Something went wrong.</p>
+    </div>
 </div>
+
+<script src="/js/home.js"></script>

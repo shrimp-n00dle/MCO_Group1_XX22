@@ -2,27 +2,27 @@
 
 <div class="bodyContainer" >
 
-    <div class="contentCard-light" style="grid-column: 1 / span 3;">
-        <h1 style="text-align: center;">CREATE A POST </h1>
+    <div class="contentCard-light profileEditCard" style="grid-column: 1 / span 3;">
+        <h2>Create a Post</h2>
 
-        <form id ="postForm" method="post">
-            <label for="post" class="formLabel">How are you feeling?</label>
-            <select class="emotion">
-                <option value="0" >  </option>
-                <option value="happy" > I'm happy! :) </option>
-                <option value="sad" > I'm sad :( </option>
-                <option value="confused" > I'm confused ,':/ </option>
-                <option value="angry" > I'm angry >:[ </option>
-            </select>
+        <form id ="postForm" method="post" class="editProfileForm">
+            <label for="postHead" class="formLabel" >Title: <br></label>
+            <input type="text" id="postHead" class="formInput" name="postTitle"/>
 
-            <label for="post" class="formLabel" >Title: <br></label>
-            <input type="text" class="formInput" name="postTitle"/>
+            <label for="postContent" class="formLabel">Content:</label>
+            <textarea id="postContent" name="postBody" required></textarea>
 
-            <label for="post" class="formLabel">Content: </label>
-            <input type="text" class="formInput" name="postBody"/>
+            <label for="postMedia" class="formLabel">Media:</label>
+            <p><i>Input a link to an image.</i></p>
+            <input type="text" id="postMedia" class="formInput" name="mediaFile"/>
 
-            <button type="submit" class="genButton-red">Post</button></a>
+            <button type="submit" class="genButton-red" style="float: right;">Post</button></a>
         </form>
+    </div>
+
+    <!-- POP-UP hiddenPopUp-->
+    <div id="postPopUp" class="contentCard-light dynamicPopUp hiddenPopUp">
+        <p>Updated.</p>
     </div>
 </div>
 <script src="/js/posting.js"></script>

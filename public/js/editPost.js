@@ -1,13 +1,15 @@
 
 var postPopUpObj = document.getElementById("postPopUp");
 
-async function AddPost()
+async function EditPost()
 {
-    var postForm = document.getElementById("postForm");
+    var postForm = document.getElementById("postEditForm");
     const formData = new FormData(postForm);
 
+    var url = `/viewPost/${formData.get("postID")}/edit`;
+
     try {
-        const response = await fetch('/posting', {
+        const response = await fetch(url, {
             method: "POST",
             body: formData,
         });
@@ -24,13 +26,13 @@ async function AddPost()
     }
 }
 
-function ToggleAddPost(event)
+function ToggleEditPost(event)
 {
     event.preventDefault();
-    AddPost();
+    EditPost();
 }
 
-var postForm = document.getElementById("postForm");
-postForm.addEventListener("submit", ToggleAddPost);
+var postForm = document.getElementById("postEditForm");
+postForm.addEventListener("submit", ToggleEditPost);
 
 
