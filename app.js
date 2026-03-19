@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, AddComment, GiveLike} = require('./db/req.js');
+const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, DeletePost, AddComment, GiveLike} = require('./db/req.js');
 // const {PopulateUsers} = require("./db/populate-db/populate-users.js");
 // const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
@@ -111,7 +111,11 @@ app.post('/home', upload.none(), async (req, res) => {
 });
 
 app.post('/viewPost/:postID/edit', upload.none(), async (req, res) => {
-    return await UpdatePost(req, res);
+    if (req.body.delete) {
+        return await DeletePost(req, res);
+    } else {
+        return await UpdatePost(req, res);
+    }
 });
 
 // Routing --------------------------------------------------------------

@@ -37,13 +37,21 @@
             <p><i>Input a link to an image.</i></p>
             <input type="text" id="postMedia" class="formInput" name="mediaFile" value="{{post.mediaFile}}"/>
 
-            <button type="submit" class="genButton-red" style="float: right;">Post</button></a>
+            <button type="submit" class="genButton-red" style="float: right;">Post</button>
         </form>
-        <button class="genButton-white" style="float: left; width: 30%;" onclick="ToggleForm()">Delete Post</button>
+        <button class="genButton-white" style="float: left; width: 30%;" onclick="ValidatePostDeletion()">Delete Post</button>
     </div>
 
     <!-- POP-UP -->
     <div id="postPopUp" class="contentCard-light successPopUp hiddenPopUp">
         <p>Updated.</p>
     </div>
+
+    <div id="postPopUp2" class="contentCard-light successPopUp hiddenPopUp">
+        <p>Are you sure you want to <b><i>permanently delete</b></i> this post? <b><u>This action cannot be undone.</b></u>
+        <button class="genButton-white" style="float: left; width: 30%;" onclick="DeletePost('{{post._id}}')">I'm Sure</button>
+        <button class="genButton-red" style="float: right; width: 30%;" onclick="ValidatePostDeletion()">Nevermind</button>
+    </div>
 </div>
+
+<script src="/js/editPost.js"></script>

@@ -142,12 +142,22 @@ async function UpdatePost(req,res)
                 dateCreated: date
             });
 
-            return res.sendStatus(200);
+            return res.status(200).send("<p>Successfully updated post.<p>");
         } catch (e) {
             return res.status(400).send("Failed to update post.");
         }
     } else {
         return res.status(400).send("Failed to find post.");
+    }
+}
+
+async function DeletePost(req, res) {
+    try {
+        var Post = require('./models/post.js');
+        const deleted = await Post.findByIdAndDelete(req.body.postID);
+        return res.status(200).send("<p>Successfully deleted post.</p>");
+    } catch (e) {
+        return res.status(400).send("<p>Something went wrong. Try again.<p>");
     }
 }
 
@@ -213,6 +223,7 @@ module.exports = {
     DeleteUser,
     AddPost,
     UpdatePost,
+    DeletePost,
     AddComment,
     GiveLike
 }
