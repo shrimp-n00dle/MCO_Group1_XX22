@@ -287,6 +287,7 @@ li.navListItem:hover {
     font-family: TexGyreHeros;
     justify-content: left;
     align-content: center;
+    grid-template-columns: 10% 45% 45%;
 }
 
 .postHeader img {
@@ -308,6 +309,13 @@ li.navListItem:hover {
     padding: 7px 5px;
     grid-row: 1 / span 1;
     grid-column: 2 / span 1;
+}
+
+.postHeaderViewButton {
+    justify-self: right;
+    height: 40px;
+    padding: 7px 5px;
+    grid-column: 3 / span 1;
 }
 
 .postBody {
