@@ -26,10 +26,6 @@ const PostSchema = new Schema(
         likeCount: Number,
         commentCount: Number,
         dateCreated: String,
-        replyList: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Comment'
-        }],
         likeList: [{
             type: Schema.Types.ObjectId,
             ref: 'User'

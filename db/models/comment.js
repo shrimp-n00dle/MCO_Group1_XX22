@@ -2,20 +2,13 @@ const {mongoose, Schema} = require('mongoose');
 
 const CommentSchema = new Schema(
     {
-        username: {
-            type: String,
-            required: false,
-            min: 3,
-            max: 100
-        },
-        profilePicture: {
-            type: String,
-            min: 3,
-            max: 100
+        commentOwner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         },
         commentBody: {
             type: String,
-            required: false,
+            required: true,
             max: 300
         },
         postParent: {
@@ -23,7 +16,6 @@ const CommentSchema = new Schema(
             ref: 'Post'
         },
         likeCount: Number,
-        followerCount: Number,
         dateCreated: String,
     }, 
     {

@@ -19,3 +19,9 @@ async function ToggleLike(postID) {
         popUp.innerHTML = (await response.text()).toString();
     }
 }
+
+function ToggleComment(postID) {
+    var id = postID;
+    var url = `/home/${postID}/comment`;
+    window.location.href = url;
+}

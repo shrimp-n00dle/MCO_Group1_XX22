@@ -134,6 +134,19 @@ app.get('/home', async (req, res) => {
     });
 });
 
+app.get('/home/:postID/comment', async (req, res) => {
+    const Post = require("./db/models/post.js");
+    const User = require("./db/models/user.js");
+    const matchingPosts = await Post.find({}).populate('postOwner').lean();
+    var postID = req.params.postID
+    res.render("comment", {
+        title: "Home",
+        postId: req.params.postID,
+        posts: matchingPosts,
+        sessionUser: req.session.userUsername
+    });
+});
+
 app.get('/log-in', (req, res) => {
     res.render("log-in", {
         title: "Log In"

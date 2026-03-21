@@ -11,7 +11,7 @@ async function AddComment()
             body: formData,
         });
     } catch (e) {
-        //commentPopUpObj.innerHTML = "<p>Invalid input detected. Please double check and try again!</p>";
+        commentPopUpObj.innerHTML = "<p>Invalid input detected. Please try again!</p>";
     }
 }
 
@@ -19,6 +19,7 @@ function ToggleAddComment(event)
 {
     event.preventDefault();
     AddComment();
-
 }
+
+var commentForm = document.getElementById("commentForm");
 commentForm.addEventListener("submit", ToggleAddComment);

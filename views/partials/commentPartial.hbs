@@ -1,7 +1,7 @@
 <div class="postCommentContainer">
     <div class="commentHeader">
-        <img src="{{comment.profilePicture}}">
-        <a href="/viewProfile/{{comment.username}}"><h3>{{comment.username}}</h3></a>
+        <img src="{{comment.commentOwner.profilePicture}}">
+        <a href="/viewProfile/{{comment.commentOwner.username}}"><h3>{{post.commentOwner.username}}</h3></a>
     </div>
 
     <div class="commentBody">
@@ -10,7 +10,6 @@
         <div class="commentFooter">
             <p class="commentLikeCount" name="likeCount">{{comment.likeCount}}</p>
             <button class="genButton-red" onclick="ToggleLike()">Like</button></a>
-            <p class="commentCount">{{comment.commentCount}}</p>
         </div>
     </div>
 </div>
