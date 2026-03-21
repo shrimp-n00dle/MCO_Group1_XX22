@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, DeletePost, AddComment, GiveLike} = require('./db/req.js');
+const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, DeletePost, AddComment, GiveLike, FollowUser} = require('./db/req.js');
 // const {PopulateUsers} = require("./db/populate-db/populate-users.js");
 // const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
@@ -94,10 +94,6 @@ app.post('/commenting', upload.none(), async (req, res) => {
     AddComment(req, res);
 });
 
-app.post('/liking', upload.none(), async (req, res) => {
-    GiveLike(req, res);
-});
-
 app.post('/editProfile', upload.none(), async (req, res) => {
     return await UpdateUser(req, res);
 });
@@ -116,6 +112,10 @@ app.post('/viewPost/:postID/edit', upload.none(), async (req, res) => {
     } else {
         return await UpdatePost(req, res);
     }
+});
+
+app.post('/viewProfile/:username', upload.none(), async (req, res) => {
+    return FollowUser(req, res);
 });
 
 // Routing --------------------------------------------------------------
@@ -172,6 +172,7 @@ app.get('/deleteAccount', (req, res) => {
 app.get('/viewProfile/:username', async (req, res) => {
     const Post = require("./db/models/post.js");
     const User = require("./db/models/user.js");
+    const Follow = require("./db/models/follow.js");
     
     const username = req.params.username;
     const profile = await User.findOne({username: username}).lean();
@@ -181,10 +182,21 @@ app.get('/viewProfile/:username', async (req, res) => {
         return res.status(404).send("User not found.");
     }
 
+    const checkFollow = await Follow.exists({ followingUser: req.session.userID, followedUser: profile._id});
+    var isFollowing = false;
+    if (checkFollow) {
+        isFollowing = true;
+    } 
+
+    var interestedGameGenres = profile.interestedGameGenres;
+    interestedGameGenres = interestedGameGenres.join(", ");
+
     res.render("viewProfile", {
         title: username,
         profile: profile,
         posts: matchingPosts,
+        followingThisUser: isFollowing,
+        interestedGameGenres: interestedGameGenres,
         sessionUser: req.session.userUsername
     });
 });
@@ -208,21 +220,29 @@ app.get('/viewPost/:postID/edit', async (req,res) => {
     const User = require("./db/models/user.js");
 
     const matchingPost = await Post.findOne({_id: postID}).populate('postOwner').lean();
-    res.render("editPost", {
-        title: "Edit Post",
-        post: matchingPost,
-        sessionUser: req.session.userUsername
-    })
+
+    if (matchingPost.postOwner._id == req.session.userID) {
+        res.render("editPost", {
+            title: "Edit Post",
+            post: matchingPost,
+            sessionUser: req.session.userUsername
+        })
+    } else {
+        res.redirect("/home");
+    }
 });
 
 app.get('/editProfile', async (req,res) => {
     const User = require("./db/models/user.js");
 
     const userProfile = await User.findById({_id: req.session.userID}).lean();
-
+    var interestedGameGenres = userProfile.interestedGameGenres;
+    interestedGameGenres = interestedGameGenres.join(", ");
+    
     res.render("editProfile", {
         title: "Edit Profile",
         profile: userProfile,
+        interestedGameGenres: interestedGameGenres,
         sessionUser: req.session.userUsername
     })
 });

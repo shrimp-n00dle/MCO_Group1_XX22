@@ -59,6 +59,11 @@ async function UpdateUser(req, res) {
         } if (req.body.password) {
             currentUser.password = req.body.password;
         }
+        if (req.body.interestedGameGenres) {
+            var gameGenresString = req.body.interestedGameGenres
+            var gameGenreArray = gameGenresString.split(/\s*,\s*/);
+            currentUser.interestedGameGenres = gameGenreArray;
+        }
 
         try {
             await currentUser.save();
@@ -217,6 +222,46 @@ async function GiveLike(req,res)
     }
 }
 
+async function FollowUser(req, res) {
+    var Follow = require("./models/follow.js");
+    var User = require("./models/user.js");
+
+    const checkFollow = await Follow.exists({ followingUser: req.session.userID, followedUser: req.body.userID});
+
+    if (checkFollow) {
+        const deleted = await Follow.findOneAndDelete({ followingUser: req.session.userID, followedUser: req.body.userID});
+        
+        try {
+            await User.findByIdAndUpdate(req.body.userID, {
+                $inc: { followerCount: -1}
+            });
+        } catch (e) {
+            return res.status(400).send("Something went wrong.");
+        }
+        
+        return res.sendStatus(200);
+    } else {
+        await Follow.create({
+            followingUser: req.session.userID,
+            followedUser: req.body.userID,
+        }), err => {
+            if(err) 
+            res.render("/viewProfile", {layout: false, error: "Something went wrong."});
+            return err;
+        }
+
+        try {
+            await User.findByIdAndUpdate(req.body.userID, {
+                $inc: { followerCount: 1}
+            });
+        } catch (e) {
+            return res.status(400).send("Something went wrong.");
+        }
+
+        return res.sendStatus(200);
+    }
+}
+
 module.exports = {
     RegisterUser,
     UpdateUser,
@@ -225,5 +270,6 @@ module.exports = {
     UpdatePost,
     DeletePost,
     AddComment,
-    GiveLike
+    GiveLike,
+    FollowUser
 }

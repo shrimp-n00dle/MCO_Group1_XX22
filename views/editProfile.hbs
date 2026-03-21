@@ -9,16 +9,11 @@
             <p class="profileBio"> {{profile.bio}} </p> 
 
             <div class="profileHeadButtons">
-                {{#unless (matchString sessionUser profile.username)}}
-                <a href="/messageUser"><button>Message</button></a>
-                {{/unless}}
+                <a href=""><button>Message</button></a>
                 <button>Follow</button>
-                {{#if (matchString sessionUser profile.username)}}
-                <a href="/editProfile" class="profileEditButton"><img src="/img/editButton.png"></a>
-                {{/if}}
             </div>
 
-            <p class="profileGenres"><i>Game genres:</i> {{profile.gameGenres}}</p>
+            <p class="profileGenres"><i>Game genres:</i> {{interestedGameGenres}}</p>
             <p class="profileFollowerCount">{{profile.followerCount}} Followers</p>
         </div>
     </div>
