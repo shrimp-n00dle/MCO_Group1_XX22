@@ -28,21 +28,21 @@
         {{/if}}
     </div>
 
-    {{!-- {{#if post.replyList}}
+    {{#each comments}}
     <div class="postCommentContainer">
         <div class="commentHeader">
-            <img src="{{post.commentPfp}}">
-            <a href="/viewProfile/{{post.commentUser}}"><h3>{{post.commentUser}}</h3></a>
+            <img src="{{this.commentOwner.profilePicture}}">
+            <a href="/viewProfile/{{this.commentOwner.username}}"><h3>{{this.commentOwner.username}}</h3></a>
         </div>
 
         <div class="commentBody">
-            <p> {{post.commentBody}} </p>
+            <p> {{this.commentBody}} </p>
 
             <div class="commentFooter">
-                <p class="commentLikeCount">{{post.commentLikes}}</p>
+                <p class="commentLikeCount">{{this.likeCount}}</p>
                 <a href="">Like</a>
             </div>
         </div>
     </div>
-    {{/if}} --}}
+    {{/each}}
 </div>

@@ -169,20 +169,19 @@ async function DeletePost(req, res) {
 async function AddComment(req,res)
 {
     var date = new Date();
-    var newPost = require("./models/post.js");
-    await newPost.create({
-        username : req.body.username,
-        profilePicture: '',
-        postTitle: '',
-        postBody: '',
-        mediaFile: '',
+    var newComment = require("./models/comment.js");
+    await newComment.create({
+        commentOwner: req.session.userID,
+        commentBody: req.body.commentBody,
+        postParent: req.body.postID,
         likeCount: 0,
         dateCreated: date
     }), err => {
         if(err) 
-        res.render("posting", {layout: false, error: "Something went wrong."});
-        return err;
+        return res.sendStatus(400);
     }
+
+    return res.sendStatus(200);
 }
 
 async function GiveLike(req,res)

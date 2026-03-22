@@ -90,10 +90,6 @@ app.post('/posting', upload.none(), async (req, res) => {
     return await AddPost(req, res);
 });
 
-app.post('/commenting', upload.none(), async (req, res) => {
-    AddComment(req, res);
-});
-
 app.post('/editProfile', upload.none(), async (req, res) => {
     return await UpdateUser(req, res);
 });
@@ -104,6 +100,10 @@ app.post('/deleteAccount', upload.none(), async (req, res) => {
 
 app.post('/home', upload.none(), async (req, res) => {
     return await GiveLike(req, res);
+});
+
+app.post('/home/:postID/comment', upload.none(), async (req, res) => {
+    return await AddComment(req, res);
 });
 
 app.post('/viewPost/:postID/edit', upload.none(), async (req, res) => {
@@ -141,7 +141,7 @@ app.get('/home/:postID/comment', async (req, res) => {
     var postID = req.params.postID
     res.render("comment", {
         title: "Home",
-        postId: req.params.postID,
+        postId: postID,
         posts: matchingPosts,
         sessionUser: req.session.userUsername
     });
@@ -218,11 +218,14 @@ app.get('/viewPost/:postID', async (req,res) => {
     const postID = req.params.postID;
     const Post = require("./db/models/post.js");
     const User = require("./db/models/user.js");
+    const Comment = require("./db/models/comment.js");
 
     const matchingPost = await Post.findOne({_id: postID}).populate('postOwner').lean();
+    const comments = await Comment.find({postParent: postID}).populate('postParent commentOwner').lean();
     res.render("viewPost", {
         title: "View Post",
         post: matchingPost,
+        comments: comments,
         sessionUser: req.session.userUsername
     })
 });

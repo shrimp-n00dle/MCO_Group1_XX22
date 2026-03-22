@@ -1,24 +1,38 @@
 var commentPopUpObj = document.getElementById("commentPopUp");
 
-async function AddComment()
+async function MakeComment()
 {
     var commentForm = document.getElementById("commentForm");
     const formData = new FormData(commentForm);
 
+    var postID = formData.get('postID');
+    var url = `/home/${postID}/comment`;
+    console.log(postID);
+    console.log(url);
+
     try {
-        const response = await fetch('/posting', {
+        const response = await fetch(url, {
             method: "POST",
             body: formData,
         });
+
+        if (response.ok) {
+            commentPopUpObj.classList.toggle("hiddenPopUp");
+            commentPopUpObj.innerHTML = "<p>Comment posted.</p>";
+        } else {
+            commentPopUpObj.classList.toggle("hiddenPopUp");
+            commentPopUpObj.innerHTML = "<p>Could not make comment.</p>";
+        }
     } catch (e) {
-        commentPopUpObj.innerHTML = "<p>Invalid input detected. Please try again!</p>";
+        commentPopUpObj.classList.toggle("hiddenPopUp");
+        commentPopUpObj.innerHTML = "<p>Something went wrong.</p>";
     }
 }
 
 function ToggleAddComment(event)
 {
     event.preventDefault();
-    AddComment();
+    MakeComment();
 }
 
 var commentForm = document.getElementById("commentForm");
