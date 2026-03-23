@@ -1,0 +1,31 @@
+{{> nav title="Garnet: A Hidden Gem" navBarStyle="home" username=sessionUser}}
+<div class="bodyContainer">
+    {{> searchSidebar}}
+    {{> postPartial post=@root.post sessionUser=@root.sessionUser}}
+
+    <div class="contentCard-dark commentFormContainer">
+        <h3>Comment</h3>
+
+        <form id ="commentEditForm" method="post" class="commentForm">
+            <input id="commentHead" class="hiddenPopUp" name="postID" value="{{postID}}"/>
+            <input id="commentHead" class="hiddenPopUp" name="commentID" value="{{commentID}}"/>
+
+            <textarea id="comentContent" name="commentBody" required>{{focusedComment.commentBody}}</textarea>
+
+            <button type="submit" class="genButton-red" style="float: right; width: fit-content;">Edit Comment</button>
+        </form>
+            <button onclick="ValidateCommentDeletion()" class="genButton-white" style="float: left; width: fit-content;">Delete Comment</button>
+    </div>
+
+    <div class="sidebar hiddenPopUp" style="grid-column: 3 / span 1;" id="commentPopUp">
+        <p>Something went wrong.</p>
+    </div>
+
+    <div id="commentPopUp2" class="contentCard-light sidebarPopUp hiddenPopUp">
+        <p>Are you sure you want to <b><i>permanently delete</b></i> this comment? <b><u>This action cannot be undone.</b></u>
+        <button class="genButton-white" style="float: left; width: 30%;" onclick="DeleteComment('{{postID}}','{{commentID}}')">I'm Sure</button>
+        <button class="genButton-red" style="float: right; width: 30%;" onclick="ValidateCommentDeletion()">Nevermind</button>
+    </div>
+</div>
+
+<script src="/js/editComment.js"></script>

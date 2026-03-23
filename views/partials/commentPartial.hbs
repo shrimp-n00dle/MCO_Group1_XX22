@@ -1,16 +1,18 @@
 <div class="postCommentContainer">
     <div class="commentHeader">
         <img src="{{comment.commentOwner.profilePicture}}">
-        <a href="/viewProfile/{{comment.commentOwner.username}}"><h3>{{post.commentOwner.username}}</h3></a>
+        <a href="/viewProfile/{{comment.commentOwner.username}}"><h3>{{comment.commentOwner.username}}</h3></a>
     </div>
 
     <div class="commentBody">
-        <p> {{comment.body}} </p>
+        <p> {{comment.commentBody}} </p>
 
         <div class="commentFooter">
             <p class="commentLikeCount" name="likeCount">{{comment.likeCount}}</p>
-            <button class="genButton-red" onclick="ToggleLike()">Like</button></a>
+            <button class="commentFooterButton" onclick="ToggleLike('{{comment._id}}')"><img src="/img/likeIcon2.png"></button>
+            {{#if (matchString sessionUser comment.commentOwner.username)}}
+                <a href="/viewPost/{{comment.postParent._id}}/{{comment._id}}/edit" class="commentFooterButton" style="margin-left: auto;"><img src="/img/editButton.png" style="border-radius: 100px;"></a>
+            {{/if}}
         </div>
     </div>
 </div>
-<script src="/js/liking.js"></script>

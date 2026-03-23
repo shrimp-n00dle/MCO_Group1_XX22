@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, DeletePost, AddComment, GiveLike, FollowUser} = require('./db/req.js');
+const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, DeletePost, AddComment, UpdateComment, DeleteComment, GiveLike, FollowUser} = require('./db/req.js');
 // const {PopulateUsers} = require("./db/populate-db/populate-users.js");
 // const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
 
@@ -104,6 +104,14 @@ app.post('/home', upload.none(), async (req, res) => {
 
 app.post('/home/:postID/comment', upload.none(), async (req, res) => {
     return await AddComment(req, res);
+});
+
+app.post('/viewPost/:postID/:commentID/edit', upload.none(), async (req, res) => {
+    if (req.body.delete) {
+        return await DeleteComment(req, res);
+    } else {
+        return await UpdateComment(req, res);
+    }
 });
 
 app.post('/viewPost/:postID/edit', upload.none(), async (req, res) => {
@@ -226,6 +234,27 @@ app.get('/viewPost/:postID', async (req,res) => {
         title: "View Post",
         post: matchingPost,
         comments: comments,
+        sessionUser: req.session.userUsername
+    })
+});
+
+app.get('/viewPost/:postID/:commentID/edit', async (req,res) => {
+    const postID = req.params.postID;
+    const commentID = req.params.commentID;
+    const Post = require("./db/models/post.js");
+    const User = require("./db/models/user.js");
+    const Comment = require("./db/models/comment.js");
+
+    const matchingPost = await Post.findOne({_id: postID}).populate('postOwner').lean();
+    const comments = await Comment.find({postParent: postID}).populate('postParent commentOwner').lean();
+    const matchingComment = await Comment.find({_id: commentID}).lean();
+    res.render("editComment", {
+        title: "View Post",
+        post: matchingPost,
+        comments: comments,
+        postID: postID,
+        commentID: commentID,
+        focusedComment: matchingComment,
         sessionUser: req.session.userUsername
     })
 });

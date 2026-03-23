@@ -1,6 +1,3 @@
-// function CheckClick() {
-
-// }
 var popUp = document.getElementById("homePopUp");
 
 async function ToggleLike(postID) {

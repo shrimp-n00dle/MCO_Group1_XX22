@@ -318,6 +318,10 @@ li.navListItem:hover {
     grid-column: 3 / span 1;
 }
 
+.postHeaderViewButton img:hover{
+    filter: brightness(70%);
+}
+
 .postBody {
     background-color: #efebe6;
     color: #4b2427;
@@ -381,21 +385,22 @@ li.navListItem:hover {
     width: 500px;
     font-family: TexGyreHeros;
     justify-content: left;
-    border-radius: 10px;
 
     margin-top: 10px;
 }
 
 .commentHeader {
-    background-color: #6d363a;
+    background-color: #8f493f;
     display: grid;
     width: 500px;
     justify-content: right;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .commentHeader img {
     width: 30px;
     height: 30px;
+    margin: auto;
     border-radius: 100px;
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
@@ -414,25 +419,42 @@ li.navListItem:hover {
 
 .commentBody {
     font-size: smaller;
-    background-color: #8f493f;
+    background-color: #4b2427;
     color: #dfd1ca;
-    padding: 0px 20px;
     grid-row: 2 / span 1;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.commentBody p {
+    padding: 0px 20px;
 }
 
 .commentFooter {
+    margin: 0;
     display: flex;
     float: left;
     font-size: smaller;
     grid-row: 3 / span 1;
-    
+    width: 100%;
+    background-color: #773b31;
+    border-radius: 0px 0px 10px 10px;
 }
 
-.commentFooter a {
-    font-size: small;
-    text-decoration: none;
-    color: #dfd1ca;
-    margin: 5px;
+.commentFooterButton {
+    align-self: center;
+    align-content: center;
+    background-color: transparent;
+    border: none;
+}
+
+.commentFooterButton img {
+    width: 30px;
+    height: 30px;
+}
+
+.commentFooterButton img:hover {
+    filter: brightness(70%);
+    cursor: pointer;
 }
 
 .commentLikeCount {
@@ -592,6 +614,7 @@ li.navListItem:hover {
     margin: 0px 10px;
     grid-row: 3 / span 1;
     grid-column: 1 / span 1;
+    overflow-wrap: anywhere;
 }
 
 .profileBio {
@@ -728,6 +751,17 @@ li.navListItem:hover {
     box-shadow: 8px 8px 15px #4b2427;
 }
 
+.sidebarPopUp {
+    height: 100px;
+    width: 30vw;
+    position: fixed;
+    right: 20px;
+    top: 400px;
+    align-self: center;
+    grid-column: 3 / span 1;
+    box-shadow: 8px 8px 15px #4b2427;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Forms */
 
@@ -751,6 +785,8 @@ form.editProfileForm {
     outline:none; 
     background-color: rgb(240, 240, 240);
     font-family: TexGyreHeros;
+    color: #4b2427;
+    font-size: 13px;
 
     border: 2px solid #8f493f;
     border-radius: 5px;
@@ -785,11 +821,15 @@ form.editProfileForm textarea:hover, textarea:active, form.commentForm textarea:
 .commentFormContainer {
     align-content: center;
     background-color: #4b2427;
-    position: relative;
-    right: 10vw;
+    position: sticky;
+    right: 20px;
+    top: 100px;
     width: 30vw;
+    height: fit-content;
     grid-column: 3 / span 1;
+    box-shadow: 8px 8px 15px #4b2427;
     border-radius: 8px;
+    border-color: #4b2427;
 }
 
 .commentFormContainer h3 {

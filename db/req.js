@@ -184,6 +184,38 @@ async function AddComment(req,res)
     return res.sendStatus(200);
 }
 
+async function UpdateComment(req,res)
+{
+    var date = new Date();
+    var Comment = require("./models/comment.js");
+    const checkComment = await Comment.findById(req.body.commentID);
+
+    if (checkComment) {
+        try {
+            await Comment.findByIdAndUpdate(req.body.commentID, {
+                commentBody: req.body.commentBody,
+                dateCreated: date
+            });
+
+            return res.status(200).send("<p>Successfully updated comment.<p>");
+        } catch (e) {
+            return res.status(400).send("Failed to update comment.");
+        }
+    } else {
+        return res.status(400).send("Failed to find comment.");
+    }
+}
+
+async function DeleteComment(req, res) {
+    try {
+        var Comment = require('./models/comment.js');
+        const deleted = await Comment.findByIdAndDelete(req.body.commentID);
+        return res.status(200).send("<p>Successfully deleted comment.</p>");
+    } catch (e) {
+        return res.status(400).send("<p>Something went wrong. Try again.<p>");
+    }
+}
+
 async function GiveLike(req,res)
 {
     var Post = require("./models/post.js");
@@ -269,6 +301,8 @@ module.exports = {
     UpdatePost,
     DeletePost,
     AddComment,
+    UpdateComment,
+    DeleteComment,
     GiveLike,
     FollowUser
 }

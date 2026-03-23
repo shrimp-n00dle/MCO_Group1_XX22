@@ -19,6 +19,8 @@ async function MakeComment()
         if (response.ok) {
             commentPopUpObj.classList.toggle("hiddenPopUp");
             commentPopUpObj.innerHTML = "<p>Comment posted.</p>";
+            var url = `/viewPost/${postID}`
+            window.location.href = url;
         } else {
             commentPopUpObj.classList.toggle("hiddenPopUp");
             commentPopUpObj.innerHTML = "<p>Could not make comment.</p>";

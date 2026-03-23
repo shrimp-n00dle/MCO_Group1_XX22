@@ -2,4 +2,11 @@
 <div class="bodyContainer">
     {{> searchSidebar}}
     {{> postPartial post=@root.post sessionUser=@root.sessionUser}}
+    {{> commentFormPartial postId=@root.post._id}}
+
+    <div class="sidebar hiddenPopUp" style="grid-column: 3 / span 1;" id="commentPopUp">
+        <p>Something went wrong.</p>
+    </div>
 </div>
+
+<script src="/js/commenting.js"></script>
