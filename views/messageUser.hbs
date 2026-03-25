@@ -1,26 +1,32 @@
-{{> nav title="Message" notClean=true}}
+{{> nav title="Message" navBarStyle="home"}}
 <div style="display:flex">
     <!-- Message Body -->
     <div class="sidebar-full">
         <ul>
-            {{#each user.messageThreads}}
-                {{> textPreview @root.texts}}
+            {{#each messageThreads}}
+                {{> textPreview msg=this.mostRecent reciever=reciever}}
+            {{else}}
+                <p class="previewNone">No messages yet!</p>
             {{/each}}
         </ul>
     </div>
 
     <div class="currentMessageThreadContainer">
+        {{#if messageThread}}
         <h2 class="messageThreadHeader">{{messageThread.sender}}</h2>
         <div class="messageThread">
-            {{#each messageThread.texts}}
-                {{> messageThread text=this @root.user}}
+            {{#each messageThread.allMessages}}
+                {{> messageThread message=this profile=@root.user}}
             {{/each}}
         </div>
         <div class="messageInputContainer">
             <form class="messageForm">
-                <textarea class="messageNewInput"></textarea>
+                <input id="postHead" class="hiddenPopUp" name="threadID" value="{{messageThread._id}}"/>
+                <textarea class="messageNewInput" name="messageBody"></textarea>
+
                 <button class="sendMessage"></button>
             </form>
         </div>
+        {{/if}}
     </div>
 </div>

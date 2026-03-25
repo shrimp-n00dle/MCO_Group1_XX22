@@ -20,7 +20,6 @@ const PostSchema = new Schema(
             type: String,
             unique: false,
             required: false,
-            min: 3,
             max: 200
         },
         likeCount: Number,

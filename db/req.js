@@ -306,6 +306,35 @@ async function FollowUser(req, res) {
     }
 }
 
+async function MakeThread(req, res) {
+    var Thread = require("./models/thread.js");
+
+    await Thread.create({
+        user1: req.session.userID,
+        user2: req.body.recieverID,
+    }), err => {
+        if(err) 
+        return res.sendStatus(400);
+    }
+
+    return res.sendStatus(200);
+}
+
+async function MakeMessage(req, res) {
+    var Message = require("./models/message.js");
+
+    await Message.create({
+        threadParent: req.body.threadID,
+        sender: req.session.userID,
+        messageBody: req.body.messageBody,
+    }), err => {
+        if(err) 
+        return res.sendStatus(400);
+    }
+    
+    return res.sendStatus(200);
+}
+
 module.exports = {
     RegisterUser,
     UpdateUser,
@@ -317,5 +346,7 @@ module.exports = {
     UpdateComment,
     DeleteComment,
     GiveLike,
-    FollowUser
+    FollowUser,
+    MakeThread,
+    MakeMessage
 }

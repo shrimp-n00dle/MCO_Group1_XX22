@@ -40,8 +40,8 @@ body {
     display: grid;
     column-count: 3;
     justify-content: center;
-    grid-template-columns: 100px auto 100px;
-    column-gap: 200px;
+    grid-template-columns: 25vw auto 25vw;
+    column-gap: 2vw;
 }
 
 .navLogo {
@@ -267,6 +267,10 @@ li.navListItem:hover {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* POSTS */
+#allPosts {
+    grid-column: 2 / span 1;
+}
+
 .postContainer {
     background-color: #e6dad6;
     margin: 7px auto;
@@ -641,6 +645,7 @@ li.navListItem:hover {
 
 .profileHeadButtons button:hover {
     background-color: #6d363a;
+    cursor: pointer;
 }
 
 .profileEditButton {
@@ -822,9 +827,9 @@ form.editProfileForm textarea:hover, textarea:active, form.commentForm textarea:
     align-content: center;
     background-color: #4b2427;
     position: sticky;
-    right: 20px;
+    right: 1vw;
     top: 100px;
-    width: 30vw;
+    width: 25vw;
     height: fit-content;
     grid-column: 3 / span 1;
     box-shadow: 8px 8px 15px #4b2427;
@@ -888,14 +893,17 @@ option {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Side Bars */
 .sidebar-full {
-  background-color: #4b2427;
-  grid-column: 1 / span 1;
-  width: 400px;
-  height: 100vh;
-  padding: 10px;
-  
-  font-family: 'TexGyreHeros';
-  font-size: smaller;
+    background-color: #4b2427;
+    grid-column: 1 / span 1;
+    width: 400px;
+    height: calc(100vh - 100px);
+    padding: 10px;
+    
+    font-family: 'TexGyreHeros';
+    font-size: smaller;
+
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .sidebar-full ul {
@@ -922,7 +930,7 @@ option {
     background-color: #4b2427;
     grid-column: 1 / span 1;
     border-radius: 10px;
-    margin: 5px auto auto;
+    margin: auto 0px auto auto;
     width: 250px;
     padding: 10px;
 
@@ -948,6 +956,36 @@ option {
     padding: 2px;
 }
 
+.viewAllMessages {
+    background-color: #4b2427;
+    border-radius: 8px;
+    padding-right: 15px;
+    grid-column: 3 / span 1;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    align-content: center;
+    justify-content: center;
+}
+
+.viewAllMessages:hover {
+    filter: brightness(70%);
+}
+
+.viewAllMessages img {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+.viewAllMessages h2 {
+    position: relative;
+    top: 20px;
+    margin: 0;
+    float: right;
+    font-family: Expose;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Message Screen */
 .messageUser {
@@ -969,6 +1007,15 @@ option {
     padding: 0;
 }
 
+.previewNone {
+    background-color: #8f493f;
+    padding: 20px;
+    
+    font-family: Expose;
+    font-size: 20px;
+    color: #efebe6;
+}
+
 .messagePreview:hover {
     background-color: #8f493f;
     cursor: pointer;
@@ -987,7 +1034,7 @@ option {
 
     display: flexbox;
     float: right; 
-    height: 100vh; 
+    height: calc(100vh - 100px);
     width: 100%;
 }
 
@@ -997,6 +1044,9 @@ option {
     display: flexbox;
     flex-direction: column;
     align-items: flex-end;
+
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .messageThreadHeader {

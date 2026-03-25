@@ -11,7 +11,7 @@
 
             <div class="profileHeadButtons">
                 {{#unless (matchString sessionUser profile.username)}}
-                <a href="/messageUser"><button>Message</button></a>
+                <a href="/message/{{profile._id}}"><button>Message</button></a>
                 {{/unless}}
                 {{#if followingThisUser}}
                     <button onclick="Follow('{{profile._id}}')">Unfollow</button>

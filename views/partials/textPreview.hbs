@@ -1,6 +1,6 @@
-<a href="/messageUser/{{thread.user2}}" class="preview">
+<a href="/messageUser/{{reciever._id}}" class="preview">
     <li class="messagePreview">
-        <h4 class="messageUser">{{thread.user2}}</h4>
-        <p  class="lastMessage">{{text.sender}}: {{text.content}}</p>
+        <h4 class="messageUser">{{reciever.username}}</h4>
+        <p  class="lastMessage">{{reciever.username}}: {{msg.content}}</p>
     </li>
 </a>

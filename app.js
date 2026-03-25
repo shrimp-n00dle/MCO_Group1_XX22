@@ -4,9 +4,13 @@ dns.setServers(["1.1.1.1", "8.8.8.8"]);
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
-const {RegisterUser, UpdateUser, DeleteUser, AddPost, UpdatePost, DeletePost, AddComment, UpdateComment, DeleteComment, GiveLike, FollowUser} = require('./db/req.js');
-// const {PopulateUsers} = require("./db/populate-db/populate-users.js");
-// const {PopulatePosts} = require("./db/populate-db/populate-posts.js");
+const {
+    RegisterUser, UpdateUser, DeleteUser, 
+    AddPost, UpdatePost, DeletePost, 
+    AddComment, UpdateComment, DeleteComment, 
+    GiveLike, FollowUser,
+    MakeThread, MakeMessage
+} = require('./db/req.js');
 
 const express = require("express");
 const multer = require('multer');
@@ -45,10 +49,6 @@ app.set("views", "./views");
 
 app.use('/js', express.static(__dirname + '/public/js')); 
 app.use('/js', express.static(__dirname + '/db/models')); 
-
-// Database Population ---------------------------------------------------------
-// PopulateUsers();
-// PopulatePosts();
 
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
@@ -166,7 +166,52 @@ app.get('/log-in', (req, res) => {
     });
 });
 
-app.get('/messageUser', (req, res) => {
+app.get('/message', async (req, res) => {
+    const Thread = require("./db/models/thread.js");
+    const userThreads = await Thread.find({$or: [
+        { user1: req.session.userID },
+        { user2: req.session.userID }
+    ]}).populate('allMessages').lean();
+
+    res.render("messageUser", {
+        user: req.session.userID,
+        messageThreads: userThreads
+    });
+});
+
+app.get('/message/:userID', async (req, res) => {
+    var userID = req.params.userID;
+
+    const User = require("./db/models/user.js");
+    const Thread = require("./db/models/thread.js");
+    const profile = await User.findOne({_id: userID}).lean();
+    const userThreads = await Thread.find({$or: [
+        { user1: req.session.userID },
+        { user2: req.session.userID }
+    ]}).populate('allMessages').lean();
+
+    const thisThread = await Thread.findOne({ $and: [
+        { $or: [
+            { user1: req.session.userID },
+            { user2: req.session.userID }
+        ]},
+        { $or: [
+            { user1: profile._id },
+            { user2: profile._id }
+        ]}
+    ]}).populate('user1 user2').lean();
+
+    if (!thisThread) {
+        pass;
+    }
+
+    res.render("messageUser", {
+        user: req.session.userUsername,
+        reciever: profile,
+        messageThreads: userThreads,
+        messageThread: thisThread
+    });
+
     res.render("messageUser");
 });
 
