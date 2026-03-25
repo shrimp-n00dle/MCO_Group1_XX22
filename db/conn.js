@@ -1,14 +1,16 @@
 const { mongoose } = require('mongoose');
 
-const mongoURL = process.env.MONGO_URL;
-
 // Connecting to the database + catching any errors during the connection
-function connectToMongo (callback) {
-    mongoose.connect('mongodb://127.0.0.1:27017/GarnetDB').then (() => {
+async function connectToMongo (callback) {
+    const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+    var mongoURL = "mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
+    await mongoose.connect(mongoURL, clientOptions).then (() => {
         return callback();
     }).catch ( err => {
         callback(err);
     })
+
+    await mongoose.connection.db.admin().command({ ping: 1 });
 }
 
 // Handles closing the connection to the database

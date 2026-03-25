@@ -1,3 +1,6 @@
+const dns = require("node:dns");
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 const dotenv = require('dotenv');
 dotenv.config();
 const {connectToMongo} = require('./db/conn.js');
@@ -19,11 +22,13 @@ const path = require('path');
 const port = process.env.SERVER_PORT;
 const app = express();
 
+var mongoURL = "mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
+
 app.use(session({
     secret: 'garnet-key',
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
+    store: MongoStore.create({ mongoUrl: mongoURL}),
     cookie: {
         secure: false,
         maxAge: 1000 * 60 * 60 * 24
