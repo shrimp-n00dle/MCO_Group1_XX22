@@ -181,6 +181,15 @@ async function AddComment(req,res)
         return res.sendStatus(400);
     }
 
+    var Post = require("./models/post.js");
+    try {
+        await Post.findByIdAndUpdate(req.body.postID, {
+            $inc: {commentCount: 1}
+        });
+    } catch (e) {
+        return res.sendStatus(400);
+    }
+
     return res.sendStatus(200);
 }
 
@@ -209,7 +218,11 @@ async function UpdateComment(req,res)
 async function DeleteComment(req, res) {
     try {
         var Comment = require('./models/comment.js');
+        var Post = require("./models/post.js");
         const deleted = await Comment.findByIdAndDelete(req.body.commentID);
+        await Post.findByIdAndUpdate(req.body.postID, {
+            $inc: {commentCount: -1}
+        });
         return res.status(200).send("<p>Successfully deleted comment.</p>");
     } catch (e) {
         return res.status(400).send("<p>Something went wrong. Try again.<p>");

@@ -44,6 +44,7 @@ async function DeleteComment(postID, commentID) {
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
         body: JSON.stringify({ 
             delete: "true",
+            postID: postID,
             commentID: commentID
         })
     });
