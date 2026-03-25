@@ -1,10 +1,10 @@
-{{> nav title="Message" navBarStyle="home"}}
+{{> nav title="Message" navBarStyle="home" username=sessionUser}}
 <div style="display:flex">
     <!-- Message Body -->
     <div class="sidebar-full">
         <ul>
             {{#each messageThreads}}
-                {{> textPreview msg=this.mostRecent reciever=reciever}}
+                {{> textPreview thread=this msg=this.mostRecent user=@root.user}}
             {{else}}
                 <p class="previewNone">No messages yet!</p>
             {{/each}}
@@ -13,20 +13,23 @@
 
     <div class="currentMessageThreadContainer">
         {{#if messageThread}}
-        <h2 class="messageThreadHeader">{{messageThread.sender}}</h2>
+        <h2 class="messageThreadHeader">{{reciever.username}}</h2>
         <div class="messageThread">
             {{#each messageThread.allMessages}}
                 {{> messageThread message=this profile=@root.user}}
             {{/each}}
         </div>
         <div class="messageInputContainer">
-            <form class="messageForm">
+            <form class="messageForm" method="post" id="messageForm">
+                <input id="postHead" class="hiddenPopUp" name="reciever" value="{{reciever._id}}"/>
                 <input id="postHead" class="hiddenPopUp" name="threadID" value="{{messageThread._id}}"/>
                 <textarea class="messageNewInput" name="messageBody"></textarea>
 
-                <button class="sendMessage"></button>
+                <button type="submit" class="sendMessage"></button>
             </form>
         </div>
         {{/if}}
     </div>
 </div>
+
+<script src="/js/messaging.js"></script>

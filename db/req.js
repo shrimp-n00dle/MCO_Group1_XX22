@@ -306,33 +306,41 @@ async function FollowUser(req, res) {
     }
 }
 
-async function MakeThread(req, res) {
+async function MakeThread(req, res, recieverID) {
     var Thread = require("./models/thread.js");
 
-    await Thread.create({
-        user1: req.session.userID,
-        user2: req.body.recieverID,
-    }), err => {
-        if(err) 
+    try {
+        var newThread = await Thread.create({
+            user1: req.session.userID,
+            user2: recieverID,
+        })
+
+        return newThread;
+    } catch (e) {
         return res.sendStatus(400);
     }
-
-    return res.sendStatus(200);
 }
 
 async function MakeMessage(req, res) {
     var Message = require("./models/message.js");
+    var Thread = require("./models/thread.js");
 
-    await Message.create({
-        threadParent: req.body.threadID,
-        sender: req.session.userID,
-        messageBody: req.body.messageBody,
-    }), err => {
-        if(err) 
+    try {
+        var newMessage = await Message.create({
+            threadParent: req.body.threadID,
+            sender: req.session.userID,
+            messageBody: req.body.messageBody,
+        });
+
+        await Thread.findByIdAndUpdate(req.body.threadID, {
+            $push: {allMessages: newMessage},
+            mostRecent: newMessage
+        });
+
+        return res.sendStatus(200);
+    } catch (e) {
         return res.sendStatus(400);
     }
-    
-    return res.sendStatus(200);
 }
 
 module.exports = {

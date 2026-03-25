@@ -1,6 +1,16 @@
-<a href="/messageUser/{{reciever._id}}" class="preview">
-    <li class="messagePreview">
-        <h4 class="messageUser">{{reciever.username}}</h4>
-        <p  class="lastMessage">{{reciever.username}}: {{msg.content}}</p>
+{{#if (matchString user thread.user1._id)}}
+    <a href="/message/{{thread.user2._id}}" class="preview">
+        <li class="messagePreview">
+            <h4 class="messageUser">{{thread.user2.username}}</h4>
+{{else}}
+    <a href="/message/{{thread.user1._id}}" class="preview">
+        <li class="messagePreview">
+            <h4 class="messageUser">{{thread.user1.username}}</h4>
+{{/if}}
+        {{#if msg}}
+            <p  class="lastMessage">{{msg.sender.username}}: {{msg.messageBody}}</p>
+        {{else}}
+            <p  class="lastMessage">No messages yet!</p>
+        {{/if}}
     </li>
 </a>

@@ -52,7 +52,7 @@ app.use('/js', express.static(__dirname + '/db/models'));
 
 // Helper Funcs ---------------------------------------------------------
 Handlebars.registerHelper("matchString", function(val1, val2) {
-    return val1 === val2;
+    return String(val1) === String(val2);
 });
 
 // Server Operations --------------------------------------------------------------
@@ -131,6 +131,11 @@ app.post('/viewProfile/:username', upload.none(), async (req, res) => {
     return FollowUser(req, res);
 });
 
+app.post('/message/:userID', upload.none(), async (req, res) => {
+    return MakeMessage(req, res);
+});
+
+
 // Routing --------------------------------------------------------------
 app.get('/', (req, res) => {
     res.redirect('/welcome');
@@ -167,13 +172,17 @@ app.get('/log-in', (req, res) => {
 });
 
 app.get('/message', async (req, res) => {
+    const User = require("./db/models/user.js");
     const Thread = require("./db/models/thread.js");
+    const Message = require("./db/models/message.js");
     const userThreads = await Thread.find({$or: [
         { user1: req.session.userID },
         { user2: req.session.userID }
-    ]}).populate('allMessages').lean();
+    ]}).populate('user1 user2 mostRecent').populate({ path: 'mostRecent allMessages', populate: {path: 'sender', strictPopulate: false}}).lean();
 
     res.render("messageUser", {
+        title: "Messages",
+        sessionUser: req.session.userUsername,
         user: req.session.userID,
         messageThreads: userThreads
     });
@@ -184,13 +193,10 @@ app.get('/message/:userID', async (req, res) => {
 
     const User = require("./db/models/user.js");
     const Thread = require("./db/models/thread.js");
+    const Message = require("./db/models/message.js");
     const profile = await User.findOne({_id: userID}).lean();
-    const userThreads = await Thread.find({$or: [
-        { user1: req.session.userID },
-        { user2: req.session.userID }
-    ]}).populate('allMessages').lean();
 
-    const thisThread = await Thread.findOne({ $and: [
+    var checkThread = await Thread.exists({ $and: [
         { $or: [
             { user1: req.session.userID },
             { user2: req.session.userID }
@@ -199,20 +205,36 @@ app.get('/message/:userID', async (req, res) => {
             { user1: profile._id },
             { user2: profile._id }
         ]}
-    ]}).populate('user1 user2').lean();
+    ]});
 
-    if (!thisThread) {
-        pass;
+    if (!checkThread) {
+        await MakeThread(req, res, profile._id);
     }
 
+    var thisThread = await Thread.findOne({ $and: [
+        { $or: [
+            { user1: req.session.userID },
+            { user2: req.session.userID }
+        ]},
+        { $or: [
+            { user1: profile._id },
+            { user2: profile._id }
+        ]}
+    ]}).populate('user1 user2').populate({ path: 'allMessages', populate: {path: 'sender', strictPopulate: false}}).lean();
+
+    const userThreads = await Thread.find({$or: [
+        { user1: req.session.userID },
+        { user2: req.session.userID }
+    ]}).populate('user1 user2').populate({ path: 'mostRecent allMessages', populate: {path: 'sender', strictPopulate: false}}).lean();
+
     res.render("messageUser", {
-        user: req.session.userUsername,
+        title: "Messages",
+        sessionUser: req.session.userUsername,
+        user: req.session.userID,
         reciever: profile,
         messageThreads: userThreads,
         messageThread: thisThread
     });
-
-    res.render("messageUser");
 });
 
 app.get('/posting', (req, res) => {
