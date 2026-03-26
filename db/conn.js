@@ -3,7 +3,7 @@ const { mongoose } = require('mongoose');
 // Connecting to the database + catching any errors during the connection
 async function connectToMongo (callback) {
     const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-    var mongoURL =  "mongodb://127.0.0.1:27017/GarnetDB"; //"mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
+    var mongoURL =  "mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
     await mongoose.connect(mongoURL, clientOptions).then (() => {
         return callback();
     }).catch ( err => {

@@ -26,7 +26,7 @@ const path = require('path');
 const port = process.env.SERVER_PORT;
 const app = express();
 
-var mongoURL = "mongodb://127.0.0.1:27017/GarnetDB";//"mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
+var mongoURL = "mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
 
 app.use(session({
     secret: 'garnet-key',
