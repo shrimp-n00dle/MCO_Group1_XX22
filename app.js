@@ -15,7 +15,7 @@ const {
 const express = require("express");
 const multer = require('multer');
 const session = require('express-session');
-const { body } = require('express-validator');
+const { body, check } = require('express-validator');
 
 const MongoStore = require('connect-mongo').default;
 const upload = multer();
@@ -81,7 +81,7 @@ app.post('/log-in', upload.none(), async (req, res) => {
         // validate log in
 
         //compare if password inputted is correct
-        if (comparePasswords(req.body.password, checkUser.password)) {
+        if (bcrypt.compare(checkUser.password,req.body.password)) {
             req.session.userID = checkUser._id;
             req.session.userUsername = checkUser.username;
             res.status(200).send("User logging in");
@@ -411,16 +411,9 @@ app.listen(port, () => {
 
 
 //Password Hashing functions  -------------------------------------------
-hashPassword(req)
+function hashPassword(req)
 {
     const saltValue = bcrypt.genSaltSync(12);
-    const hashedPassword = await bcrypt.hash(req.body.password,saltValue);
+    const hashedPassword = bcrypt.hash(req.body.password,saltValue);
     return hashedPassword;
-}
-
-comparePasswords(req,inputValue)
-{
-    const saltValue = bcrypt.genSaltSync(12);
-    const inputHash = await bcrypt.hash(inputValue,saltValue)
-    return bcrypt.compareSync(req.body.password,inputHash);
 }
