@@ -26,7 +26,7 @@ const path = require('path');
 const port = process.env.SERVER_PORT;
 const app = express();
 
-var mongoURL = "mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
+var mongoURL = "mongodb://127.0.0.1:27017/GarnetDB";//"mongodb+srv://halyvasi17_db_admin:fiZdX1fSNpMPDsBh@garnetdb.omcka8g.mongodb.net/?appName=GarnetDB"
 
 app.use(session({
     secret: 'garnet-key',
@@ -56,14 +56,18 @@ Handlebars.registerHelper("matchString", function(val1, val2) {
 });
 
 // Server Operations --------------------------------------------------------------
-
 app.post('/register', body('email').custom(async value => {
     const User = require("./db/models/user.js");
     const checkUser = await User.findOne({ email: value});
     if (checkUser) {
         throw new Error("Email already in use");
     }
+
+    //
 }), upload.none(), async (req, res) => {
+    //Hashing of passwords 
+    hashPassword(req);
+
     RegisterUser(req, res);
     return;
 });
@@ -76,7 +80,9 @@ app.post('/log-in', upload.none(), async (req, res) => {
 
     if (checkUser) {
         // validate log in
-        if (req.body.password === checkUser.password) {
+
+        //compare if password inputted is correct
+        if (comparePasswords(req.body.password, checkUser.password)) {
             req.session.userID = checkUser._id;
             req.session.userUsername = checkUser.username;
             res.status(200).send("User logging in");
@@ -134,7 +140,6 @@ app.post('/viewProfile/:username', upload.none(), async (req, res) => {
 app.post('/message/:userID', upload.none(), async (req, res) => {
     return MakeMessage(req, res);
 });
-
 
 // Routing --------------------------------------------------------------
 app.get('/', (req, res) => {
@@ -377,3 +382,19 @@ connectToMongo((err) => {
 app.listen(port, () => {
     console.log("Server is now listening on port " + port);
 });
+
+
+//Password Hashing functions  -------------------------------------------
+hashPassword(req)
+{
+    const saltValue = bcrypt.genSaltSync(12);
+    const hashedPassword = await bcrypt.hash(req.body.password,saltValue);
+    req.body.password = hashedPassword;
+}
+
+comparePasswords(req,inputValue)
+{
+    const saltValue = bcrypt.genSaltSync(12);
+    const inputHash = await bcrypt.hash(inputValue,saltValue)
+    return bcrypt.compareSync(req.body.password,inputHash);
+}
