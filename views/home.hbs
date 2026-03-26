@@ -5,8 +5,8 @@
     {{#each posts}}
         {{> postPartial post=this sessionUser=@root.sessionUser}}
         {{else}}
-            <div class="contentCard-light">
-                <p>Nothing to see!</p>
+            <div class="contentCard-light" style="width: 30vw;">
+                <p style="text-align: center;">Nothing to see!</p>
             </div>
     {{/each}}
     </div>
