@@ -21,6 +21,7 @@ const MongoStore = require('connect-mongo').default;
 const upload = multer();
 const exphbs = require("express-handlebars");
 const Handlebars = require("handlebars");
+const bcrypt = require('bcrypt');
 const path = require('path');
 
 const port = process.env.SERVER_PORT;
@@ -62,11 +63,9 @@ app.post('/register', body('email').custom(async value => {
     if (checkUser) {
         throw new Error("Email already in use");
     }
-
-    //
 }), upload.none(), async (req, res) => {
     //Hashing of passwords 
-    const passwordHashed = hashPassword(req);
+    const passwordHashed = await hashPassword(req);
 
     RegisterUser(req, res, passwordHashed);
     return;
@@ -411,9 +410,9 @@ app.listen(port, () => {
 
 
 //Password Hashing functions  -------------------------------------------
-function hashPassword(req)
+async function hashPassword(req)
 {
-    const saltValue = bcrypt.genSaltSync(12);
-    const hashedPassword = bcrypt.hash(req.body.password,saltValue);
+    const saltValue = await bcrypt.genSaltSync(12);
+    const hashedPassword = await bcrypt.hash(req.body.password, saltValue);
     return hashedPassword;
 }
