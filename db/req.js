@@ -1,14 +1,14 @@
 const { check } = require('express-validator');
 const { mongoose } = require('mongoose');
 
-async function RegisterUser(req, res) {
+async function RegisterUser(req, res, passwordHashed) {
     var newUser = require('./models/user.js');
     await newUser.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password,
+        password: passwordHashed,
         followerCount: 0,
         profilePicture: '/img/default_pfp.png',
         banner: '/img/default_banner.png',
@@ -57,7 +57,12 @@ async function UpdateUser(req, res) {
                 return res.status(400).send("<p>Email is already in use by a different existing account.<p>");
             }
         } if (req.body.password) {
-            currentUser.password = req.body.password;
+
+            //Hashing it beforehand
+            const saltValue = bcrypt.genSaltSync(12);
+            const hashedPassword = await bcrypt.hash(req.body.password,saltValue);
+
+            currentUser.password = hashedPassword;
         }
         if (req.body.interestedGameGenres) {
             var gameGenresString = req.body.interestedGameGenres

@@ -66,17 +66,16 @@ app.post('/register', body('email').custom(async value => {
     //
 }), upload.none(), async (req, res) => {
     //Hashing of passwords 
-    hashPassword(req);
+    const passwordHashed = hashPassword(req);
 
-    RegisterUser(req, res);
+    RegisterUser(req, res, passwordHashed);
     return;
 });
 
 app.post('/log-in', upload.none(), async (req, res) => {
     const User = require("./db/models/user.js");
     const userEmail = req.body.email;
-    const checkUser = await User.findOne({ email: userEmail }).lean();
-    
+    const checkUser = await User.findOne({ email: userEmail }).lean();    
 
     if (checkUser) {
         // validate log in
@@ -416,7 +415,7 @@ hashPassword(req)
 {
     const saltValue = bcrypt.genSaltSync(12);
     const hashedPassword = await bcrypt.hash(req.body.password,saltValue);
-    req.body.password = hashedPassword;
+    return hashedPassword;
 }
 
 comparePasswords(req,inputValue)
