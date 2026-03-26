@@ -546,6 +546,10 @@ li.navListItem:hover {
 .searchIcon {
     width: 20px;
 }
+
+.searchIcon:hover {
+    filter: brightness(70%);
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* Content Card */
         /* Basic content card container */
@@ -930,7 +934,7 @@ option {
     background-color: #4b2427;
     grid-column: 1 / span 1;
     border-radius: 10px;
-    margin: auto 0px auto auto;
+    margin: 0px 0px auto auto;
     width: 250px;
     padding: 10px;
 

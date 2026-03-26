@@ -152,6 +152,33 @@ app.get('/home', async (req, res) => {
     });
 });
 
+app.get('/home/search/:keyword', async (req, res) => {
+    const Post = require("./db/models/post.js");
+    const User = require("./db/models/user.js");
+
+    var keyword = req.params.keyword;
+    var searchQuery = keyword.replace(/_/g, ' ');
+
+    const matchingPosts = await Post.find({
+        $or: [
+            {postBody: {
+                $regex: searchQuery,
+                $options: 'i'
+            }},
+            {postTitle: {
+                $regex: searchQuery,
+                $options: 'i'
+            }}
+        ]
+    }).populate('postOwner').lean();
+    
+    res.render("home", {
+        title: "Home",
+        posts: matchingPosts,
+        sessionUser: req.session.userUsername
+    });
+});
+
 app.get('/home/:postID/comment', async (req, res) => {
     const Post = require("./db/models/post.js");
     const User = require("./db/models/user.js");

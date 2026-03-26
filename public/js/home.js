@@ -22,3 +22,23 @@ function ToggleComment(postID) {
     var url = `/home/${postID}/comment`;
     window.location.href = url;
 }
+
+function ToggleSearch(event) {
+    event.preventDefault();
+    var searchForm = document.getElementById("searchBarForm");
+    var formData = new FormData(searchForm);
+
+    var searchQuery = formData.get("searchQuery");
+    if (searchQuery !== "" ) {
+        var trimmed = searchQuery.trim();
+        var keyword = trimmed.replace(/\s/g, "_");
+        var url = `/home/search/${keyword}`
+        window.location.href = url;
+    } else {
+        popUp.classList.toggle("hiddenPopUp");
+        popUp.innerHTML = "<p>Search cannot be empty!</p>";
+    }
+}
+
+var searchForm = document.getElementById("searchBarForm");
+searchForm.addEventListener("submit", ToggleSearch);
